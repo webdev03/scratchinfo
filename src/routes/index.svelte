@@ -24,9 +24,18 @@
     placeholder="Search a User"
     type="text"
     id="user"
-    class="form-control"
+    class=""
     on:keypress={onKeyPress}
     bind:value={user}
   />
   <button class="btn btn-primary" on:click|preventDefault={() => lengthValid(user)}>search</button>
 </div>
+<style>
+  input {
+    border: 2px black;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding-left: 10px;
+    width: 30em;
+  }
+</style>

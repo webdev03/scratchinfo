@@ -63,5 +63,7 @@
     background-color: #121212;
     min-height: 100vh;
     color: white;
+    min-width: 100vw;
+    padding-bottom: 20px;
   }
 </style>
