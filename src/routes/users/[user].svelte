@@ -16,7 +16,7 @@
   let info: any = { ocular: {}, scratchdb: {} };
   let pfp: any;
   let readForumView: Function;
-  let problem: boolean = false;
+  let problem, scratchdbProblem: boolean = false;
   let forumViewReady: boolean = false;
   let forumViewPosts, forumViewRank, forumViewTopic;
   let forumPostSelect = "Advanced Topics";
@@ -34,7 +34,7 @@
         .then((res) => {
           if (!res.ok) {
             problem = true;
-            throw new Error("Problem has arisen.");
+            console.warn("Problem has arisen.");
           }
           return res.json();
         })
@@ -55,7 +55,7 @@
         .then((res) => {
           if (!res.ok) {
             problem = true;
-            throw new Error("Problem has arisen.");
+            console.warn("Problem has arisen with Ocular.");
           }
           return res.json();
         })
@@ -76,40 +76,47 @@
       fetch(`https://scratchdb.lefty.one/v3/user/info/${username}`)
         .then((res) => {
           if (!res.ok) {
-            problem = true;
-            throw new Error("Problem has arisen.");
+            scratchdbProblem = true;
+            console.warn("Problem has arisen with ScratchDB.");
           }
           return res.json();
         })
         .then((data) => {
           if (data == undefined) {
-          } else {
+          } else { try {
             info.scratchdb.followers = data.statistics.followers;
             info.scratchdb.following = data.statistics.following;
             info.scratchdb.views = data.statistics.views;
             info.scratchdb.loves = data.statistics.loves;
             info.scratchdb.favorites = data.statistics.favorites;
+          } catch {
+            scratchdbProblem = true;
+          }
           }
         })
         .catch((error) => {
-          problem = true;
+          scratchdbProblem = true;
           throw error;
         });
       fetch(`https://scratchdb.lefty.one/v3/forum/user/info/${username}`)
         .then((res) => {
           if (!res.ok) {
-            problem = true;
-            throw new Error("Problem has arisen.");
+            scratchdbProblem = true;
+            console.warn("Problem has arisen with ScratchDB.");
           }
           return res.json();
         })
         .then((data) => {
           if (data == undefined) {
-            problem = true;
+            scratchdbProblem = true;
           }
-          info.scratchdb.forumTotalRank = data.counts.total.rank;
-          info.scratchdb.forumTotalCount = data.counts.total.count;
-          info.scratchdb.rawDataForum = data.counts;
+          try {
+          info.scratchdb.forumTotalRank = data.counts.total.rank || "ScratchDB has no data for this user. Please try later.";
+          info.scratchdb.forumTotalCount = data.counts.total.count || "ScratchDB has no data for this user. Please try later.";
+          info.scratchdb.rawDataForum = data.counts || "ScratchDB has no data for this user. Please try later.";
+          } catch {
+            scratchdbProblem = true;
+          }
         })
         .catch((error) => {
           problem = true;
@@ -120,7 +127,7 @@
       )
         .then((res) => {
           if (!res.ok) {
-            throw new Error("Problem has arisen.");
+            console.warn("Problem has arisen.");
           }
           return res.json();
         })
@@ -134,7 +141,8 @@
           }
         }).then((res) => {
           if (!res.ok) {
-            throw new Error("Problem has arisen.");
+            scratchdbProblem = true;
+            console.warn("Problem has arisen with ScratchDB.");
           }
           return res.json();
         }).then((data) => {
@@ -153,6 +161,11 @@
   <div class="alert alert-danger" role="alert">
     Oh no! It looks like this user may not exist, your internet isn't working,
     or an API is down!
+  </div>
+{/if}
+{#if scratchdbProblem == true}
+  <div class="alert alert-danger" role="alert">
+    The ScratchDB API is down or doesn't have {info.username} in its records.
   </div>
 {/if}
 
