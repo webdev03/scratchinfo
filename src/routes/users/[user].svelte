@@ -28,7 +28,7 @@
       forumViewRank = info.scratchdb.rawDataForum[forum].rank;
       forumViewTopic = forumPostSelect;
       forumViewReady = true;
-    }
+    };
     function fetchDataGroup() {
       fetch(`${corsprefix}https://api.scratch.mit.edu/users/${username}`)
         .then((res) => {
@@ -83,19 +83,19 @@
         })
         .then((data) => {
           if (data == undefined) {
-            problem = true;
+          } else {
+            info.scratchdb.followers = data.statistics.followers;
+            info.scratchdb.following = data.statistics.following;
+            info.scratchdb.views = data.statistics.views;
+            info.scratchdb.loves = data.statistics.loves;
+            info.scratchdb.favorites = data.statistics.favorites;
           }
-          info.scratchdb.followers = data.statistics.followers;
-          info.scratchdb.following = data.statistics.following;
-          info.scratchdb.views = data.statistics.views;
-          info.scratchdb.loves = data.statistics.loves;
-          info.scratchdb.favorites = data.statistics.favorites;
         })
         .catch((error) => {
           problem = true;
           throw error;
         });
-        fetch(`https://scratchdb.lefty.one/v3/forum/user/info/${username}`)
+      fetch(`https://scratchdb.lefty.one/v3/forum/user/info/${username}`)
         .then((res) => {
           if (!res.ok) {
             problem = true;
@@ -110,7 +110,35 @@
           info.scratchdb.forumTotalRank = data.counts.total.rank;
           info.scratchdb.forumTotalCount = data.counts.total.count;
           info.scratchdb.rawDataForum = data.counts;
-          console.log(info.scratchdb)
+        })
+        .catch((error) => {
+          problem = true;
+          throw error;
+        });
+      fetch(
+        `${corsprefix}https://api.scratch.mit.edu/users/${username}/projects/?limit=1`
+      )
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error("Problem has arisen.");
+          }
+          return res.json();
+        })
+        .then((data: Array<any>) => {
+          if (data[0] == undefined) {
+            console.log("no projects");
+          } else {
+            return fetch(
+              `https://scratchdb.lefty.one/v3/project/info/${data[0].id}`
+            )
+          }
+        }).then((res) => {
+          if (!res.ok) {
+            throw new Error("Problem has arisen.");
+          }
+          return res.json();
+        }).then((data) => {
+          info.scratchdb.userAgent = data.metadata["user_agent"]
         })
         .catch((error) => {
           problem = true;
@@ -140,6 +168,7 @@
   <Special {info} />
   <br />
   <p>Joined on {new Date(info.joinDate).toLocaleString()}</p>
+  <p>Latest User Agent: {info.scratchdb.userAgent}</p>
   <p>
     <a
       class="external-visit"
@@ -169,10 +198,12 @@
   <p>Total Loves: {info.scratchdb.loves}</p>
   <p>Total Favourites: {info.scratchdb.favorites}</p>
   <p>Total View Count: {info.scratchdb.views}</p>
-  <hr>
+  <hr />
   <p>Total Forum Posts: {info.scratchdb.forumTotalCount}</p>
   <p>Total Forum Rank: {info.scratchdb.forumTotalRank}</p>
-  <label for="forum-post">Choose the forum you would like to see more information about.</label>
+  <label for="forum-post"
+    >Choose the forum you would like to see more information about.</label
+  >
   <select bind:value={forumPostSelect} name="forum-post" id="forum-post">
     <option value="New Scratchers">New Scratchers</option>
     <option value="Announcements">Announcements</option>
@@ -184,20 +215,33 @@
     <option value="Bugs and Glitches">Bugs and Glitches</option>
     <option value="Other Languages">Other Languages</option>
     <option value="Questions about Scratch">Questions about Scratch</option>
-    <option value="Things I'm Making and Creating">Things I'm Making and Creating</option>
+    <option value="Things I'm Making and Creating"
+      >Things I'm Making and Creating</option
+    >
     <option value="Advanced Topics">Advanced Topics</option>
-    <option value="Things I'm Reading and Playing">Things I'm Reading and Playing</option>
+    <option value="Things I'm Reading and Playing"
+      >Things I'm Reading and Playing</option
+    >
     <option value="Suggestions">Suggestions</option>
     <option value="Open Source Projects">Open Source Projects</option>
-    <option value="Connecting to the Physical World">Connecting to the Physical World</option>
-    <option value="Developing Scratch Extensions">Developing Scratch Extensions</option>
+    <option value="Connecting to the Physical World"
+      >Connecting to the Physical World</option
+    >
+    <option value="Developing Scratch Extensions"
+      >Developing Scratch Extensions</option
+    >
   </select>
-  <button type="button" on:click={readForumView(forumPostSelect)} class="btn btn-primary">Read</button>
+  <button
+    type="button"
+    on:click={readForumView(forumPostSelect)}
+    class="btn btn-primary">Read</button
+  >
   {#if forumViewReady === true}
     <p>{forumViewTopic} Posts: {forumViewPosts}</p>
     <p>{forumViewTopic} Rank: {forumViewRank}</p>
   {/if}
 </div>
+
 <style>
   .external-visit {
     height: 40px;
