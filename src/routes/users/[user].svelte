@@ -16,7 +16,7 @@
   let info: any = { ocular: {}, scratchdb: {} };
   let pfp: any;
   let readForumView: Function;
-  let problem, scratchdbProblem: boolean = false;
+  let problem, scratchdbProblem, noStats: boolean = false;
   let forumViewReady: boolean = false;
   let forumViewPosts, forumViewRank, forumViewTopic;
   let forumPostSelect = "Advanced Topics";
@@ -82,15 +82,19 @@
           return res.json();
         })
         .then((data) => {
-          if (data == undefined) {
+          // Here it looks like there is a big problem.
+          if (data.statistics == undefined) {
+            noStats = true;
+            console.warn("No statistics in ScratchDB.")
           } else { try {
             info.scratchdb.followers = data.statistics.followers;
             info.scratchdb.following = data.statistics.following;
             info.scratchdb.views = data.statistics.views;
             info.scratchdb.loves = data.statistics.loves;
             info.scratchdb.favorites = data.statistics.favorites;
-          } catch {
+          } catch(err) {
             scratchdbProblem = true;
+            throw err;
           }
           }
         })
@@ -141,12 +145,17 @@
           }
         }).then((res) => {
           if (!res.ok) {
-            scratchdbProblem = true;
+            info.scratchdb.userAgent = "User Agent not found."
             console.warn("Problem has arisen with ScratchDB.");
           }
           return res.json();
         }).then((data) => {
-          info.scratchdb.userAgent = data.metadata["user_agent"]
+          if (info.scratchdb.userAgent === "User agent not found.") {
+            console.log("no.")
+          } else {
+            info.scratchdb.userAgent = data.metadata["user_agent"]
+          }
+          
         })
         .catch((error) => {
           problem = true;
@@ -166,6 +175,11 @@
 {#if scratchdbProblem == true}
   <div class="alert alert-danger" role="alert">
     The ScratchDB API is down or doesn't have {info.username} in its records.
+  </div>
+{/if}
+{#if noStats == true}
+  <div class="alert alert-danger" role="alert">
+    The ScratchDB API doesn't return statistics for {info.username} for some reason.
   </div>
 {/if}
 
