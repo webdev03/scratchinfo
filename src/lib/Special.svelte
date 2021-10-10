@@ -8,6 +8,9 @@
 {#if info.username === "god286"}
     <div class="tag owner" title={msg}>Owner of ScratchInfo</div>
 {/if}
+{#if info.username === "JoshAtticus"}
+    <div class="tag epic" title={msg}> Scratch Announcement Helper</div>
+{/if}
 {#if info.username === "Jeffalo"}
     <div class="tag ocular" title={msg}>Ocular</div>
 {/if}
@@ -40,5 +43,8 @@
     }
     .ocular {
         background-color: green;
+    }
+    .epic {
+        background-color: #FF7F7F;
     }
 </style>
