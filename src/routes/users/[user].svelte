@@ -198,20 +198,20 @@
   <p>Latest User Agent: {info.scratchdb.userAgent}</p>
   <p>
     <a
-      class="external-visit"
+      class="btn btn-primary" role="button"
       href={`https://scratch.mit.edu/users/${info.username}`}
       >Visit on Scratch</a
     >
-    <a class="external-visit" href={`https://scratchstats.com/${info.username}`}
+    <a class="btn btn-primary" role="button" href={`https://scratchstats.com/${info.username}`}
       >Visit on ScratchStats</a
     >
     <a
-      class="external-visit"
+    class="btn btn-primary" role="button"
       href={`https://ocular.jeffalo.net/user/${info.username}`}
       >Visit on Ocular</a
     >
     <a
-      class="external-visit"
+    class="btn btn-primary" role="button"
       href={`https://postpercent.rirurin.com/users/${info.username}`}
       >Visit on PostPercent</a
     >
@@ -270,17 +270,7 @@
 
 
 <style>
-  .external-visit {
-    height: 40px;
-    text-align: center;
-    border-radius: 5px;
-    color: black;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: deepskyblue;
-    display: inline;
-    text-decoration: none;
+  .btn-primary {
+    margin-bottom: 0.5em;
   }
 </style>
