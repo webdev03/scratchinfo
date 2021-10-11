@@ -183,7 +183,7 @@
   </div>
 {/if}
 
-<div class="">
+
   <img
     width="90px"
     height="90px"
@@ -267,7 +267,7 @@
     <p>{forumViewTopic} Posts: {forumViewPosts}</p>
     <p>{forumViewTopic} Rank: {forumViewRank}</p>
   {/if}
-</div>
+
 
 <style>
   .external-visit {
