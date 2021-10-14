@@ -1,5 +1,5 @@
 # scratchinfo
-An epic scratch stats website powered by SvelteKit.
+An epic scratch stats website powered by SvelteKit and Vercel.
 
 ## Developing
 Install the node dependencies through whatever package manager you like.
