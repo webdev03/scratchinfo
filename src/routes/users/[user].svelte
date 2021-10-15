@@ -34,6 +34,26 @@
     "Open Source Projects",
     "Connecting to the Physical World",
     "Developing Scratch Extensions",
+    "Africa",
+    "Bahasa Indonesia",
+    "Català",
+    "Deutsch",
+    "Ελληνικά",
+    "Español",
+    "فارسی",
+    "Français",
+    "עברית",
+    "한국어",
+    "Italiano",
+    "Nederlands",
+    "日本語",
+    "Norsk",
+    "Polski",
+    "Português",
+    "Pусский",
+    "Türkçe",
+    "中文",
+    "Translating Scratch"
   ];
   let problem,
     scratchdbProblem,
@@ -147,17 +167,16 @@
               data.counts ||
               "ScratchDB has no data for this user. Please try later.";
             var ctx = document.getElementById("myChart");
-            
+
             readForumChart = () => {
               let object = {};
               for (let index = 0; index < forumlist.length; index++) {
                 try {
                   object[index] =
-                  info.scratchdb.rawDataForum[forumlist[index]].count;
+                    info.scratchdb.rawDataForum[forumlist[index]].count;
                 } catch {
                   object[index] = 0;
                 }
-                
               }
               return object;
             };
@@ -193,8 +212,11 @@
                   },
                 ],
               },
+              options: {
+                responsive: false
+              }
             });
-          } catch(err) {
+          } catch (err) {
             throw err;
           }
         })
@@ -234,9 +256,7 @@
             info.scratchdb.userAgent = data.metadata["user_agent"];
           }
         })
-        .catch((error) => {
-          
-        });
+        .catch((error) => {});
     }
     fetchDataGroup();
   });
@@ -306,37 +326,15 @@
 <hr />
 <p>Total Forum Posts: {info.scratchdb.forumTotalCount}</p>
 <p>Total Forum Rank: {info.scratchdb.forumTotalRank}</p>
-<canvas id="myChart" width="200" height="200" />
+<canvas id="myChart" width="600" height="600"/>
 
 <label for="forum-post"
   >Choose the forum you would like to see more information about.</label
 >
 <select bind:value={forumPostSelect} name="forum-post" id="forum-post">
-  <option value="New Scratchers">New Scratchers</option>
-  <option value="Announcements">Announcements</option>
-  <option value="Requests">Requests</option>
-  <option value="Show and Tell">Show and Tell</option>
-  <option value="Collaboration">Collaboration</option>
-  <option value="Help with Scripts">Help with Scripts</option>
-  <option value="Project Ideas">Project Ideas</option>
-  <option value="Bugs and Glitches">Bugs and Glitches</option>
-  <option value="Other Languages">Other Languages</option>
-  <option value="Questions about Scratch">Questions about Scratch</option>
-  <option value="Things I'm Making and Creating"
-    >Things I'm Making and Creating</option
-  >
-  <option value="Advanced Topics">Advanced Topics</option>
-  <option value="Things I'm Reading and Playing"
-    >Things I'm Reading and Playing</option
-  >
-  <option value="Suggestions">Suggestions</option>
-  <option value="Open Source Projects">Open Source Projects</option>
-  <option value="Connecting to the Physical World"
-    >Connecting to the Physical World</option
-  >
-  <option value="Developing Scratch Extensions"
-    >Developing Scratch Extensions</option
-  >
+  {#each forumlist as forum}
+    <option value={forum}>{forum}</option>
+  {/each}
 </select>
 <button
   type="button"
