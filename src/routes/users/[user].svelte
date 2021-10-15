@@ -15,8 +15,29 @@
   export let username;
   let info: any = { ocular: {}, scratchdb: {} };
   let pfp: any;
-  let readForumView: Function;
-  let problem, scratchdbProblem, noStats: boolean = false;
+  let readForumView, readForumChart: Function;
+  let forumlist = [
+    "New Scratchers",
+    "Announcements",
+    "Requests",
+    "Show and Tell",
+    "Collaboration",
+    "Help with Scripts",
+    "Project Ideas",
+    "Bugs and Glitches",
+    "Other Languages",
+    "Questions about Scratch",
+    "Things I'm Making and Creating",
+    "Advanced Topics",
+    "Things I'm Reading and Playing",
+    "Suggestions",
+    "Open Source Projects",
+    "Connecting to the Physical World",
+    "Developing Scratch Extensions",
+  ];
+  let problem,
+    scratchdbProblem,
+    noStats: boolean = false;
   let forumViewReady: boolean = false;
   let forumViewPosts, forumViewRank, forumViewTopic;
   let forumPostSelect = "Advanced Topics";
@@ -85,17 +106,18 @@
           // Here it looks like there is a big problem.
           if (data.statistics == undefined) {
             noStats = true;
-            console.warn("No statistics in ScratchDB.")
-          } else { try {
-            info.scratchdb.followers = data.statistics.followers;
-            info.scratchdb.following = data.statistics.following;
-            info.scratchdb.views = data.statistics.views;
-            info.scratchdb.loves = data.statistics.loves;
-            info.scratchdb.favorites = data.statistics.favorites;
-          } catch(err) {
-            scratchdbProblem = true;
-            throw err;
-          }
+            console.warn("No statistics in ScratchDB.");
+          } else {
+            try {
+              info.scratchdb.followers = data.statistics.followers;
+              info.scratchdb.following = data.statistics.following;
+              info.scratchdb.views = data.statistics.views;
+              info.scratchdb.loves = data.statistics.loves;
+              info.scratchdb.favorites = data.statistics.favorites;
+            } catch (err) {
+              scratchdbProblem = true;
+              throw err;
+            }
           }
         })
         .catch((error) => {
@@ -115,9 +137,61 @@
             scratchdbProblem = true;
           }
           try {
-          info.scratchdb.forumTotalRank = data.counts.total.rank || "ScratchDB has no data for this user. Please try later.";
-          info.scratchdb.forumTotalCount = data.counts.total.count || "ScratchDB has no data for this user. Please try later.";
-          info.scratchdb.rawDataForum = data.counts || "ScratchDB has no data for this user. Please try later.";
+            info.scratchdb.forumTotalRank =
+              data.counts.total.rank ||
+              "ScratchDB has no data for this user. Please try later.";
+            info.scratchdb.forumTotalCount =
+              data.counts.total.count ||
+              "ScratchDB has no data for this user. Please try later.";
+            info.scratchdb.rawDataForum =
+              data.counts ||
+              "ScratchDB has no data for this user. Please try later.";
+            var ctx = document.getElementById("myChart");
+            console.log(readForumChart);
+            readForumChart = (backendChart) => {
+              let object = {};
+              for (let index = 0; index < forumlist.length; index++) {
+                object[forumlist[index]].count =
+                  info.scratchdb.rawDataForum[forumlist[index]].count;
+                object[forumlist[index]].rank =
+                  info.scratchdb.rawDataForum[forumlist[index]].rank;
+              }
+            };
+            // @ts-ignore
+            var myChart = new Chart(ctx, {
+              type: "pie",
+              data: {
+                labels: forumlist,
+                datasets: [
+                  {
+                    label: "Forum Posts",
+                    data: readForumChart(),
+                    borderColor: [
+                      "rgba(255, 99, 132, 1)",
+                      "rgba(54, 162, 235, 1)",
+                      "rgba(255, 206, 86, 1)",
+                      "rgba(75, 192, 192, 1)",
+                      "rgba(153, 102, 255, 1)",
+                      "rgba(255, 159, 64, 1)",
+                      "rgba(255, 99, 132, 1)",
+                      "rgba(54, 162, 235, 1)",
+                      "rgba(255, 206, 86, 1)",
+                      "rgba(75, 192, 192, 1)",
+                      "rgba(153, 102, 255, 1)",
+                      "rgba(255, 159, 64, 1)",
+                    ],
+                    borderWidth: 1,
+                  },
+                ],
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                  },
+                },
+              },
+            });
           } catch {
             scratchdbProblem = true;
           }
@@ -141,21 +215,22 @@
           } else {
             return fetch(
               `https://scratchdb.lefty.one/v3/project/info/${data[0].id}`
-            )
+            );
           }
-        }).then((res) => {
+        })
+        .then((res) => {
           if (!res.ok) {
-            info.scratchdb.userAgent = "User Agent not found."
+            info.scratchdb.userAgent = "User Agent not found.";
             console.warn("Problem has arisen with ScratchDB.");
           }
           return res.json();
-        }).then((data) => {
+        })
+        .then((data) => {
           if (info.scratchdb.userAgent === "User agent not found.") {
-            console.log("no.")
+            console.log("no.");
           } else {
-            info.scratchdb.userAgent = data.metadata["user_agent"]
+            info.scratchdb.userAgent = data.metadata["user_agent"];
           }
-          
         })
         .catch((error) => {
           problem = true;
@@ -183,91 +258,93 @@
   </div>
 {/if}
 
-
-  <img
-    width="90px"
-    height="90px"
-    src={pfp}
-    alt={`${info.username} Profile Picture`}
-  />
-  <br />
-  {info.username}{#if info.scratchTeam}*{/if} | <OcularStatus {info} />
-  <Special {info} />
-  <br />
-  <p>Joined on {new Date(info.joinDate).toLocaleString()}</p>
-  <p>Latest User Agent: {info.scratchdb.userAgent}</p>
-  <p>
-    <a
-      class="btn btn-primary" role="button"
-      href={`https://scratch.mit.edu/users/${info.username}`}
-      >Visit on Scratch</a
-    >
-    <a class="btn btn-primary" role="button" href={`https://scratchstats.com/${info.username}`}
-      >Visit on ScratchStats</a
-    >
-    <a
-    class="btn btn-primary" role="button"
-      href={`https://ocular.jeffalo.net/user/${info.username}`}
-      >Visit on Ocular</a
-    >
-    <a
-    class="btn btn-primary" role="button"
-      href={`https://postpercent.rirurin.com/users/${info.username}`}
-      >Visit on PostPercent</a
-    >
-  </p>
-
-  <hr />
-
-  <p>Followers: {info.scratchdb.followers}</p>
-  <p>Following: {info.scratchdb.following}</p>
-  <br />
-  <p>Total Loves: {info.scratchdb.loves}</p>
-  <p>Total Favourites: {info.scratchdb.favorites}</p>
-  <p>Total View Count: {info.scratchdb.views}</p>
-  <hr />
-  <p>Total Forum Posts: {info.scratchdb.forumTotalCount}</p>
-  <p>Total Forum Rank: {info.scratchdb.forumTotalRank}</p>
-  <label for="forum-post"
-    >Choose the forum you would like to see more information about.</label
+<img
+  width="90px"
+  height="90px"
+  src={pfp}
+  alt={`${info.username} Profile Picture`}
+/>
+<br />
+{info.username}{#if info.scratchTeam}*{/if} | <OcularStatus {info} />
+<Special {info} />
+<br />
+<p>Joined on {new Date(info.joinDate).toLocaleString()}</p>
+<p>Latest User Agent: {info.scratchdb.userAgent}</p>
+<p>
+  <a
+    class="btn btn-primary"
+    role="button"
+    href={`https://scratch.mit.edu/users/${info.username}`}>Visit on Scratch</a
   >
-  <select bind:value={forumPostSelect} name="forum-post" id="forum-post">
-    <option value="New Scratchers">New Scratchers</option>
-    <option value="Announcements">Announcements</option>
-    <option value="Requests">Requests</option>
-    <option value="Show and Tell">Show and Tell</option>
-    <option value="Collaboration">Collaboration</option>
-    <option value="Help with Scripts">Help with Scripts</option>
-    <option value="Project Ideas">Project Ideas</option>
-    <option value="Bugs and Glitches">Bugs and Glitches</option>
-    <option value="Other Languages">Other Languages</option>
-    <option value="Questions about Scratch">Questions about Scratch</option>
-    <option value="Things I'm Making and Creating"
-      >Things I'm Making and Creating</option
-    >
-    <option value="Advanced Topics">Advanced Topics</option>
-    <option value="Things I'm Reading and Playing"
-      >Things I'm Reading and Playing</option
-    >
-    <option value="Suggestions">Suggestions</option>
-    <option value="Open Source Projects">Open Source Projects</option>
-    <option value="Connecting to the Physical World"
-      >Connecting to the Physical World</option
-    >
-    <option value="Developing Scratch Extensions"
-      >Developing Scratch Extensions</option
-    >
-  </select>
-  <button
-    type="button"
-    on:click={readForumView(forumPostSelect)}
-    class="btn btn-primary">Read</button
+  <a
+    class="btn btn-primary"
+    role="button"
+    href={`https://scratchstats.com/${info.username}`}>Visit on ScratchStats</a
   >
-  {#if forumViewReady === true}
-    <p>{forumViewTopic} Posts: {forumViewPosts}</p>
-    <p>{forumViewTopic} Rank: {forumViewRank}</p>
-  {/if}
+  <a
+    class="btn btn-primary"
+    role="button"
+    href={`https://ocular.jeffalo.net/user/${info.username}`}>Visit on Ocular</a
+  >
+  <a
+    class="btn btn-primary"
+    role="button"
+    href={`https://postpercent.rirurin.com/users/${info.username}`}
+    >Visit on PostPercent</a
+  >
+</p>
 
+<hr />
+
+<p>Followers: {info.scratchdb.followers}</p>
+<p>Following: {info.scratchdb.following}</p>
+<br />
+<p>Total Loves: {info.scratchdb.loves}</p>
+<p>Total Favourites: {info.scratchdb.favorites}</p>
+<p>Total View Count: {info.scratchdb.views}</p>
+<hr />
+<p>Total Forum Posts: {info.scratchdb.forumTotalCount}</p>
+<p>Total Forum Rank: {info.scratchdb.forumTotalRank}</p>
+<canvas id="myChart" width="200" height="200" />
+<label for="forum-post"
+  >Choose the forum you would like to see more information about.</label
+>
+<select bind:value={forumPostSelect} name="forum-post" id="forum-post">
+  <option value="New Scratchers">New Scratchers</option>
+  <option value="Announcements">Announcements</option>
+  <option value="Requests">Requests</option>
+  <option value="Show and Tell">Show and Tell</option>
+  <option value="Collaboration">Collaboration</option>
+  <option value="Help with Scripts">Help with Scripts</option>
+  <option value="Project Ideas">Project Ideas</option>
+  <option value="Bugs and Glitches">Bugs and Glitches</option>
+  <option value="Other Languages">Other Languages</option>
+  <option value="Questions about Scratch">Questions about Scratch</option>
+  <option value="Things I'm Making and Creating"
+    >Things I'm Making and Creating</option
+  >
+  <option value="Advanced Topics">Advanced Topics</option>
+  <option value="Things I'm Reading and Playing"
+    >Things I'm Reading and Playing</option
+  >
+  <option value="Suggestions">Suggestions</option>
+  <option value="Open Source Projects">Open Source Projects</option>
+  <option value="Connecting to the Physical World"
+    >Connecting to the Physical World</option
+  >
+  <option value="Developing Scratch Extensions"
+    >Developing Scratch Extensions</option
+  >
+</select>
+<button
+  type="button"
+  on:click={readForumView(forumPostSelect)}
+  class="btn btn-primary">Read</button
+>
+{#if forumViewReady === true}
+  <p>{forumViewTopic} Posts: {forumViewPosts}</p>
+  <p>{forumViewTopic} Rank: {forumViewRank}</p>
+{/if}
 
 <style>
   .btn-primary {
