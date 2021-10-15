@@ -147,16 +147,17 @@
               data.counts ||
               "ScratchDB has no data for this user. Please try later.";
             var ctx = document.getElementById("myChart");
-            console.log(readForumChart);
-            readForumChart = (backendChart) => {
+            
+            readForumChart = () => {
               let object = {};
+              console.log(object, forumlist.length)
               for (let index = 0; index < forumlist.length; index++) {
-                object[forumlist[index]].count =
+                object[index] =
                   info.scratchdb.rawDataForum[forumlist[index]].count;
-                object[forumlist[index]].rank =
-                  info.scratchdb.rawDataForum[forumlist[index]].rank;
               }
+              return object;
             };
+            console.log(readForumChart());
             // @ts-ignore
             var myChart = new Chart(ctx, {
               type: "pie",
@@ -179,6 +180,12 @@
                       "rgba(75, 192, 192, 1)",
                       "rgba(153, 102, 255, 1)",
                       "rgba(255, 159, 64, 1)",
+                      "rgba(153, 102, 255, 1)",
+                      "rgba(255, 159, 64, 1)",
+                      "rgba(153, 102, 255, 1)",
+                      "rgba(255, 159, 64, 1)",
+                      "rgba(153, 102, 255, 1)",
+                      "rgba(255, 159, 64, 1)",
                     ],
                     borderWidth: 1,
                   },
@@ -192,8 +199,9 @@
                 },
               },
             });
-          } catch {
+          } catch(err) {
             scratchdbProblem = true;
+            throw err;
           }
         })
         .catch((error) => {
@@ -306,6 +314,7 @@
 <p>Total Forum Posts: {info.scratchdb.forumTotalCount}</p>
 <p>Total Forum Rank: {info.scratchdb.forumTotalRank}</p>
 <canvas id="myChart" width="200" height="200" />
+
 <label for="forum-post"
   >Choose the forum you would like to see more information about.</label
 >
