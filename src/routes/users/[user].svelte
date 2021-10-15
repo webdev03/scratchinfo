@@ -191,13 +191,6 @@
                   },
                 ],
               },
-              options: {
-                scales: {
-                  y: {
-                    beginAtZero: true,
-                  },
-                },
-              },
             });
           } catch(err) {
             scratchdbProblem = true;
