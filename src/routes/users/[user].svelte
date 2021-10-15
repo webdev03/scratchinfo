@@ -327,7 +327,7 @@
 <p>Total Forum Posts: {info.scratchdb.forumTotalCount}</p>
 <p>Total Forum Rank: {info.scratchdb.forumTotalRank}</p>
 <canvas id="myChart" width="600" height="600"/>
-
+<br>
 <label for="forum-post"
   >Choose the forum you would like to see more information about.</label
 >
