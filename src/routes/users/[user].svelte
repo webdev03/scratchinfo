@@ -167,9 +167,8 @@
               data.counts ||
               "ScratchDB has no data for this user. Please try later.";
             var ctx = document.getElementById("myChart");
-
             readForumChart = () => {
-              let object = {};
+              let object = {colours: []};
               for (let index = 0; index < forumlist.length; index++) {
                 try {
                   object[index] =
@@ -177,6 +176,7 @@
                 } catch {
                   object[index] = 0;
                 }
+                object.colours[index] = "#" + Math.floor(Math.random()*16777215).toString(16);
               }
               return object;
             };
@@ -189,25 +189,7 @@
                   {
                     label: "Forum Posts",
                     data: readForumChart(),
-                    borderColor: [
-                      "rgba(8, 69, 148, 1)",
-                      "rgba(0, 88, 36, 1)",
-                      "rgba(110, 1, 107, 1)",
-                      "rgba(8, 88, 158, 1)",
-                      "rgba(0, 90, 50, 1)",
-                      "rgba(255, 159, 64, 1)",
-                      "rgba(245, 19, 92, 1)",
-                      "rgba(54, 162, 235, 1)",
-                      "rgba(255, 206, 86, 1)",
-                      "rgba(75, 192, 192, 1)",
-                      "rgba(153, 102, 255, 1)",
-                      "rgba(255, 159, 64, 1)",
-                      "rgba(153, 102, 255, 1)",
-                      "rgba(255, 159, 64, 1)",
-                      "rgba(153, 102, 255, 1)",
-                      "rgba(255, 159, 64, 1)",
-                      "rgba(153, 102, 255, 1)",
-                    ],
+                    borderColor: readForumChart().colours,
                     borderWidth: 1,
                   },
                 ],
