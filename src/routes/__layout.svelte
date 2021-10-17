@@ -51,6 +51,9 @@
             <li class="nav-item">
               <a class="nav-link active" href="/about">About</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/leaderboards">Leaderboards</a>
+            </li>
           </ul>
         </div>
       </div>
