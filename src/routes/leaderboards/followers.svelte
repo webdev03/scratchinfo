@@ -17,6 +17,11 @@
     })
 </script>
 <h1>Most Followers Leaderboard</h1>
+{#if problem == true}
+  <div class="alert alert-danger" role="alert">
+    Oh no! We can't get this leaderboard. Try again later.
+  </div>
+{/if}
 {#if loading == false}
 {#each mostFollowed as user, position}
     <a href="/users/{user["username"]}"><div class="user rounded">#{position + 1}: {user["username"]} <div style="float: right !important; display: inline;">{user["statistics"].followers} followers</div></div></a>
