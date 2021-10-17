@@ -19,7 +19,7 @@
 <h1>Most Followers Leaderboard</h1>
 {#if loading == false}
 {#each mostFollowed as user, position}
-    <div class="user rounded">#{position + 1}: {user["username"]} <div style="float: right !important; display: inline;">{user["statistics"].followers} followers</div> </div>
+    <a href="/users/{user["username"]}"><div class="user rounded">#{position + 1}: {user["username"]} <div style="float: right !important; display: inline;">{user["statistics"].followers} followers</div></div></a>
 {/each}
 {:else}
     Loading...
@@ -32,5 +32,8 @@
         margin-bottom: 20px;
         padding: 10px;
         color: black;
+    }
+    a {
+        text-decoration: none;
     }
 </style>
