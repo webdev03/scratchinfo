@@ -1,19 +1,3 @@
-<svelte:head>
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
-    crossorigin="anonymous"
-  />
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
-  <title>ScratchInfo | Scratch statistics!</title>
-</svelte:head>
-
 <script context="module">
   export const load = async ({ page }) => ({
     props: {
@@ -26,6 +10,25 @@
   import Transition from "$lib/Transition.svelte";
   export let key;
 </script>
+
+<svelte:head>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
+    crossorigin="anonymous"
+  />
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css"
+  />
+  <title>ScratchInfo | Scratch statistics!</title>
+</svelte:head>
 
 <div class="page">
   <div class="container pt-3">
@@ -60,12 +63,11 @@
     </nav>
     <div class="pt-3">
       <Transition {key}>
-        <slot />
+        <div class="box"><slot /></div>
       </Transition>
     </div>
   </div>
 </div>
-
 
 <style>
   .page {
@@ -74,5 +76,13 @@
     color: white;
     min-width: 100vw;
     padding-bottom: 20px;
+  }
+  .box {
+    justify-content: center;
+    text-align: center;
+    background-color: rgba(200, 200, 200, 0.9);
+    padding: 10px;
+    border-radius: 5px;
+    color: black;
   }
 </style>

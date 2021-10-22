@@ -9,7 +9,6 @@
     if (e.charCode === 13) lengthValid(user);
   };
 </script>
-<div class="box">
   <h1>Welcome to ScratchInfo!</h1>
 <p>
   This is a small project. You can use the search bar down below to search for a
@@ -19,7 +18,7 @@
   This website runs on <a href="https://svelte.dev">Svelte</a> and
   <a href="https://kit.svelte.dev">SvelteKit</a> which are both epic projects.
 </p>
-<div class="input-group box">
+<div class="input-group centred">
   <input
     placeholder="Search a User"
     type="text"
@@ -30,7 +29,6 @@
   />
   <button class="btn btn-primary" on:click|preventDefault={() => lengthValid(user)}>search</button>
 </div>
-</div>
 
 <style>
   input {
@@ -40,14 +38,9 @@
     padding-left: 10px;
     width: 30em;
     text-align: start;
-    justify-content: center !important;
   }
-  .box {
+  .centred {
     justify-content: center;
-    text-align: center;
-    background-color: rgba(200, 200, 200, 0.9);
-    padding: 10px;
-    border-radius: 5px;
-    color: black;
+    padding-bottom: 10px;
   }
 </style>
