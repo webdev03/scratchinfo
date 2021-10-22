@@ -3,7 +3,6 @@
     let msg = "This is a ScratchInfo Special. It gives a little badge to people who do cool things!";
     let helpers: Array<string> = [
         "Chiroyce",
-        "ceebee"
     ];
 </script>
 {#if info.username === "god286"}
