@@ -272,7 +272,7 @@
 <Special {info} />
 <br />
 <p>Joined on {new Date(info.joinDate).toLocaleString()}</p>
-<p>Latest User Agent: {info.scratchdb.userAgent}</p>
+<p class="text-center" style="">Latest User Agent: {info.scratchdb.userAgent}</p>
 <p>
   <a
     class="btn btn-primary"
