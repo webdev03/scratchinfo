@@ -80,9 +80,9 @@
   .box {
     justify-content: center;
     text-align: center;
-    background-color: rgba(200, 200, 200, 0.9);
+    background-color: rgba(200, 200, 200, 0.2);
     padding: 10px;
     border-radius: 5px;
-    color: black;
+    color: rgb(255, 255, 255);
   }
 </style>
