@@ -287,7 +287,7 @@
   <a
     class="btn btn-primary"
     role="button"
-    href={`https://ocular.jeffalo.net/user/${info.username}`}>Visit on Ocular</a
+    href={`https://ocular.jeffalo.net/user/${info.username}`}>Visit on ocular</a
   >
   <a
     class="btn btn-primary"
