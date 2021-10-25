@@ -3,7 +3,6 @@
   ScratchInfo is a project by @god286 on Scratch. It was made as a test to see
   if I could make a working website.
 </p>
-<p><b>WE JUST HIT V1.0.0 FOR SCRATCHINFO!</b> Thank you a lot for those who have helped contribute to scratchinfo. You all mean a lot to me.</p>
 <p>
   This website runs on <a href="https://svelte.dev">Svelte</a>
   and
