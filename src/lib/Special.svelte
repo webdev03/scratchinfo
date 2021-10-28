@@ -4,7 +4,8 @@
     let suggestors: Array<string> = [
         "Chiroyce",
         "PoIygon",
-        "hamster46"
+        "hamster46",
+        "han614698"
     ];
 </script>
 {#if info.username === "god286"}
