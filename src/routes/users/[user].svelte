@@ -257,6 +257,18 @@
     href={`https://postpercent.rirurin.com/users/${info.username}`}
     >Visit on PostPercent</a
   >
+  <a
+    class="btn btn-primary"
+    role="button"
+    href={`https://magnifier.potatophant.net/users/${info.username}`}
+    >Visit on Magnifier</a
+  >
+  <a
+    class="btn btn-primary"
+    role="button"
+    href={`https://scratory.vercel.app/user/${info.username}`}
+    >Visit on Scratory</a
+  >
 </p>
 
 <hr />
