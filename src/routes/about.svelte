@@ -1,7 +1,6 @@
 <h1>About ScratchInfo</h1>
 <p>
-  ScratchInfo is a project by @god286 on Scratch. It was made as a test to see
-  if I could make a working website.
+  ScratchInfo is a project by @god286 on Scratch.
 </p>
 <p>
   This website runs on <a href="https://svelte.dev">Svelte</a>
