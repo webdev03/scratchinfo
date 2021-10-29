@@ -69,7 +69,7 @@
 
 <style>
   .page {
-    background-color: #00132f;
+    background-color: #030d1b;
     min-height: 100vh;
     color: white;
     min-width: 100vw;
