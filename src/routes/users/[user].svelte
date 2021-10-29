@@ -169,7 +169,7 @@
           throw error;
         });
       fetch(
-        `${corsprefix}https://api.scratch.mit.edu/users/${username}/projects/?limit=1`
+        `/api/${username}`
       )
         .then((res) => {
           if (!res.ok) {
@@ -178,31 +178,9 @@
           return res.json();
         })
         .then((data: Array<any>) => {
-          if (data[0] == undefined) {
-            console.log("no projects");
-          } else {
-            return fetch(
-              `https://scratchdb.lefty.one/v3/project/info/${data[0].id}`
-            );
-          }
-        })
-        .then((res) => {
-          if (!res.ok) {
-            info.scratchdb.userAgent = "User Agent not found.";
-            console.warn("Problem has arisen with ScratchDB.");
-          }
-          return res.json();
-        })
-        .then((data) => {
-          if (info.scratchdb.userAgent === "User agent not found.") {
-            console.log("no.");
-          } else {
-            info.scratchdb.userAgent = data.metadata["user_agent"];
-          }
-        })
-        .catch((error) => {});
-    }
-    fetchDataGroup();
+          info.user_agent = data["user_agent"];
+        })}
+      fetchDataGroup();
   });
 </script>
 
@@ -234,7 +212,7 @@
 <Special {info} />
 <br />
 <p>Joined on {new Date(info.joinDate).toLocaleString()}</p>
-<p>Latest User Agent: {info.scratchdb.userAgent}</p>
+<p>Latest User Agent: {info.user_agent}</p>
 <p>
   <a
     class="btn btn-primary"
