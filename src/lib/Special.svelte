@@ -27,7 +27,7 @@
 {#if suggestors.includes(info.username)}
     <div class="tag suggestor" title={msg}>ScratchInfo Idea Suggestor</div>
 {/if}
-{#if suggestors.includes(info.username)}
+{#if contributors.includes(info.username)}
     <div class="tag contributor" title={msg}>ScratchInfo Contributor</div>
 {/if}
 <style>
