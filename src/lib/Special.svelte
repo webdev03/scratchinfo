@@ -50,7 +50,7 @@
         background-color: aquamarine;
     }
     .contributor {
-        background-color: yellow;
+        background-color: teal;
     }
     .owner {
         background-color: red;
