@@ -1,6 +1,9 @@
 <script lang="ts">
     export let info;
     let msg = "This is a ScratchInfo Special. It gives a little badge to people who do cool things!";
+    let contributors: Array<string> = [
+        "kccuber"
+    ];
     let suggestors: Array<string> = [
         "Chiroyce",
         "PoIygon",
@@ -24,6 +27,9 @@
 {#if suggestors.includes(info.username)}
     <div class="tag suggestor" title={msg}>ScratchInfo Idea Suggestor</div>
 {/if}
+{#if suggestors.includes(info.username)}
+    <div class="tag contributor" title={msg}>ScratchInfo Contributor</div>
+{/if}
 <style>
     .tag {
         width: 250px;
@@ -32,6 +38,7 @@
         border-radius: 5px;
         color: black;
         padding: 10px;
+        margin-bottom: 5px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -41,6 +48,9 @@
     }
     .suggestor {
         background-color: aquamarine;
+    }
+    .contributor {
+        background-color: yellow;
     }
     .owner {
         background-color: red;
