@@ -17,6 +17,7 @@ export async function get({ params }) {
     return {
       body: {
         user_agent: agent,
+        error: false
       },
     };
   } catch (err) {
