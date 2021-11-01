@@ -26,6 +26,7 @@ export async function get({ params }) {
       body: {
         username: api_official_user.username,
         user_agent: agent,
+        scratchteam: api_official_user.scratchteam,
         history: {
           joined: api_official_user.history.joined,
         },
