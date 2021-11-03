@@ -17,13 +17,11 @@
   let info: any = { ocular: {}, scratchdb: {} };
   let pfp: any;
   let readForumView, readForumChart: Function;
-  let problem,
-    scratchdbProblem,
-    noStats: boolean = false;
+  let problem = false;
+  let loading = true;
   let forumViewReady: boolean = false;
   let forumViewPosts, forumViewRank, forumViewTopic;
   let forumPostSelect = "Advanced Topics";
-  let corsprefix = "https://api.allorigins.win/raw?url=";
   onMount(() => {
     readForumView = (forum) => {
       forumViewReady = false;
@@ -32,93 +30,66 @@
       forumViewTopic = forumPostSelect;
       forumViewReady = true;
     };
+    function forumChart() {
+      var ctx = document.getElementById("myChart");
+      readForumChart = () => {
+        let object = { colours: [] };
+        for (let index = 0; index < forumlist.length; index++) {
+          try {
+            object[index] = info.scratchdb.rawDataForum[forumlist[index]].count;
+          } catch {
+            object[index] = 0;
+          }
+          object.colours[index] =
+            "#" + Math.floor(Math.random() * 16777215).toString(16);
+        }
+        return object;
+      };
+      // @ts-ignore
+      var myChart = new Chart(ctx, {
+        type: "pie",
+        data: {
+          labels: forumlist,
+          datasets: [
+            {
+              label: "Forum Posts",
+              data: readForumChart(),
+              borderColor: readForumChart().colours,
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          responsive: false,
+        },
+      });
+    }
     function fetchDataGroup() {
-      fetch(`${corsprefix}https://api.scratch.mit.edu/users/${username}`)
+      fetch(`/api/${username}`)
         .then((res) => {
           if (!res.ok) {
-            problem = true;
             console.warn("Problem has arisen.");
           }
           return res.json();
         })
         .then((data) => {
-          if (data == undefined) {
-            problem = true;
-          }
-          info.username = data.username;
-          info.scratchTeam = data.scratchteam;
-          info.joinDate = data.history.joined;
-          pfp = data.profile.images["90x90"];
-        })
-        .catch((error) => {
-          problem = true;
-          throw error;
-        });
-      fetch(`https://my-ocular.jeffalo.net/api/user/${username}`)
-        .then((res) => {
-          if (!res.ok) {
-            problem = true;
-            console.warn("Problem has arisen with Ocular.");
-          }
-          return res.json();
-        })
-        .then((data) => {
-          if (data == undefined) {
-            problem = true;
-          }
-          info.ocular.status = data.status;
-          info.ocular.colour = data.color;
-          if (data.status == undefined || data.color == undefined) {
-            info.ocular.status = "No ocular status found.";
-          }
-        })
-        .catch((error) => {
-          problem = true;
-          throw error;
-        });
-      fetch(`https://scratchdb.lefty.one/v3/user/info/${username}`)
-        .then((res) => {
-          if (!res.ok) {
-            scratchdbProblem = true;
-            console.warn("Problem has arisen with ScratchDB.");
-          }
-          return res.json();
-        })
-        .then((data) => {
-          // Here it looks like there is a big problem.
-          if (data.statistics == undefined) {
-            noStats = true;
-            console.warn("No statistics in ScratchDB.");
-          } else {
-            try {
-              info.scratchdb.followers = data.statistics.followers;
-              info.scratchdb.following = data.statistics.following;
-              info.scratchdb.views = data.statistics.views;
-              info.scratchdb.loves = data.statistics.loves;
-              info.scratchdb.favorites = data.statistics.favorites;
-            } catch (err) {
-              scratchdbProblem = true;
-              throw err;
-            }
-          }
-        })
-        .catch((error) => {
-          scratchdbProblem = true;
-          throw error;
-        });
-      fetch(`https://scratchdb.lefty.one/v3/forum/user/info/${username}`)
-        .then((res) => {
-          if (!res.ok) {
-            scratchdbProblem = true;
-            console.warn("Problem has arisen with ScratchDB.");
-          }
-          return res.json();
-        })
-        .then((data) => {
-          if (data == undefined) {
-            scratchdbProblem = true;
-          }
-          try {
+          loading = false;
+          if (data.iserror === false) {
+            info.user_agent = data["user_agent"];
+            info.ocular.status = data["ocular"].status;
+            info.ocular.colour = data["ocular"].color;
+
+            info.username = data.username;
+            info.scratchTeam = data.scratchteam;
+            info.joinDate = data.history.joined;
+            pfp = data.images["90x90"];
+
+            info.scratchdb.followers = data["scratchdb"].statistics.followers;
+            info.scratchdb.following = data["scratchdb"].statistics.following;
+            info.scratchdb.views = data["scratchdb"].statistics.views;
+            info.scratchdb.loves = data["scratchdb"].statistics.loves;
+            info.scratchdb.favorites = data["scratchdb"].statistics.favorites;
+
             info.scratchdb.forumTotalRank =
               data.counts.total.rank ||
               "ScratchDB has no data for this user. Please try later.";
@@ -128,79 +99,36 @@
             info.scratchdb.rawDataForum =
               data.counts ||
               "ScratchDB has no data for this user. Please try later.";
-            var ctx = document.getElementById("myChart");
-            readForumChart = () => {
-              let object = {colours: []};
-              for (let index = 0; index < forumlist.length; index++) {
-                try {
-                  object[index] =
-                    info.scratchdb.rawDataForum[forumlist[index]].count;
-                } catch {
-                  object[index] = 0;
-                }
-                object.colours[index] = "#" + Math.floor(Math.random()*16777215).toString(16);
-              }
-              return object;
-            };
-            // @ts-ignore
-            var myChart = new Chart(ctx, {
-              type: "pie",
-              data: {
-                labels: forumlist,
-                datasets: [
-                  {
-                    label: "Forum Posts",
-                    data: readForumChart(),
-                    borderColor: readForumChart().colours,
-                    borderWidth: 1,
-                  },
-                ],
-              },
-              options: {
-                responsive: false
-              }
-            });
-          } catch (err) {
-            throw err;
+            forumChart();
+          } else {
+            loading = false;
+            problem = true;
+            console.error(data);
+            info.errormessage = data["error_msg"];
           }
-        })
-        .catch((error) => {
-          problem = true;
-          throw error;
         });
-      fetch(
-        `/api/${username}`
-      )
-        .then((res) => {
-          if (!res.ok) {
-            console.warn("Problem has arisen.");
-          }
-          return res.json();
-        })
-        .then((data: Array<any>) => {
-          info.user_agent = data["user_agent"];
-        })}
-      fetchDataGroup();
+    }
+    fetchDataGroup();
   });
 </script>
 
-{#if problem == true}
-  <div class="alert alert-danger" role="alert">
-    Oh no! It looks like this user may not exist, your internet isn't working,
-    or an API is down!
-  </div>
-{/if}
-{#if scratchdbProblem == true}
-  <div class="alert alert-danger" role="alert">
-    The ScratchDB API is down or doesn't have {info.username} in its records.
-  </div>
-{/if}
-{#if noStats == true}
-  <div class="alert alert-danger" role="alert">
-    The ScratchDB API doesn't return statistics for {info.username} for some reason.
-  </div>
-{/if}
-
+{#if loading}
+<p>Loading...</p>
+<div class="spinner-border text-primary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+{:else if problem}
+<div class="alert alert-danger" role="alert">
+  Oh no! It looks like this user may not exist, your internet isn't working,
+  or an API is down!
+</div>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-emoji-frown" viewBox="0 0 16 16">
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+  <path d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
+</svg>
+<br><br>
+<p>DEBUG: {info.errormessage}</p>
+{:else}
 <img
   width="90px"
   height="90px"
@@ -260,8 +188,8 @@
 <hr />
 <p>Total Forum Posts: {info.scratchdb.forumTotalCount}</p>
 <p>Total Forum Rank: {info.scratchdb.forumTotalRank}</p>
-<canvas id="myChart" width="600" height="600"/>
-<br>
+<canvas id="myChart" width="600" height="600" />
+<br />
 <label for="forum-post"
   >Choose the forum you would like to see more information about.</label
 >
@@ -279,7 +207,7 @@
   <p>{forumViewTopic} Posts: {forumViewPosts}</p>
   <p>{forumViewTopic} Rank: {forumViewRank}</p>
 {/if}
-
+{/if}
 <style>
   .btn-primary {
     margin-bottom: 0.5em;

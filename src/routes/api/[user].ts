@@ -10,6 +10,9 @@ export async function get({ params }) {
     const scratchdb = await (
       await fetch(`https://scratchdb.lefty.one/v3/user/info/${user}`)
     ).json();
+    const scratchdb_forum_user = await(
+      await fetch(`https://scratchdb.lefty.one/v3/forum/user/info/${user}`)
+    ).json();
     const ocular = await (
       await fetch(`https://my-ocular.jeffalo.net/api/user/${user}/`)
     ).json();
@@ -35,15 +38,17 @@ export async function get({ params }) {
           color: ocular.color,
         },
         scratchdb,
+        counts: scratchdb_forum_user.counts,
         images: api_official_user.profile.images,
-        error: false,
+        iserror: false,
       },
     };
   } catch (err) {
+    console.log(err)
     return {
       body: {
-        error: true,
-        error_msg: new Error(err),
+        iserror: true,
+        error_msg: err.toString(),
       },
     };
   }
