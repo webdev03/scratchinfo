@@ -13,9 +13,12 @@ export async function get({ params }) {
     const scratchdb_forum_user = await(
       await fetch(`https://scratchdb.lefty.one/v3/forum/user/info/${user}`)
     ).json();
-    const ocular = await (
+    let ocular = await (
       await fetch(`https://my-ocular.jeffalo.net/api/user/${user}/`)
     ).json();
+    if (ocular.status == undefined || ocular.color == undefined) {
+      ocular.status = "No ocular status found."
+    }
     const user_projects = await (
       await fetch(`https://api.scratch.mit.edu/users/${user}/projects/?limit=1`)
     ).json();
