@@ -22,12 +22,17 @@ export async function get({ params }) {
     const user_projects = await (
       await fetch(`https://api.scratch.mit.edu/users/${user}/projects/?limit=1`)
     ).json();
-    const project_to_fetch = user_projects[0].id;
-    const project = await (
+    let agent = "(Scratchinfo) An error has occured.";
+    if (user_projects.length === 0) {
+      agent = "(Scratchinfo) No projects have been shared by this user.";
+    } else {
+      const project_to_fetch = user_projects[0].id;
+      const project = await (
       await fetch(`https://projects.scratch.mit.edu/${project_to_fetch}/`)
-    ).json();
-
-    const agent = project["meta"]["agent"];
+      ).json();
+      agent = project["meta"]["agent"]
+    }
+    console.log(user_projects)
     return {
       body: {
         username: api_official_user.username,
@@ -47,7 +52,7 @@ export async function get({ params }) {
       },
     };
   } catch (err) {
-    console.log(err)
+    console.error(err);
     return {
       body: {
         iserror: true,
