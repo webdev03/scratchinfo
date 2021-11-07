@@ -30,7 +30,12 @@ export async function get({ params }) {
 			const project = await (
 				await fetch(`https://projects.scratch.mit.edu/${project_to_fetch}/`)
 			).json();
-			agent = project["meta"]["agent"];
+      try {
+        agent = project["meta"]["agent"];
+      } catch (error) {
+        agent = "(Scratchinfo) An error has occured in getting the user agent."
+      }
+			
 		}
 		console.log(user_projects);
 		return {
