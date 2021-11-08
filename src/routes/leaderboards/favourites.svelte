@@ -4,7 +4,7 @@
     let problem: boolean = false;
     let loading: boolean = true;
     onMount(() => {
-        fetch("https://scratchdb.lefty.one/v3/user/rank/global/favorites").then((res) => {
+        fetch("/leaderboards/api/favorites").then((res) => {
             if(!res.ok) {
                 problem = true;
             } else {

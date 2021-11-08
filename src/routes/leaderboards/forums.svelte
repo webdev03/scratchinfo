@@ -9,10 +9,10 @@
   let modified, totalmodify: Function = function () {};
   onMount(() => {
     modified = function () {
-      console.log("e");
       loading = true;
       let fetchedForum = forum;
-      fetch(`https://scratchdb.lefty.one/v3/forum/category/rank/${fetchedForum}/`)
+      problem = false;
+      fetch(`/leaderboards/api/forum-${fetchedForum}/`)
       .then((res) => {
         if (!res.ok) {
           problem = true;
