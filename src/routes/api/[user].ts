@@ -3,31 +3,50 @@
  */
 export async function get({ params }) {
 	const { user } = params;
+	// create abort controller
+	async function superFetch(resource, options: {}) {
+		const timeout = options["timeout"];
+    // code taken from dmitripavlutin.com/timeout-fetch-request/
+		const controller = new AbortController();
+		const id = setTimeout(() => controller.abort(), timeout);
+		const response = await fetch(resource, {
+			...options,
+			signal: controller.signal,
+		});
+		clearTimeout(id);
+		return response;
+	}
 	try {
 		const api_official_user = await (
-			await fetch(`https://api.scratch.mit.edu/users/${user}/`)
+			await superFetch(`https://api.scratch.mit.edu/users/${user}/`, {"timeout": 8000})
 		).json();
-    console.log(1)
-    let scratchdb, scratchdb_forum_user = {"counts": undefined};
-		scratchdb = await (
-			await fetch(`https://scratchdb.lefty.one/v3/user/info/${user}`)
-		).json();console.log(1);
-		scratchdb_forum_user = await (
-			await fetch(`https://scratchdb.lefty.one/v3/forum/user/info/${user}`)
-		).json();console.log(1);
-    let ocular = {"status": undefined, "color": undefined}
-    try {
-      ocular = await (
-        await fetch(`https://my-ocular.jeffalo.net/api/user/${user}/`)
-      ).json();
-    } catch (error) {
-      ocular.status = "(Scratchinfo Message) Ocular seems to be down.";
-    }
+		console.log(1);
+		let scratchdb,
+			scratchdb_forum_user = { counts: undefined };
+		try {
+			scratchdb = await (
+				await superFetch(`https://scratchdb.lefty.one/v3/user/info/${user}`, {"timeout": 8000})
+			).json();
+			console.log(1);
+			scratchdb_forum_user = await (
+				await superFetch(`https://scratchdb.lefty.one/v3/forum/user/info/${user}`, {"timeout": 8000})
+			).json();
+			console.log(1);
+		} catch (error) {}
+
+		let ocular = { status: undefined, color: undefined };
+		try {
+			ocular = await (
+				await superFetch(`https://my-ocular.jeffalo.net/api/user/${user}/`, {"timeout": 8000})
+			).json();
+		} catch (error) {
+			ocular.status = "(Scratchinfo Message) Ocular seems to be down.";
+		}
 		if (ocular.status == undefined || ocular.color == undefined) {
 			ocular.status = "No ocular status found.";
 		}
 		const user_projects = await (
-			await fetch(`https://api.scratch.mit.edu/users/${user}/projects/?limit=1`)
+			await superFetch(`https://api.scratch.mit.edu/users/${user}/projects/?limit=1`, {"timeout": 8000})
 		).json();
 		let agent = "(Scratchinfo) An error has occured!";
 		if (user_projects.length === 0) {
@@ -35,14 +54,13 @@ export async function get({ params }) {
 		} else {
 			const project_to_fetch = user_projects[0].id;
 			const project = await (
-				await fetch(`https://projects.scratch.mit.edu/${project_to_fetch}/`)
+				await superFetch(`https://projects.scratch.mit.edu/${project_to_fetch}/`, {"timeout": 8000})
 			).json();
-      try {
-        agent = project["meta"]["agent"];
-      } catch (error) {
-        agent = "(Scratchinfo) An error has occured in getting the user agent."
-      }
-			
+			try {
+				agent = project["meta"]["agent"];
+			} catch (error) {
+				agent = "(Scratchinfo) An error has occured in getting the user agent.";
+			}
 		}
 		return {
 			body: {
