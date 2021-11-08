@@ -16,6 +16,10 @@
     "tslib": "^2.3.1",
     "typescript": "^4.4.4"
   },
+  "engines": {
+    "node": ">16.11.1"
+  },
+  "engineStrict": true,
   "type": "module",
   "dependencies": {
     "@sveltejs/adapter-vercel": "^1.0.0-next.31"
