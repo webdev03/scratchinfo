@@ -7,22 +7,29 @@ export async function get({ params }) {
 		const api_official_user = await (
 			await fetch(`https://api.scratch.mit.edu/users/${user}/`)
 		).json();
-		const scratchdb = await (
+    console.log(1)
+    let scratchdb, scratchdb_forum_user = {"counts": undefined};
+		scratchdb = await (
 			await fetch(`https://scratchdb.lefty.one/v3/user/info/${user}`)
-		).json();
-		const scratchdb_forum_user = await (
+		).json();console.log(1);
+		scratchdb_forum_user = await (
 			await fetch(`https://scratchdb.lefty.one/v3/forum/user/info/${user}`)
-		).json();
-		let ocular = await (
-			await fetch(`https://my-ocular.jeffalo.net/api/user/${user}/`)
-		).json();
+		).json();console.log(1);
+    let ocular = {"status": undefined, "color": undefined}
+    try {
+      ocular = await (
+        await fetch(`https://my-ocular.jeffalo.net/api/user/${user}/`)
+      ).json();
+    } catch (error) {
+      ocular.status = "(Scratchinfo Message) Ocular seems to be down.";
+    }
 		if (ocular.status == undefined || ocular.color == undefined) {
 			ocular.status = "No ocular status found.";
 		}
 		const user_projects = await (
 			await fetch(`https://api.scratch.mit.edu/users/${user}/projects/?limit=1`)
 		).json();
-		let agent = "(Scratchinfo) An error has occured.";
+		let agent = "(Scratchinfo) An error has occured!";
 		if (user_projects.length === 0) {
 			agent = "(Scratchinfo) No projects have been shared by this user.";
 		} else {
@@ -37,7 +44,6 @@ export async function get({ params }) {
       }
 			
 		}
-		console.log(user_projects);
 		return {
 			body: {
 				username: api_official_user.username,
