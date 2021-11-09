@@ -2,7 +2,7 @@
 An epic scratch stats website powered by SvelteKit and Vercel.
 
 ## Developing
-Install the node dependencies through whatever package manager you like.
+Install the node dependencies through whatever node package manager you like (npm, pnpm, and yarn, or another one if you want to).
 Once you've installed dependencies, start a development server:
 
 ```bash
