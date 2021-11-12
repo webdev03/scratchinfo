@@ -50,12 +50,19 @@
 						info.scratchTeam = data.scratchteam;
 						info.joinDate = data.history.joined;
 						pfp = data.images["90x90"];
-
-						info.scratchdb.followers = data["scratchdb"].statistics.followers;
-						info.scratchdb.following = data["scratchdb"].statistics.following;
-						info.scratchdb.views = data["scratchdb"].statistics.views;
-						info.scratchdb.loves = data["scratchdb"].statistics.loves;
-						info.scratchdb.favorites = data["scratchdb"].statistics.favorites;
+						try {
+							info.scratchdb.followers = data["scratchdb"].statistics.followers;
+							info.scratchdb.following = data["scratchdb"].statistics.following;
+							info.scratchdb.views = data["scratchdb"].statistics.views;
+							info.scratchdb.loves = data["scratchdb"].statistics.loves;
+							info.scratchdb.favorites = data["scratchdb"].statistics.favorites;
+						} catch {
+              info.scratchdb.followers = "Cannot get statistics for this user. Please try again.";
+							info.scratchdb.following = "Cannot get statistics for this user. Please try again.";
+							info.scratchdb.views = "Cannot get statistics for this user. Please try again.";
+							info.scratchdb.loves = "Cannot get statistics for this user. Please try again.";
+							info.scratchdb.favorites = "Cannot get statistics for this user. Please try again.";
+            }
 
 						info.scratchdb.forumTotalRank =
 							data.counts.total.rank ||
