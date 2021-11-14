@@ -3,11 +3,15 @@
 	let loggedOut = false;
 	let loading = true;
 	let studioID = 0;
+  let saveChanges = async function() {};
 	onMount(async () => {
 		loggedOut = !!!window.localStorage.getItem("authToken");
 		if (loggedOut) {
-			window.location.href = "/";
+			window.location.href = "/login";
 		}
+    saveChanges = async function() {
+      
+    }
 		// CUD = current user data
 		const CUDFetch = await fetch("/you/supa/fsauth/getUserFromToken", {
 			method: "POST",
@@ -32,6 +36,7 @@
 </script>
 
 <h1>Scratchinfo Dashboard</h1>
+<a class="btn btn-primary" href="/logout" role="button">Log out</a>
 <hr />
 <h2>Your You Page</h2>
 {#if loading}
@@ -42,6 +47,9 @@
 {:else}
 	<label for="studio_id">Studio ID:</label>
 	<input type="number" class="form-control" bind:value={studioID} step="0." />
+
+  <br>
+  <button type="button" on:click={saveChanges} class="btn btn-primary">Save changes</button>
 {/if}
 
 <style>

@@ -7,10 +7,11 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export async function post(request) {
-	const { user } = request.params;
 	try {
+    let jwtv = undefined;
 		try {
-			jwt.verify(request.body.token, process.env["SUPABASE_JWT_SECRET"], {
+      // jwt.verify returns a decoded object so we can use this to check the JWT
+			jwtv = jwt.verify(request.body.token, process.env["SUPABASE_JWT_SECRET"], {
 				maxAge: "2h",
 			});
 		} catch {
@@ -22,6 +23,7 @@ export async function post(request) {
         },
       };
     }
+    const user = jwtv.username;
 		const supabase = createClient(
 			process.env["SUPABASE_URL"],
 			process.env["SUPABASE_ANON_KEY"]
