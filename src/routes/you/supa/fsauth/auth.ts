@@ -2,6 +2,9 @@
  * @type {import('@sveltejs/kit').RequestHandler}
  */
 import jwt from "jsonwebtoken";
+// this part is because process.env sometimes breaks
+import dotenv from "dotenv";
+dotenv.config();
 export async function get({ query }) {
 	try {
 		const privateCode = query.get("privateCode");
@@ -9,13 +12,13 @@ export async function get({ query }) {
 			`https://fluffyscratch.hampton.pw/auth/verify/v2/${privateCode}`
 		);
 		const ffc = await fluffyFetch.json();
-    console.log(ffc)
-		if (ffc.valid == null) {
+		if (ffc.valid == false) {
 			throw new Error("Authentication not valid.");
 		}
 		const myJWT = await jwt.sign(
 			{ username: ffc.username },
-			process.env.SUPABASE_JWT_SECRET
+			process.env["SUPABASE_JWT_SECRET"],
+      { expiresIn: "2h", audience: "scratchinfo" }
 		);
 		return {
 			body: {

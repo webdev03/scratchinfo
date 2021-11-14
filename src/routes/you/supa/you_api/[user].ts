@@ -2,13 +2,15 @@
  * @type {import('@sveltejs/kit').RequestHandler}
  */
 import { createClient } from "@supabase/supabase-js";
+import dotenv from "dotenv";
+dotenv.config();
+
 export async function get({ params }) {
 	const { user } = params;
 	try {
 		const supabase = createClient(
-			// @ts-expect-error
-			import.meta.env.VITE_SUPABASE_URL,
-			import.meta.env.VITE_SUPABASE_ANON_KEY
+			process.env["SUPABASE_URL"],
+			process.env["SUPABASE_ANON_KEY"]
 		);
 		const { data, error } = await supabase
 			.from("users")

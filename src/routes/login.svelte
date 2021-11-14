@@ -2,11 +2,15 @@
 	import { onMount } from "svelte";
 	import b2a from "$lib/bta";
 	let submitFunction: Function = function () {};
-
+  let isLoggedIn = false;
 	onMount(() => {
+    isLoggedIn = !!window.localStorage.getItem("authToken")
+    if (isLoggedIn) {
+      window.location.href = "/"
+    }
 		submitFunction = function () {
 			console.log("Sending user to FluffyScratch for authentication...");
-			const urlEncode = b2a(`${window.location.host}/you/supa/fsauth/auth`);
+			const urlEncode = b2a(`${window.location.host}/you/supa/fsauth/checkAuth`);
 			window.location.href = `https://fluffyscratch.hampton.pw/auth/getKeys/v2?redirect=${urlEncode}`;
 		};
 	});
