@@ -195,44 +195,6 @@
 		href={`https://scratory.vercel.app/user/${info.username}`}
 		>Visit on Scratory</a
 	>
-	<p>
-		<a
-			class="btn btn-primary"
-			role="button"
-			href={`https://scratch.mit.edu/users/${info.username}`}
-			>Visit on Scratch</a
-		>
-		<a
-			class="btn btn-primary"
-			role="button"
-			href={`https://scratchstats.com/${info.username}`}
-			>Visit on ScratchStats</a
-		>
-		<a
-			class="btn btn-primary"
-			role="button"
-			href={`https://ocular.jeffalo.net/user/${info.username}`}
-			>Visit on ocular</a
-		>
-		<a
-			class="btn btn-primary"
-			role="button"
-			href={`https://postpercent.rirurin.com/users/${info.username}`}
-			>Visit on PostPercent</a
-		>
-		<a
-			class="btn btn-primary"
-			role="button"
-			href={`https://magnifier.potatophant.net/users/${info.username}`}
-			>Visit on Magnifier</a
-		>
-		<a
-			class="btn btn-primary"
-			role="button"
-			href={`https://scratory.vercel.app/user/${info.username}`}
-			>Visit on Scratory</a
-		>
-	</p>
 
 	<hr />
 
