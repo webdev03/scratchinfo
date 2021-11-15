@@ -9,7 +9,7 @@
       status = "Authentication valid."
       const afsjson = await authFetchStatus.json();
       window.localStorage.setItem("authToken", afsjson.token)
-      window.location.href = "/"
+      window.location.href = "/dashboard"
     } else {
       status = "Authentication not valid. Redirecting to login menu..."
       window.location.href = "/login"
