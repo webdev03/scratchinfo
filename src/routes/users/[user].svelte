@@ -42,7 +42,6 @@
 				.then((data) => {
 					loading = false;
 					if (data.iserror === false) {
-						info.user_agent = data["user_agent"];
 						info.ocular.status = data["ocular"].status;
 						info.ocular.colour = data["ocular"].color;
 
@@ -158,7 +157,6 @@
 	<Special {info} />
 	<br />
 	<p>Joined on {new Date(info.joinDate).toLocaleString()}</p>
-	<p>Latest User Agent: {info.user_agent}</p>
 	<p>
 		<a
 			class="btn btn-primary"
