@@ -35,6 +35,7 @@ export async function post(request) {
       };
     }
     const studioSet = Math.round(Number(parsedBody.studio));
+    const isBusy = !!parsedBody.busy;
     const supabase = createClient(
       process.env["SUPABASE_URL"],
       process.env["SUPABASE_ANON_KEY"]
@@ -46,14 +47,14 @@ export async function post(request) {
     if (userExists.error || userExists.data.length == 0) {
       const createUser = await supabase
         .from("users")
-        .insert([{ username: user, studio: studioSet }]);
+        .insert([{ username: user, studio: studioSet, busy: isBusy }]);
       if (createUser.error) {
         throw new Error("An error has occured.1");
       }
     } else {
       const setUser = await supabase
         .from("users")
-        .update({ username: user, studio: studioSet })
+        .update({ username: user, studio: studioSet, busy: isBusy })
         .eq("username", user);
       if (setUser.error) {
         throw new Error(setUser.error.toString());

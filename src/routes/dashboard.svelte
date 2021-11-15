@@ -2,10 +2,14 @@
 	import { onMount } from "svelte";
 	let loggedOut = false;
 	let loading = true;
-  let problem = false;
+	let problem = false;
+	let isBusy = false;
 	let studioID: number = 0;
 	let saveChanges = async function () {};
 	onMount(async () => {
+		loading = true;
+		problem = false;
+		isBusy = false;
 		loggedOut = !!!window.localStorage.getItem("authToken");
 		if (loggedOut) {
 			window.location.href = "/login";
@@ -15,16 +19,17 @@
 				method: "POST",
 				body: JSON.stringify({
 					token: window.localStorage.getItem("authToken").toString(),
-          studio: Number(studioID)
+					studio: Number(studioID),
+					busy: !!isBusy,
 				}),
 			});
-      if (scf.ok) {
-        problem = false;
-        // continue on with scripts
-      } else {
-        // an error has occured so handle it appropriately
-        problem = true;
-      }
+			if (scf.ok) {
+				problem = false;
+				// continue on with scripts
+			} else {
+				// an error has occured so handle it appropriately
+				problem = true;
+			}
 		};
 		// CUD = current user data
 		const CUDFetch = await fetch("/you/supa/fsauth/getUserFromToken", {
@@ -44,6 +49,7 @@
 			const userData = await userDataFetch.json();
 
 			studioID = userData.data[0].studio;
+			isBusy = userData.data[0].isBusy;
 		} else {
 		}
 	});
@@ -60,6 +66,14 @@
 		<span class="visually-hidden">Loading...</span>
 	</div>
 {:else}
+	<label for="studio_id" class="form-check-label">Busy?</label>
+	<input
+		type="checkbox"
+		class="form-check-input"
+		bind:checked={isBusy}
+		step="0."
+	/>
+	<br />
 	<label for="studio_id">Studio ID:</label>
 	<input type="number" class="form-control" bind:value={studioID} step="0." />
 
