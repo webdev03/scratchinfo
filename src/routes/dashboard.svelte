@@ -20,12 +20,10 @@
 			});
       if (scf.ok) {
         problem = false;
-        console.log("no error")
         // continue on with scripts
       } else {
         // an error has occured so handle it appropriately
         problem = true;
-        console.log(await scf.text())
       }
 		};
 		// CUD = current user data

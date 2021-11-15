@@ -55,7 +55,6 @@ export async function post(request) {
 				.from("users")
 				.update({ username: user, studio: studioSet })
 				.eq("username", user);
-      console.log(setUser)
 			if (setUser.error) {
 				throw new Error(setUser.error.toString());
 			}

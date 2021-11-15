@@ -7,14 +7,13 @@ export async function get({ params }) {
 		const api_official_user = await (
 			await fetch(`https://api.scratch.mit.edu/users/${user}/`)
 		).json();
-    console.log(1)
     let scratchdb, scratchdb_forum_user = {"counts": undefined};
 		scratchdb = await (
 			await fetch(`https://scratchdb.lefty.one/v3/user/info/${user}`)
-		).json();console.log(1);
+		).json();
 		scratchdb_forum_user = await (
 			await fetch(`https://scratchdb.lefty.one/v3/forum/user/info/${user}`)
-		).json();console.log(1);
+		).json();
     let ocular = {"status": undefined, "color": undefined}
     try {
       ocular = await (
