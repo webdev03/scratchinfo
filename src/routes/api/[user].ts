@@ -25,7 +25,7 @@ export async function get({ params }) {
     if (ocular.status == undefined || ocular.color == undefined) {
       ocular.status = "No ocular status found.";
     }
-    const user_projects = await (
+    /* const user_projects = await (
       await fetch(`https://api.scratch.mit.edu/users/${user}/projects/?limit=1`)
     ).json();
     let agent = "(Scratchinfo) An error has occured!";
@@ -41,12 +41,16 @@ export async function get({ params }) {
       } catch (error) {
         agent = "(Scratchinfo) An error has occured in getting the user agent."
       }
-
     }
     return {
       body: {
         username: api_official_user.username,
         user_agent: agent,
+      } */
+    return {
+      body: {
+        username: api_official_user.username,
+        /* 				user_agent: agent, */
         scratchteam: api_official_user.scratchteam,
         history: {
           joined: api_official_user.history.joined,

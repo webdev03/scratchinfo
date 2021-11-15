@@ -42,7 +42,6 @@
 				.then((data) => {
 					loading = false;
 					if (data.iserror === false) {
-						info.user_agent = data["user_agent"];
 						info.ocular.status = data["ocular"].status;
 						info.ocular.colour = data["ocular"].color;
 
@@ -50,12 +49,19 @@
 						info.scratchTeam = data.scratchteam;
 						info.joinDate = data.history.joined;
 						pfp = data.images["90x90"];
-
-						info.scratchdb.followers = data["scratchdb"].statistics.followers;
-						info.scratchdb.following = data["scratchdb"].statistics.following;
-						info.scratchdb.views = data["scratchdb"].statistics.views;
-						info.scratchdb.loves = data["scratchdb"].statistics.loves;
-						info.scratchdb.favorites = data["scratchdb"].statistics.favorites;
+						try {
+							info.scratchdb.followers = data["scratchdb"].statistics.followers;
+							info.scratchdb.following = data["scratchdb"].statistics.following;
+							info.scratchdb.views = data["scratchdb"].statistics.views;
+							info.scratchdb.loves = data["scratchdb"].statistics.loves;
+							info.scratchdb.favorites = data["scratchdb"].statistics.favorites;
+						} catch {
+              info.scratchdb.followers = "Cannot get statistics for this user. Please try again.";
+							info.scratchdb.following = "Cannot get statistics for this user. Please try again.";
+							info.scratchdb.views = "Cannot get statistics for this user. Please try again.";
+							info.scratchdb.loves = "Cannot get statistics for this user. Please try again.";
+							info.scratchdb.favorites = "Cannot get statistics for this user. Please try again.";
+            }
 
 						info.scratchdb.forumTotalRank =
 							data.counts.total.rank ||
@@ -189,6 +195,44 @@
 		href={`https://scratory.vercel.app/user/${info.username}`}
 		>Visit on Scratory</a
 	>
+	<p>
+		<a
+			class="btn btn-primary"
+			role="button"
+			href={`https://scratch.mit.edu/users/${info.username}`}
+			>Visit on Scratch</a
+		>
+		<a
+			class="btn btn-primary"
+			role="button"
+			href={`https://scratchstats.com/${info.username}`}
+			>Visit on ScratchStats</a
+		>
+		<a
+			class="btn btn-primary"
+			role="button"
+			href={`https://ocular.jeffalo.net/user/${info.username}`}
+			>Visit on ocular</a
+		>
+		<a
+			class="btn btn-primary"
+			role="button"
+			href={`https://postpercent.rirurin.com/users/${info.username}`}
+			>Visit on PostPercent</a
+		>
+		<a
+			class="btn btn-primary"
+			role="button"
+			href={`https://magnifier.potatophant.net/users/${info.username}`}
+			>Visit on Magnifier</a
+		>
+		<a
+			class="btn btn-primary"
+			role="button"
+			href={`https://scratory.vercel.app/user/${info.username}`}
+			>Visit on Scratory</a
+		>
+	</p>
 
 	<hr />
 
