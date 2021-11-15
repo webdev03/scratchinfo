@@ -23,11 +23,9 @@
       .then((data) => {
         postList[fetchedForum] = data;
         loading = false;
-        console.log(postList);
       });
     };
     totalmodify = function() {
-        console.log("check modified")
         if(total == false && typeof postList[forum] == "undefined") {
             modified();
         }
@@ -43,7 +41,6 @@
       .then((data) => {
         postList["total"] = data;
         loading = false;
-        console.log(postList);
       });
   });
 </script>
