@@ -21,6 +21,9 @@
 {#if info.username === "Jeffalo"}
     <div class="tag ocular" title={msg}>Ocular</div>
 {/if}
+{#if info.username === "SansStudios"}
+    <div class="tag heartpink" title={msg + " Requested by SansStudios"}>&lt;3 </div>
+{/if}
 {#if info.scratchTeam === true}
     <div class="tag scratchteam" title={msg}>Scratch Team Member</div>
 {/if}
@@ -61,5 +64,8 @@
     .epic {
         background-color: #FF7F7F;
         font-size: small;
+    }
+    .heartpink {
+      background-color: #F06595;
     }
 </style>
