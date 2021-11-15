@@ -49,7 +49,7 @@
 			const userData = await userDataFetch.json();
 
 			studioID = userData.data[0].studio;
-			isBusy = userData.data[0].isBusy;
+			isBusy = userData.data[0].busy;
 		} else {
 		}
 	});
