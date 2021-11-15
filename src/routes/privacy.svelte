@@ -14,7 +14,7 @@
 <p>Some of our data sources are</p>
 <ul>
 	<li>ScratchDB by @DatOneLefty on Scratch</li>
-	<li>ocular by @Jeffalo on Scratch</li>
+	<li>my-ocular by @Jeffalo on Scratch</li>
 	<li>The official Scratch API by the Scratch Team</li>
 </ul>
 <p>
