@@ -20,4 +20,6 @@
 <hr>
 <button type="button"  on:click={submitFunction()} class="btn btn-primary">Log in with FluffyScratch</button>
 <br> <br>
+<a href="/privacy">Privacy Policy</a>
+<br>
 <p style="font-size: 0.75em">Your username will automatically be retrieved when you authenticate with FluffyScratch.</p>

@@ -57,6 +57,7 @@
 
 <h1>Scratchinfo Dashboard</h1>
 <p>Dashboard name inspired by ocular by @Jeffalo</p>
+<a href="/privacy">Privacy Policy</a>
 <a class="btn btn-primary" href="/logout" role="button">Log out</a>
 <hr />
 <h2>Your You Page</h2>
