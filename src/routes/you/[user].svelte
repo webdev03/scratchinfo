@@ -12,7 +12,7 @@
 	import { onMount } from "svelte";
 	export let username;
 	let responseResult: any = {};
-	let getResults: Function = function () {};
+	let studioExists = true;
 	let loading,
 		ok = true;
 	onMount(async () => {
@@ -22,6 +22,7 @@
 			// the user exists so we can continue with displaying results
 			responseResult = await youfetch.json();
 			loading = false;
+			studioExists = responseResult.studio.code == "NotFound";
 		} else {
 			// either the server has a code error, function timeout, or the user doesn't exist
 			responseResult.resultOk = false;
@@ -43,21 +44,36 @@
 	{#if responseResult.data[0].busy}
 		<span class="badge bg-warning">This user is currently busy.</span>
 	{/if}
-	<h2>Featured Studio</h2>
-	<div class="card" style="width: 18rem; color: black;">
-		<img
-			src={responseResult.studio.image}
-			class="card-img-top"
-			alt="Studio thumbnail"
-		/>
-		<div class="card-body">
-			<h5 class="card-title">{responseResult.studio.title}</h5>
-			<p class="card-text">{responseResult.studio.description}</p>
-			<a href={responseResult.studio_url} class="btn btn-primary"
-				>Go to studio</a
-			>
+
+	{#if !studioExists}
+		<h2>Featured Studio</h2>
+		<div class="card" style="width: 18rem;">
+			<img
+				src={responseResult.studio.image}
+				class="card-img-top"
+				alt="Studio thumbnail"
+			/>
+			<div class="card-body">
+				<h5 class="card-title">{responseResult.studio.title}</h5>
+				<p class="card-text">{responseResult.studio.description}</p>
+				<a href={responseResult.studio_url} class="btn btn-primary"
+					>Go to studio</a
+				>
+			</div>
 		</div>
-	</div>
+	{/if}
+  <br>
+  {#if responseResult.data[0].workingOnProject}
+    <h1>Working on Project</h1>
+    <div class="card" style="width: 100%; min-height: 100px;">
+      <div class="card-body">
+        <h5 class="card-title">A new project...</h5>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: {responseResult.data[0].percentageDoneWithProject}%"></div>
+        </div>
+      </div>
+    </div>
+  {/if}
 {:else}
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
@@ -83,4 +99,7 @@
 		max-height: 100px;
 		overflow: scroll;
 	}
+  .card {
+    color: black;
+  }
 </style>

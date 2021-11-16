@@ -3,8 +3,9 @@
 	let loggedOut = false;
 	let loading = true;
 	let problem = false;
-	let isBusy = false;
-	let studioID: number = 0;
+	let isBusy,
+		workingOnProject = false;
+	let studioID, percentDoneWithProject: number = 0;
 	let saveChanges = async function () {};
 	onMount(async () => {
 		loading = true;
@@ -21,6 +22,8 @@
 					token: window.localStorage.getItem("authToken").toString(),
 					studio: Number(studioID),
 					busy: !!isBusy,
+          isWorkingOnProject: workingOnProject,
+          percentProjectDone: percentDoneWithProject
 				}),
 			});
 			if (scf.ok) {
@@ -50,14 +53,16 @@
 
 			studioID = userData.data[0].studio;
 			isBusy = userData.data[0].busy;
+			workingOnProject = userData.data[0].workingOnProject;
 		} else {
+			console.log("Oh no! An error has occured.");
 		}
 	});
 </script>
 
 <h1>Scratchinfo Dashboard</h1>
 <p>Dashboard name inspired by ocular by @Jeffalo</p>
-<a href="/privacy">Privacy Policy</a>
+<a href="/privacy">Privacy Policy</a> <br /> <br />
 <a class="btn btn-primary" href="/logout" role="button">Log out</a>
 <hr />
 <h2>Your You Page</h2>
@@ -68,16 +73,22 @@
 	</div>
 {:else}
 	<label for="studio_id" class="form-check-label">Busy?</label>
-	<input
-		type="checkbox"
-		class="form-check-input"
-		bind:checked={isBusy}
-		step="0."
-	/>
+	<input type="checkbox" class="form-check-input" bind:checked={isBusy} />
 	<br />
 	<label for="studio_id">Studio ID:</label>
 	<input type="number" class="form-control" bind:value={studioID} />
-
+	<br />
+	<label for="studio_id" class="form-check-label">Working on a project?</label>
+	<input
+		type="checkbox"
+		class="form-check-input"
+		bind:checked={workingOnProject}
+	/>
+  <br>
+	{#if workingOnProject}
+		<label for="studio_id">Percentage done with project:</label>
+		<input type="number" class="form-control" bind:value={percentDoneWithProject} />
+	{/if}
 	<br />
 	<button type="button" on:click={saveChanges} class="btn btn-primary"
 		>Save changes</button

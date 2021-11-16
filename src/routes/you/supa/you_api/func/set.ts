@@ -25,7 +25,7 @@ export async function post(request) {
       };
     }
     const user = jwtv.username;
-    if (isNaN(parsedBody.studio)) {
+    if (isNaN(parsedBody.studio) || Number(parsedBody.studio) < 1) {
       return {
         status: 500,
         body: {
@@ -36,6 +36,11 @@ export async function post(request) {
     }
     const studioSet = Math.round(Number(parsedBody.studio));
     const isBusy = !!parsedBody.busy;
+    const isWorkingOnProject = !!parsedBody.isWorkingOnProject;
+    let percentDoneWithProject = parsedBody.percentProjectDone;
+    if (isWorkingOnProject == false || Number(percentDoneWithProject) < 1 || Number(percentDoneWithProject) > 100 || isNaN(Number(percentDoneWithProject))) {
+      percentDoneWithProject = 0;
+    }
     const supabase = createClient(
       process.env["SUPABASE_URL"],
       process.env["SUPABASE_ANON_KEY"]
@@ -44,17 +49,18 @@ export async function post(request) {
       .from("users")
       .select()
       .eq("username", user);
+    const setJSON = { username: user, studio: studioSet, busy: isBusy, workingOnProject: isWorkingOnProject, percentageDoneWithProject: percentDoneWithProject }
     if (userExists.error || userExists.data.length == 0) {
       const createUser = await supabase
         .from("users")
-        .insert([{ username: user, studio: studioSet, busy: isBusy }]);
+        .insert([setJSON]);
       if (createUser.error) {
-        throw new Error("An error has occured.1");
+        throw new Error("An error has occured.");
       }
     } else {
       const setUser = await supabase
         .from("users")
-        .update({ username: user, studio: studioSet, busy: isBusy })
+        .update(setJSON)
         .eq("username", user);
       if (setUser.error) {
         throw new Error(setUser.error.toString());
