@@ -35,7 +35,7 @@
 			}
 		};
 		// CUD = current user data
-		const CUDFetch = await fetch("/you/supa/fsauth/getUserFromToken", {
+		const CUDFetch = await fetch("/you/supa/scratchlight/getUserToken", {
 			method: "POST",
 			body: JSON.stringify({
 				token: window.localStorage.getItem("authToken").toString(),

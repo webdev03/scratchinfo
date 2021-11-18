@@ -1,16 +1,23 @@
-/**
- * @type {import('@sveltejs/kit').RequestHandler}
- */
 import jwt from "jsonwebtoken";
 // this part is because process.env sometimes breaks
 import dotenv from "dotenv";
 dotenv.config();
 export async function post(request) {
+  let parsedBody = undefined;
+  try {
+    parsedBody = JSON.parse(request.body)
+  } catch {
+    parsedBody = request.body
+  }
   try {
     try {
-      const jwtContent = jwt.verify(JSON.parse(request.body).token, process.env["SUPABASE_JWT_SECRET"], {
+      const isJWTGood = jwt.verify(parsedBody.token, process.env["SUPABASE_JWT_SECRET"], {
         maxAge: "2h",
       });
+      if (!isJWTGood) {
+        throw new Error("no.")
+      }
+      const jwtContent = jwt.decode(parsedBody.token);
       return {
         body: jwtContent
       }
