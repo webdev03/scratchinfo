@@ -13,7 +13,7 @@
 		isBusy = false;
 		loggedOut = !!!window.localStorage.getItem("authToken");
 		if (loggedOut) {
-			window.location.href = "/login";
+			/* window.location.href = "/login"; */
 		}
 		saveChanges = async function () {
 			const scf = await fetch("/you/supa/you_api/func/set", {
@@ -35,7 +35,7 @@
 			}
 		};
 		// CUD = current user data
-		const CUDFetch = await fetch("/you/supa/fsauth/getUserFromToken", {
+		const CUDFetch = await fetch("/you/supa/scratchlight/getUserToken", {
 			method: "POST",
 			body: JSON.stringify({
 				token: window.localStorage.getItem("authToken").toString(),

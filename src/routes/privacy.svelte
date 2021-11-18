@@ -1,5 +1,5 @@
 <!-- Change this date when you modify the policy -->
-<i>Last modified: 15 November 2021</i>
+<i>Last modified: 17 November 2021</i>
 <br />
 <p>
 	All Scratchinfo pages are hosted through <a href="https://vercel.com"
@@ -24,10 +24,7 @@
 </p>
 <hr />
 <p>
-	When you are using Scratchinfo You, your Scratch account is verified by the <a
-		href="https://github.com/hamptonmoore/FluffyScratch"
-		>FluffyScratch authentication platform</a
-	>. FluffyScratch allows Scratchinfo to verify your Scratch account.
+	When you are using Scratchinfo You, your Scratch account is verified by ScratchLight which is made by ScratchInfo. Anyone can see your ScratchInfo You page.
 </p>
 <p>
 	Our PostgreSQL database is provided by <a href="https://supabase.io"
@@ -35,7 +32,7 @@
 	>. All of the data used to provide Scratchinfo You is on Supabase.
 </p>
 <p>
-	Scratchinfo is open source on <a
+	Scratchinfo and ScratchLight are open source on <a
 		href="https://github.com/webdev03/scratchinfo">our GitHub repository</a
 	> and is licensed under the MIT License.
 </p>

@@ -1,5 +1,6 @@
 // Thanks to https://gist.github.com/oeon/0ada0457194ebf70ec2428900ba76255 for the code!
-const b2a = (a) => {
+// Part of the code has been modified for TypeScript.
+const b2a = (a): string => {
   var c,
     d,
     e,
@@ -32,4 +33,17 @@ const b2a = (a) => {
     (o ? m.slice(0, o - 3) : m) + "===".slice(o || 3)
   );
 };
-export default b2a;
+function a2b(a): string {
+  var b, c, d, e = {}, f = 0, g = 0, h = "", i = String.fromCharCode, j = a.length;
+  for (b = 0; 64 > b; b++) e["ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".charAt(b)] = b;
+  for (c = 0; j > c; c++) for (b = e[a.charAt(c)], f = (f << 6) + b, g += 6; g >= 8; ) ((d = 255 & f >>> (g -= 8)) || j - 2 > c) && (h += i(d));
+  return h;
+};
+function multi(decode, value): string {
+  if (decode) {
+    return a2b(value)
+  } else {
+    return b2a(value)
+  }
+}
+export default multi;
