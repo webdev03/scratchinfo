@@ -31,7 +31,7 @@ export async function post(request) {
     const comments = await (await fetch("https://api.scratch.mit.edu/users/god286/projects/601968190/comments/?limit=15&offset=0")).json();
     for (let index = 0; index < comments.length; index++) {
       const comment = comments[index];
-      if (comment.content == getData.data[0]["code"] && comment.author.username == getData.data[0]["user"]) {
+      if (comment.content == getData.data[0]["code"] && comment.author.username.toLowerCase() == getData.data[0]["user"].toLowerCase()) {
         const deleteAuthSession = await supabase
           .from('codes')
           .delete()

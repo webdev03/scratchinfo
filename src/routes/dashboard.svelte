@@ -13,7 +13,7 @@
 		isBusy = false;
 		loggedOut = !!!window.localStorage.getItem("authToken");
 		if (loggedOut) {
-			/* window.location.href = "/login"; */
+			window.location.href = "/login";
 		}
 		saveChanges = async function () {
 			const scf = await fetch("/you/supa/you_api/func/set", {
