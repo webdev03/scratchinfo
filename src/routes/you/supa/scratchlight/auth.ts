@@ -31,8 +31,9 @@ export async function post(request) {
     if (scratchlight.isError == true) {
       throw new Error("Authentication not valid.");
     }
+    const realUser = await (await fetch(`https://api.scratch.mit.edu/users/${scratchlight.username}`)).json()
     const myJWT = await jwt.sign(
-      { username: scratchlight.username },
+      { username: realUser.username },
       process.env["SUPABASE_JWT_SECRET"],
       { expiresIn: "2h", audience: "scratchinfo" }
     );
