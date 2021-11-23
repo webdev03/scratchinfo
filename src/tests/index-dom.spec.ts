@@ -7,12 +7,9 @@ import Index from '../routes/index.svelte';
 
 /**
  * Index displays correct content
- *
- * @see https://jestjs.io/docs/getting-started
- * @see https://github.com/testing-library/jest-dom
  */
 
-describe('Index', () => {
+describe('homepage', () => {
 
   let renderedComponent: RenderResult;
 
@@ -20,12 +17,16 @@ describe('Index', () => {
     renderedComponent = render(Index);
   });
 
-  describe('test if index shows proper content', () => {
-
+  describe('test if homepage shows proper content', () => {
     test('should show the proper heading', () => {
       expect(renderedComponent.getByText('Welcome to ScratchInfo!')).toBeInTheDocument();
     });
-
+    test('contain link to privacy policy', () => {
+      expect(renderedComponent.getByText('Privacy Policy')).toBeInTheDocument();
+    });
+    test('contain link to privacy policy', () => {
+      expect(renderedComponent.getByText('Privacy Policy')).toBeInTheDocument();
+    });
   });
 
 });
