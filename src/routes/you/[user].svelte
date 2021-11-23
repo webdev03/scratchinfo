@@ -97,8 +97,11 @@
 	.card-title,
 	.card-text {
 		max-height: 100px;
-		overflow: scroll;
+		overflow: auto;
 	}
+  .card-title {
+    line-height: normal;
+  }
   .card {
     color: black;
   }
