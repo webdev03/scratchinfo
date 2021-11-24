@@ -57,7 +57,7 @@
 </div>
 <button class="btn btn-primary" on:click={copyFunction()}>Copy code</button>
 <br /> <br />
-<a class="btn btn-primary" target="_blank" href="https://scratch.mit.edu/projects/601968190/"
+<a class="btn btn-primary" target="_blank" href="https://scratch.mit.edu/projects/603838920/"
 	>Go to Project</a
 >
 <a class="btn btn-primary" href={redirectLink}>I'm Done</a>

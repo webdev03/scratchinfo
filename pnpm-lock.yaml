@@ -29,19 +29,19 @@ dependencies:
   '@sveltejs/adapter-vercel': 1.0.0-next.31
   dotenv: 10.0.0
   jsonwebtoken: 8.5.1
-  prettier: 2.4.1
-  prettier-plugin-svelte: 2.5.0_prettier@2.4.1+svelte@3.44.1
 
 devDependencies:
   '@babel/core': 7.16.0
   '@babel/preset-env': 7.16.4_@babel+core@7.16.0
-  '@sveltejs/kit': 1.0.0-next.196_svelte@3.44.1
   '@testing-library/jest-dom': 5.15.0
   '@testing-library/svelte': 3.0.3_svelte@3.44.1
   '@types/jest': 27.0.3
   '@types/testing-library__jest-dom': 5.14.1
   babel-jest: 27.3.1_@babel+core@7.16.0
   jest: 27.3.1
+  '@sveltejs/kit': 1.0.0-next.199_svelte@3.44.1
+  prettier: 2.4.1
+  prettier-plugin-svelte: 2.5.0_prettier@2.4.1+svelte@3.44.1
   svelte: 3.44.1
   svelte-check: 2.2.8_@babel+core@7.16.0+svelte@3.44.1
   svelte-jester: 2.1.5_jest@27.3.1+svelte@3.44.1
@@ -127,6 +127,10 @@ packages:
   /@babel/helper-create-class-features-plugin/7.16.0_@babel+core@7.16.0:
     resolution: {integrity: sha512-XLwWvqEaq19zFlF5PTgOod4bUA+XbkR4WLQBct1bkzmxJGB0ZEJaoKF4c8cgH9oBtCDuYJ8BP5NB9uFiEgO5QA==}
     engines: {node: '>=6.9.0'}
+  /@sveltejs/kit/1.0.0-next.199_svelte@3.44.1:
+    resolution: {integrity: sha512-dJGmXUf5zchMvwrCfQfHOwxXOruMQHlL4DhXU5ZtB5ccZtU9OlQBcJU0xoa/mDrF5zndPRJUuVjz2ivdD+1cPw==}
+    engines: {node: '>=14.13'}
+    hasBin: true
     peerDependencies:
       '@babel/core': ^7.0.0
     dependencies:
@@ -3834,7 +3838,7 @@ packages:
     dependencies:
       prettier: 2.4.1
       svelte: 3.44.1
-    dev: false
+    dev: true
 
   /prettier/2.4.1:
     resolution: {integrity: sha512-9fbDAXSBcc6Bs1mZrDYb3XKzDLm4EXXL9sC1LqKP5rZkT6KRr/rf9amVUcODVXgguK/isJz0d0hP72WeaKWsvA==}
