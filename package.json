@@ -16,15 +16,15 @@
     "svelte-check": "^2.2.8",
     "svelte-preprocess": "^4.9.8",
     "tslib": "^2.3.1",
-    "typescript": "^4.4.4"
+    "typescript": "^4.4.4",
+    "prettier": "^2.4.1",
+    "prettier-plugin-svelte": "^2.5.0"
   },
   "type": "module",
   "dependencies": {
     "@supabase/supabase-js": "^1.27.0",
     "@sveltejs/adapter-vercel": "^1.0.0-next.31",
     "dotenv": "^10.0.0",
-    "jsonwebtoken": "^8.5.1",
-    "prettier": "^2.4.1",
-    "prettier-plugin-svelte": "^2.5.0"
+    "jsonwebtoken": "^8.5.1"
   }
 }

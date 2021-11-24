@@ -19,11 +19,11 @@ dependencies:
   '@sveltejs/adapter-vercel': 1.0.0-next.31
   dotenv: 10.0.0
   jsonwebtoken: 8.5.1
-  prettier: 2.4.1
-  prettier-plugin-svelte: 2.5.0_prettier@2.4.1+svelte@3.44.1
 
 devDependencies:
-  '@sveltejs/kit': 1.0.0-next.196_svelte@3.44.1
+  '@sveltejs/kit': 1.0.0-next.199_svelte@3.44.1
+  prettier: 2.4.1
+  prettier-plugin-svelte: 2.5.0_prettier@2.4.1+svelte@3.44.1
   svelte: 3.44.1
   svelte-check: 2.2.8_svelte@3.44.1
   svelte-preprocess: 4.9.8_svelte@3.44.1+typescript@4.4.4
@@ -101,8 +101,8 @@ packages:
       esbuild: 0.13.12
     dev: false
 
-  /@sveltejs/kit/1.0.0-next.196_svelte@3.44.1:
-    resolution: {integrity: sha512-z7sA/2/3Il5biibjPXCYXJC11TyFhgCvMaJvvbtMnu2l3EmOmJBMS+r2djGptzfFsugSVNwGQFn8+ldWQWq3jA==}
+  /@sveltejs/kit/1.0.0-next.199_svelte@3.44.1:
+    resolution: {integrity: sha512-dJGmXUf5zchMvwrCfQfHOwxXOruMQHlL4DhXU5ZtB5ccZtU9OlQBcJU0xoa/mDrF5zndPRJUuVjz2ivdD+1cPw==}
     engines: {node: '>=14.13'}
     hasBin: true
     peerDependencies:
@@ -808,13 +808,13 @@ packages:
     dependencies:
       prettier: 2.4.1
       svelte: 3.44.1
-    dev: false
+    dev: true
 
   /prettier/2.4.1:
     resolution: {integrity: sha512-9fbDAXSBcc6Bs1mZrDYb3XKzDLm4EXXL9sC1LqKP5rZkT6KRr/rf9amVUcODVXgguK/isJz0d0hP72WeaKWsvA==}
     engines: {node: '>=10.13.0'}
     hasBin: true
-    dev: false
+    dev: true
 
   /queue-microtask/1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
