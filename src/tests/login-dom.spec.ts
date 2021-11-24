@@ -1,5 +1,5 @@
 import { render, RenderResult } from '@testing-library/svelte';
-import Index from '../routes/index.svelte';
+import Login from '../routes/login.svelte';
 
 /**
  * @jest-environment jsdom
@@ -13,7 +13,7 @@ describe('homepage', () => {
   let renderedComponent: RenderResult;
 
   beforeEach(() => {
-    renderedComponent = render(Index);
+    renderedComponent = render(Login);
   });
 
   describe('elements are displayed', () => {
