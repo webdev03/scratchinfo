@@ -10,7 +10,10 @@
 			window.location.href = "/";
 		}
 		submitFunction = function () {
-			console.log("Sending user to FluffyScratch for authentication...");
+      if (username.length < 3 || username.length > 20) {
+        return;
+      }
+			console.log("Sending user to ScratchLight for authentication...");
 			const urlEncode = multi(
 				false,
 				`${window.location.host}/you/supa/scratchlight/verify`
