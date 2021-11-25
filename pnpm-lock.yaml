@@ -21,7 +21,7 @@ dependencies:
   jsonwebtoken: 8.5.1
 
 devDependencies:
-  '@sveltejs/kit': 1.0.0-next.199_svelte@3.44.1
+  '@sveltejs/kit': 1.0.0-next.200_svelte@3.44.1
   prettier: 2.4.1
   prettier-plugin-svelte: 2.5.0_prettier@2.4.1+svelte@3.44.1
   svelte: 3.44.1
@@ -101,8 +101,8 @@ packages:
       esbuild: 0.13.12
     dev: false
 
-  /@sveltejs/kit/1.0.0-next.199_svelte@3.44.1:
-    resolution: {integrity: sha512-dJGmXUf5zchMvwrCfQfHOwxXOruMQHlL4DhXU5ZtB5ccZtU9OlQBcJU0xoa/mDrF5zndPRJUuVjz2ivdD+1cPw==}
+  /@sveltejs/kit/1.0.0-next.200_svelte@3.44.1:
+    resolution: {integrity: sha512-UuUiZ5HhqQyjfq/MP3ak+zfzwh3jm+AOJ5n5tncfAd8B9lUWiuNBcYw9VHvxjO63t1eKsNbf3l7TIvfuUO6NBA==}
     engines: {node: '>=14.13'}
     hasBin: true
     peerDependencies:
