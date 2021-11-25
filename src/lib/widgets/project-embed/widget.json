@@ -1,0 +1,11 @@
+{
+  "name": "Scratch project embed",
+  "description": "Allows you to embed your own Scratch project. You can only embed one project on your You page.",
+  "component": "Embedder.svelte",
+  "credits": [
+    {
+      "name": "god286",
+      "link": "https://scratch.mit.edu/users/god286"
+    }
+  ]
+}
