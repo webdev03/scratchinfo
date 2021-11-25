@@ -8,7 +8,7 @@ import Login from '../routes/login.svelte';
 /**
  * Login page displays correct content
  */
-describe('homepage', () => {
+describe('login page', () => {
 
   let renderedComponent: RenderResult;
 
