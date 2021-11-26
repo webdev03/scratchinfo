@@ -1,7 +1,9 @@
 /**
  * @type {import('@sveltejs/kit').RequestHandler}
  */
+import { SIWidgetHelper } from "$lib/widgetHelper";
 export async function get({ params }) {
+  await SIWidgetHelper()
   const { type } = params;
   try {
     let leaderboard = {};
