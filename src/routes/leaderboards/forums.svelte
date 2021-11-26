@@ -1,36 +1,37 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-  import forumlist from "$lib/forumlist";
-  let postList: Array<object> = [{ username: "griffpatch" }];
+  import { onMount } from 'svelte';
+  import forumlist from '$lib/forumlist';
+  let postList: Array<object> = [{ username: 'griffpatch' }];
   let problem: boolean = false;
   let loading: boolean = true;
   let total: boolean = true;
-  let forum: string = "Advanced Topics";
-  let modified, totalmodify: Function = function () {};
+  let forum: string = 'Advanced Topics';
+  let modified,
+    totalmodify: Function = function () {};
   onMount(() => {
     modified = function () {
       loading = true;
       let fetchedForum = forum;
       problem = false;
       fetch(`/leaderboards/api/forum-${fetchedForum}/`)
-      .then((res) => {
-        if (!res.ok) {
-          problem = true;
-        } else {
-          return res.json();
-        }
-      })
-      .then((data) => {
-        postList[fetchedForum] = data;
-        loading = false;
-      });
+        .then((res) => {
+          if (!res.ok) {
+            problem = true;
+          } else {
+            return res.json();
+          }
+        })
+        .then((data) => {
+          postList[fetchedForum] = data;
+          loading = false;
+        });
     };
-    totalmodify = function() {
-        if(total == false && typeof postList[forum] == "undefined") {
-            modified();
-        }
-    }
-    fetch("https://scratchdb.lefty.one/v3/forum/category/rank/total/")
+    totalmodify = function () {
+      if (total == false && typeof postList[forum] == 'undefined') {
+        modified();
+      }
+    };
+    fetch('https://scratchdb.lefty.one/v3/forum/category/rank/total/')
       .then((res) => {
         if (!res.ok) {
           problem = true;
@@ -39,7 +40,7 @@
         }
       })
       .then((data) => {
-        postList["total"] = data;
+        postList['total'] = data;
         loading = false;
       });
   });
@@ -64,12 +65,12 @@
       <option value={forum}>{forum}</option>
     {/each}
   </select>
-  <br> <br>
+  <br /> <br />
 {/if}
 
 <!-- Loading -->
 {#if loading == true}
-<p>Loading...</p>
+  <p>Loading...</p>
 {/if}
 
 <!-- Error messages -->
@@ -81,21 +82,22 @@
 
 <!-- Total display -->
 {#if loading == false && total}
-  {#each postList["total"] as user, position}
+  {#each postList['total'] as user, position}
     <a href="/users/{user['username']}"
-      ><div class="user rounded">#{position + 1}: {user["username"]}</div></a
+      ><div class="user rounded">#{position + 1}: {user['username']}</div></a
     >
   {/each}
 {/if}
 
 <!-- Specific forum display -->
-{#if loading == false && !total && typeof postList[forum] != "undefined"}
+{#if loading == false && !total && typeof postList[forum] != 'undefined'}
   {#each postList[forum] as user, position}
     <a href="/users/{user['username']}"
-      ><div class="user rounded">#{position + 1}: {user["username"]}</div></a
+      ><div class="user rounded">#{position + 1}: {user['username']}</div></a
     >
   {/each}
 {/if}
+
 <style>
   .user {
     width: 100%;

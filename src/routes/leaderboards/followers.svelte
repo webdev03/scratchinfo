@@ -1,21 +1,24 @@
 <script lang="ts">
-    import { onMount } from 'svelte';
-    let mostFollowed: Array<object> = [{username: "griffpatch"}];
-    let problem: boolean = false;
-    let loading: boolean = true;
-    onMount(() => {
-        fetch("/leaderboards/api/followers").then((res) => {
-            if(!res.ok) {
-                problem = true;
-            } else {
-                return res.json();
-            }
-        }).then((data) => {
-            mostFollowed = data;
-            loading = false;
-        })
-    })
+  import { onMount } from 'svelte';
+  let mostFollowed: Array<object> = [{ username: 'griffpatch' }];
+  let problem: boolean = false;
+  let loading: boolean = true;
+  onMount(() => {
+    fetch('/leaderboards/api/followers')
+      .then((res) => {
+        if (!res.ok) {
+          problem = true;
+        } else {
+          return res.json();
+        }
+      })
+      .then((data) => {
+        mostFollowed = data;
+        loading = false;
+      });
+  });
 </script>
+
 <h1>Most Followers Leaderboard</h1>
 {#if problem == true}
   <div class="alert alert-danger" role="alert">
@@ -23,22 +26,30 @@
   </div>
 {/if}
 {#if loading == false}
-{#each mostFollowed as user, position}
-    <a href="/users/{user["username"]}"><div class="user rounded">#{position + 1}: {user["username"]} <div style="float: right !important; display: inline;">{user["statistics"].followers} followers</div></div></a>
-{/each}
+  {#each mostFollowed as user, position}
+    <a href="/users/{user['username']}"
+      ><div class="user rounded">
+        #{position + 1}: {user['username']}
+        <div style="float: right !important; display: inline;">
+          {user['statistics'].followers} followers
+        </div>
+      </div></a
+    >
+  {/each}
 {:else}
-    Loading...
+  Loading...
 {/if}
+
 <style>
-    .user {
-        width: 100%;
-        background-color: lightblue;
-        min-height: 20px;
-        margin-bottom: 20px;
-        padding: 10px;
-        color: black;
-    }
-    a {
-        text-decoration: none;
-    }
+  .user {
+    width: 100%;
+    background-color: lightblue;
+    min-height: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    color: black;
+  }
+  a {
+    text-decoration: none;
+  }
 </style>

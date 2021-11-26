@@ -1,9 +1,9 @@
 /**
  * @type {import('@sveltejs/kit').RequestHandler}
  */
-import { createClient } from "@supabase/supabase-js";
-import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
+import { createClient } from '@supabase/supabase-js';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
 dotenv.config();
 
 export async function post(request) {
@@ -12,16 +12,16 @@ export async function post(request) {
     let jwtv = undefined;
     try {
       // jwt.verify returns a decoded object so we can use this to check the JWT
-      jwtv = jwt.verify(parsedBody.token, process.env["SUPABASE_JWT_SECRET"], {
-        maxAge: "2h",
+      jwtv = jwt.verify(parsedBody.token, process.env['SUPABASE_JWT_SECRET'], {
+        maxAge: '2h'
       });
     } catch {
       return {
         status: 500,
         body: {
           iserror: true,
-          msg: "Token not valid.",
-        },
+          msg: 'Token not valid.'
+        }
       };
     }
     const user = jwtv.username;
@@ -30,38 +30,38 @@ export async function post(request) {
         status: 500,
         body: {
           iserror: true,
-          msg: "Studio is not a number.",
-        },
+          msg: 'Studio is not a number.'
+        }
       };
     }
     const studioSet = Math.round(Number(parsedBody.studio));
     const isBusy = !!parsedBody.busy;
     const isWorkingOnProject = !!parsedBody.isWorkingOnProject;
     let percentDoneWithProject = parsedBody.percentProjectDone;
-    if (isWorkingOnProject == false || Number(percentDoneWithProject) < 1 || Number(percentDoneWithProject) > 100 || isNaN(Number(percentDoneWithProject))) {
+    if (
+      isWorkingOnProject == false ||
+      Number(percentDoneWithProject) < 1 ||
+      Number(percentDoneWithProject) > 100 ||
+      isNaN(Number(percentDoneWithProject))
+    ) {
       percentDoneWithProject = 0;
     }
-    const supabase = createClient(
-      process.env["SUPABASE_URL"],
-      process.env["SUPABASE_ANON_KEY"]
-    );
-    const userExists = await supabase
-      .from("users")
-      .select()
-      .eq("username", user);
-    const setJSON = { username: user, studio: studioSet, busy: isBusy, workingOnProject: isWorkingOnProject, percentageDoneWithProject: percentDoneWithProject }
+    const supabase = createClient(process.env['SUPABASE_URL'], process.env['SUPABASE_ANON_KEY']);
+    const userExists = await supabase.from('users').select().eq('username', user);
+    const setJSON = {
+      username: user,
+      studio: studioSet,
+      busy: isBusy,
+      workingOnProject: isWorkingOnProject,
+      percentageDoneWithProject: percentDoneWithProject
+    };
     if (userExists.error || userExists.data.length == 0) {
-      const createUser = await supabase
-        .from("users")
-        .insert([setJSON]);
+      const createUser = await supabase.from('users').insert([setJSON]);
       if (createUser.error) {
-        throw new Error("An error has occured.");
+        throw new Error('An error has occured.');
       }
     } else {
-      const setUser = await supabase
-        .from("users")
-        .update(setJSON)
-        .eq("username", user);
+      const setUser = await supabase.from('users').update(setJSON).eq('username', user);
       if (setUser.error) {
         throw new Error(setUser.error.toString());
       }
@@ -69,8 +69,8 @@ export async function post(request) {
     return {
       body: {
         username: user,
-        iserror: false,
-      },
+        iserror: false
+      }
     };
   } catch (err) {
     console.error(err);
@@ -78,8 +78,8 @@ export async function post(request) {
       status: 500,
       body: {
         iserror: true,
-        msg: "Error unknown.",
-      },
+        msg: 'Error unknown.'
+      }
     };
   }
 }
