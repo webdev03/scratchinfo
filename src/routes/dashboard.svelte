@@ -54,6 +54,7 @@
 			studioID = userData.data[0].studio;
 			isBusy = userData.data[0].busy;
 			workingOnProject = userData.data[0].workingOnProject;
+      percentDoneWithProject = userData.data[0].percentageDoneWithProject;
 		} else {
 			console.log("Oh no! An error has occured.");
 		}
