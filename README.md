@@ -42,6 +42,3 @@ Failure:
 }
 ```
 **After you have requested the `verifyCode` of your user, their authentication will be removed from our database.**
-
-# Jest Testing
-We also test some pages of Scratchinfo and ScratchLight with Jest using the [svelte-add-jest](https://github.com/rossyman/svelte-add-jest) template and `testing-library`. More tests are appreciated!
