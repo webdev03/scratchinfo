@@ -8,7 +8,7 @@
 		authIncorrect = false;
 	let loading = true;
 	let copyFunction: Function = function () {};
-	let redirectLink = "/";
+	let redirectLink, rawLink = "/";
 	onMount(async () => {
 		const urlParams = new URLSearchParams(window.location.search);
     console.log(urlParams)
@@ -27,6 +27,7 @@
 			problem = false;
 			const authJSON = await createAuthReq.json();
 			code = authJSON.code;
+      rawLink = "https://" + multi(true, urlParams.get("redirect")).toString();
 			redirectLink = "https://" + multi(true, urlParams.get("redirect")).toString() + "?privateCode=" + authJSON.private.toString();
 		} else {
 			problem = true;
@@ -59,7 +60,8 @@
 <br /> <br />
 <a class="btn btn-primary" target="_blank" href="https://scratch.mit.edu/projects/603838920/"
 	>Go to Project</a
->
+> <br>
+<p><b>You will be taken to {rawLink} once you press the button below.</b></p>
 <a class="btn btn-primary" href={redirectLink}>I'm Done</a>
 
 <style>

@@ -9,7 +9,8 @@
         "PoIygon",
         "hamster46",
         "kccuber",
-        "han614698"
+        "han614698",
+        "slgsan-encrypted"
     ];
 </script>
 {#if info.username === "god286"}
@@ -28,7 +29,7 @@
     <div class="tag scratchteam" title={msg}>Scratch Team Member</div>
 {/if}
 {#if suggestors.includes(info.username)}
-    <div class="tag suggestor" title={msg}>ScratchInfo Idea Suggestor</div>
+    <div class="tag suggestor" title={msg}>ScratchInfo Suggestor</div>
 {/if}
 {#if contributors.includes(info.username)}
     <div class="tag contributor" title={msg}>ScratchInfo Contributor</div>
