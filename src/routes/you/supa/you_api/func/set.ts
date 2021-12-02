@@ -25,7 +25,7 @@ export async function post(request) {
       };
     }
     const user = jwtv.username;
-    if (isNaN(parsedBody.studio) || Number(parsedBody.studio) < 1) {
+    if (isNaN(parsedBody.studio) || Number(parsedBody.studio) < 0) {
       return {
         status: 500,
         body: {
