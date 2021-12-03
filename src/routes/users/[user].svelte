@@ -157,7 +157,6 @@
 	<Special {info} />
 	<br />
 	<p>Joined on {new Date(info.joinDate).toLocaleString()}</p>
-	<p>Latest User Agent: {info.user_agent}</p>
 	<a class="btn btn-you btn-primary" role="button" href={`/you/${info.username}`}
 		>Visit on Scratchinfo You</a
 	>
