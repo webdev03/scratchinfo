@@ -11,6 +11,8 @@ npm run dev
 > You can preview the built app with `npm run preview`.
 
 # ScratchLight
+**Note: A new update to ScratchLight makes it so that there is an expiry time of 5 minutes for each auth session.**
+
 This repository also includes the code for the ScratchLight authentication system, which Scratchinfo uses.
 
 To use ScratchLight, just send your user to `/scratchlight/authpage?redirect=` with the `redirect` URL parameter being the Base64 encoded version of the page you want to direct your user to after they have authenticated, **excluding** the protocol and `://` which is assumed to be `https://`.
