@@ -1,13 +1,16 @@
 /**
  * @type {import('@sveltejs/kit').RequestHandler}
  */
-import { createClient } from "@supabase/supabase-js";
-import dotenv from "dotenv";
+import { verifier } from '$lib/verify';
+import dotenv from 'dotenv';
 dotenv.config();
 
 export async function post(request) {
   try {
-    let parsedBody: any;
+    let tr = request;
+    tr.insertedEnv = process.env
+    return await verifier(tr);
+    /* let parsedBody: any;
     try {
       parsedBody = JSON.parse(request.body);
     } catch {
@@ -58,7 +61,7 @@ export async function post(request) {
         isError: true,
         msg: "We couldn't verify this auth session."
       }
-    }
+    }; */
   } catch {
     return {
       status: 500,

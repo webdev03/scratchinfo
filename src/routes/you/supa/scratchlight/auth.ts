@@ -2,7 +2,7 @@
  * @type {import('@sveltejs/kit').RequestHandler}
  */
 import jwt from "jsonwebtoken";
-
+import { verifier } from "$lib/verify";
 import dotenv from "dotenv";
 dotenv.config();
 export async function post(request) {
@@ -14,7 +14,10 @@ export async function post(request) {
   }
   try {
     const privateCode = parsedBody.privateCode;
-    let protocol = "https://"
+    let tr = request;
+    tr.insertedEnv = process.env;
+    const scratchlight = await verifier(tr)
+    /* let protocol = "https://"
     if (request.host.startsWith("localhost:")) {
       protocol = "http://" // on localhost dont expect https
     }
@@ -27,11 +30,11 @@ export async function post(request) {
         })
       }
     );
-    const scratchlight = await slFetch.json();
-    if (scratchlight.isError == true) {
+    const scratchlight = await slFetch.json(); */
+    if (scratchlight.body.isError == true) {
       throw new Error("Authentication not valid.");
     }
-    const realUser = await (await fetch(`https://api.scratch.mit.edu/users/${scratchlight.username}`)).json()
+    const realUser = await (await fetch(`https://api.scratch.mit.edu/users/${scratchlight.body.username}`)).json()
     const myJWT = await jwt.sign(
       { username: realUser.username },
       process.env["SUPABASE_JWT_SECRET"],
@@ -44,6 +47,7 @@ export async function post(request) {
       },
     };
   } catch (err) {
+    console.log(err)
     return {
       status: 500,
       body: {
