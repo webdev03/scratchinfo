@@ -16,7 +16,6 @@ export async function verifier(request) {
     if (typeof privateCode == 'undefined') {
       throw new Error('no private code');
     }
-    console.log(envVars)
     const supabase = createClient(envVars['SCRATCHLIGHT_URL'], envVars['SCRATCHLIGHT_KEY']);
     const getData = await supabase.from('codes').select().eq('privateCode', privateCode);
     if (getData.error || getData.data.length == 0) {
