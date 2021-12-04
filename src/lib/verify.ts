@@ -2,27 +2,22 @@
  * @type {import('@sveltejs/kit').RequestHandler}
  */
 import { createClient } from '@supabase/supabase-js';
-import { verifier } from '$lib/verify';
-import dotenv from 'dotenv';
 import crypto from 'crypto';
-dotenv.config();
-
-export async function post(request) {
+export async function verifier(request) {
   try {
-    let tr = request;
-    tr.insertedEnv = process.env
-    return await verifier(tr);
-    /* let parsedBody: any;
+    let parsedBody: any;
     try {
       parsedBody = JSON.parse(request.body);
     } catch {
       parsedBody = request.body;
     }
+    const envVars = request.insertedEnv
     const privateCode = parsedBody.privateCode;
     if (typeof privateCode == 'undefined') {
       throw new Error('no private code');
     }
-    const supabase = createClient(process.env['SCRATCHLIGHT_URL'], process.env['SCRATCHLIGHT_KEY']);
+    console.log(envVars)
+    const supabase = createClient(envVars['SCRATCHLIGHT_URL'], envVars['SCRATCHLIGHT_KEY']);
     const getData = await supabase.from('codes').select().eq('privateCode', privateCode);
     if (getData.error || getData.data.length == 0) {
       throw new Error('Cannot find session.');
@@ -58,14 +53,9 @@ export async function post(request) {
         isError: true,
         msg: "We couldn't verify this auth session."
       }
-    }; */
-  } catch {
-    return {
-      status: 500,
-      body: {
-        isError: true,
-        msg: 'An error has occurred.'
-      }
     };
+  } catch(err) {
+    console.error(err)
+    throw new Error(err)
   }
 }
