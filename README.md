@@ -2,11 +2,11 @@
 An epic scratch stats website powered by SvelteKit and Vercel.
 
 ## Developing
-Install the node dependencies through whatever node package manager you like (npm, pnpm, and yarn, or another one if you want to).
+Install the node dependencies through `pnpm install` (if you don't have pnpm already, then run `npm install -g pnpm` to get it).
 Once you've installed dependencies, start a development server:
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 > You can preview the built app with `npm run preview`.
 
