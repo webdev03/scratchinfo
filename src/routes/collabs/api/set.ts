@@ -1,14 +1,13 @@
 /**
  * @type {import('@sveltejs/kit').RequestHandler}
  */
+import { getStatus } from '$lib/getStatus';
 import { createClient } from '@supabase/supabase-js';
-import { getStatus } from "$lib/getStatus";
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 dotenv.config();
 
-export async function post(request) {
-  
+export async function put(request) {
   try {
     let parsedBody: any;
     try {
@@ -16,19 +15,24 @@ export async function post(request) {
     } catch {
       parsedBody = request.body;
     }
+    let goals: any;
+    try {
+      goals = JSON.parse(parsedBody.goals);
+    } catch {
+      goals = parsedBody.goals;
+    }
     if (typeof parsedBody.token == 'undefined') {
       return {
         status: 500,
         body: {
           isError: true,
-          msg: 'Please add an auth token in your POST request.'
+          msg: 'Please add an auth token in your PUT request.'
         }
       };
     }
     if (isNaN(parsedBody.studio)) {
       throw new Error('Studio not a number.');
     }
-    // this next part should probably be modularised or something
     let jwtv = undefined;
     try {
       // jwt.verify returns a decoded object so we can use this to check the JWT
@@ -39,7 +43,7 @@ export async function post(request) {
       return {
         status: 500,
         body: {
-          iserror: true,
+          success: false,
           msg: 'Token not valid.'
         }
       };
@@ -48,12 +52,32 @@ export async function post(request) {
     if (status == "New Scratcher") {
       throw new Error("New Scratchers are not allowed in scratchinfo.")
     }
+    // Validate input
+    if (goals.length > 10) {
+      throw new Error("too long");
+    }
+    for (let i in goals) {
+      const goal = goals[i];
+      if (isNaN(goal.progress) || goal.progress < 0 || goal.progress > 100 || goal.progress == null) {
+        throw new Error("not good")
+      }
+      const goalKeys = Object.keys(goal);
+      for (let key in goalKeys) {
+        const goalKey = goalKeys[key];
+        if (!(goalKey == "title" || goalKey == "progress")) {
+          throw new Error("WHY DO YOU ADD EXTRA STUFF WHY  ")
+        }
+      }
+    }
+    // Check if studio exists
     const doesStudioExist = await fetch(
       `https://api.scratch.mit.edu/studios/${Number(parsedBody.studio).toString()}/managers`
     );
     if (!doesStudioExist.ok) {
       throw new Error("Studio doesn't exist");
     }
+
+    // Checks if user is manager
     let isManager = false;
     const managers = await doesStudioExist.json();
     for (let i in managers) {
@@ -65,16 +89,17 @@ export async function post(request) {
     if (!isManager) {
       throw new Error("not manager lol")
     }
+
     const supabase = createClient(process.env['SUPABASE_URL'], process.env['SUPABASE_ANON_KEY']);
     const readUser = await supabase.from('users').select().eq('username', jwtv.username);
     if (readUser.error || readUser.data.length < 1) {
       throw new Error("user doesn't exist");
     }
-    const uid = readUser.data[0]['id'];
-    const createCollab = await supabase
+    const updateCollab = await supabase
       .from('collabs')
-      .insert([{ created_by: uid, studio: Number(parsedBody.studio), goals: JSON.stringify([]) }]);
-    if (createCollab.error) {
+      .update({ goals: JSON.stringify(goals) })
+      .eq('studio', parsedBody.studio);
+    if (updateCollab.error) {
       throw new Error('Oh noes! An error has occurred!');
     }
     return {
@@ -87,7 +112,7 @@ export async function post(request) {
     return {
       status: 500,
       body: {
-        isError: true,
+        success: false,
         msg: 'An error has occurred.'
       }
     };

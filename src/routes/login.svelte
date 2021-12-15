@@ -24,7 +24,9 @@
 </script>
 
 <h1>Log in with ScratchLight Auth</h1>
+<p>You need to have Scratcher status in order to use scratchinfo features that require authentication.</p>
 <hr />
+<p><b>Note that you must have Scratcher status in order to use scratchinfo.</b></p>
 <label for="usernameInput">Enter in your username here:</label>
 <br>
 <input id="usernameInput" name="usernameInput" type="text" bind:value={username}>

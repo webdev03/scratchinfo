@@ -8,19 +8,16 @@ dotenv.config();
 export async function get(request) {
   try {
     let { id } = request.params;
-    console.log(id);
     if (isNaN(id)) {
       throw new Error();
     }
     id = Number(id);
     const supabase = createClient(process.env['SUPABASE_URL'], process.env['SUPABASE_ANON_KEY']);
     const readCollab = await supabase.from('collabs').select().eq('studio', id);
-    console.log(readCollab);
     if (readCollab.error || readCollab.data.length < 1) {
       throw new Error('No collab found.');
     }
     const readUser = await supabase.from('users').select().eq('id', readCollab.data[0].created_by);
-    console.log(readUser.data[0].username);
     const studioFetch = await fetch(`https://api.scratch.mit.edu/studios/${id}/`);
     if (!studioFetch.ok) {
       throw new Error("Studio doesn't exist, or scratch is down.");

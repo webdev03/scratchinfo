@@ -26,7 +26,7 @@
   >
 </div>
 <a href="/privacy">Privacy Policy</a>
-
+<a href="/collabs/create">Create a Collab</a>
 <style>
   input {
     border: 2px black;

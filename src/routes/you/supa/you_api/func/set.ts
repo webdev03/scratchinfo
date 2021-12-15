@@ -4,6 +4,7 @@
 import { createClient } from "@supabase/supabase-js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import { getStatus } from "$lib/getStatus";
 dotenv.config();
 
 export async function post(request) {
@@ -25,6 +26,10 @@ export async function post(request) {
       };
     }
     const user = jwtv.username;
+    const status = await getStatus(user);
+    if (status == "New Scratcher") {
+      throw new Error("New Scratchers are not allowed in scratchinfo.")
+    }
     if (isNaN(parsedBody.studio) || Number(parsedBody.studio) < 1) {
       return {
         status: 500,

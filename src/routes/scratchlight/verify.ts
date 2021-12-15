@@ -1,10 +1,8 @@
 /**
  * @type {import('@sveltejs/kit').RequestHandler}
  */
-import { createClient } from '@supabase/supabase-js';
 import { verifier } from '$lib/verify';
 import dotenv from 'dotenv';
-import crypto from 'crypto';
 dotenv.config();
 
 export async function post(request) {

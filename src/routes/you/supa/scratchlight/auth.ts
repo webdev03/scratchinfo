@@ -3,6 +3,7 @@
  */
 import jwt from "jsonwebtoken";
 import { verifier } from "$lib/verify";
+import { getStatus } from "$lib/getStatus";
 import dotenv from "dotenv";
 dotenv.config();
 export async function post(request) {
@@ -13,10 +14,9 @@ export async function post(request) {
     parsedBody = request.body
   }
   try {
-    const privateCode = parsedBody.privateCode;
     let tr = request;
     tr.insertedEnv = process.env;
-    const scratchlight = await verifier(tr)
+    const scratchlight = await verifier(tr);
     /* let protocol = "https://"
     if (request.host.startsWith("localhost:")) {
       protocol = "http://" // on localhost dont expect https
@@ -31,6 +31,10 @@ export async function post(request) {
       }
     );
     const scratchlight = await slFetch.json(); */
+    const status = await getStatus(scratchlight.body.username);
+    if (status == "New Scratcher") {
+      throw new Error("New Scratchers are not allowed in scratchinfo.")
+    }
     if (scratchlight.body.isError == true) {
       throw new Error("Authentication not valid.");
     }
