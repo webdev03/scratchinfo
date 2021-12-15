@@ -23,9 +23,9 @@ export async function post(request) {
         }
       }
     }
-    let postCode = crypto.randomBytes(128).toString('hex');
+    let postCode = "COPY THIS CODE ENTIRELY. DO NOT POST THIS CODE IF IT DID NOT COME FROM SCRATCHINFO! " + crypto.randomBytes(128).toString('hex');
     postCode = postCode.replace(/[0-9]/g, '');
-    const privateCode = crypto.randomBytes(512).toString('hex');
+    const privateCode = crypto.randomBytes(1024).toString('hex');
     const supabase = createClient(
       process.env["SCRATCHLIGHT_URL"],
       process.env["SCRATCHLIGHT_KEY"]
