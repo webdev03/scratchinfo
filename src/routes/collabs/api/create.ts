@@ -70,16 +70,14 @@ export async function post(request) {
       throw new Error("user doesn't exist");
     }
     const uid = readUser.data[0]['id'];
-    const createCollab = await supabase
-      .from('collabs')
-      .insert([
-        {
-          created_by: uid,
-          studio: Number(parsedBody.studio),
-          goals: JSON.stringify([]),
-          releases: JSON.stringify([])
-        }
-      ]);
+    const createCollab = await supabase.from('collabs').insert([
+      {
+        created_by: uid,
+        studio: Number(parsedBody.studio),
+        goals: JSON.stringify([]),
+        releases: JSON.stringify([])
+      }
+    ]);
     if (createCollab.error) {
       throw new Error('Oh noes! An error has occurred!');
     }

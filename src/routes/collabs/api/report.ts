@@ -64,15 +64,13 @@ export async function post(request) {
       throw new Error("user doesn't exist");
     }
     const uid = readUser.data[0]['id'];
-    const createReport = await supabase
-      .from('reports')
-      .insert([
-        {
-          created_by: uid,
-          for: parsedBody.type,
-          name: parsedBody.type === 'studio' ? Number(parsedBody.name).toString() : false
-        }
-      ]);
+    const createReport = await supabase.from('reports').insert([
+      {
+        created_by: uid,
+        for: parsedBody.type,
+        name: parsedBody.type === 'studio' ? Number(parsedBody.name).toString() : false
+      }
+    ]);
     if (createReport.error) {
       throw new Error('Oh noes! An error has occurred!');
     }
