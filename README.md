@@ -15,8 +15,6 @@ pnpm run dev
 
 > You can preview the built app with `npm run preview`.
 
-# ScratchLight
+# Usage of naming
 
-**Note: A new update to ScratchLight makes it so that there is an expiry time of 5 minutes for each auth session.**
-
-ScratchLight is now only available for scratchinfo now to protect security.
+The project should be either called `Scratchinfo` or `scratchinfo`. Of course, you can use whatever capitalisation you like, but these two are the ones I personally like to use.
