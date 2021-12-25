@@ -15,6 +15,6 @@ pnpm run dev
 
 > You can preview the built app with `npm run preview`.
 
-# Usage of naming
+## Usage of naming
 
 The project should be either called `Scratchinfo` or `scratchinfo`. Of course, you can use whatever capitalisation you like, but these two are the ones I personally like to use.
