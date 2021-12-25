@@ -11,7 +11,7 @@ export async function verifier(request) {
     } catch {
       parsedBody = request.body;
     }
-    const envVars = request.insertedEnv
+    const envVars = request.insertedEnv;
     const privateCode = parsedBody.privateCode;
     if (typeof privateCode == 'undefined') {
       throw new Error('no private code');
@@ -53,8 +53,8 @@ export async function verifier(request) {
         msg: "We couldn't verify this auth session."
       }
     };
-  } catch(err) {
-    console.error(err)
-    throw new Error(err)
+  } catch (err) {
+    console.error(err);
+    throw new Error(err);
   }
 }

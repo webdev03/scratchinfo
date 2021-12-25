@@ -8,7 +8,7 @@ dotenv.config();
 export async function post(request) {
   try {
     let tr = request;
-    tr.insertedEnv = process.env
+    tr.insertedEnv = process.env;
     return await verifier(tr);
     /* let parsedBody: any;
     try {

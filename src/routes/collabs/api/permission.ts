@@ -3,8 +3,8 @@
  */
 // Permission manager for collabs
 // Permissions should be verified on each change to the collab
-// This is a POST request because 
-import jwt from "jsonwebtoken";
+// This is a POST request because
+import jwt from 'jsonwebtoken';
 export async function post(request) {
   let parsedBody: any;
   try {
@@ -45,5 +45,5 @@ export async function post(request) {
     body: {
       manager: isManager
     }
-  }
+  };
 }

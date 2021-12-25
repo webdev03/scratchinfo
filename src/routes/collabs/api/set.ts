@@ -55,48 +55,57 @@ export async function put(request) {
       };
     }
     const status = await getStatus(jwtv.username);
-    if (status == "New Scratcher") {
-      throw new Error("New Scratchers are not allowed in scratchinfo.")
+    if (status == 'New Scratcher') {
+      throw new Error('New Scratchers are not allowed in scratchinfo.');
     }
     // Validate input
     if (goals.length > 10) {
-      throw new Error("too long");
+      throw new Error('too long');
     }
     for (let i in goals) {
       const goal = goals[i];
-      if (isNaN(goal.progress) || goal.progress < 0 || goal.progress > 100 || goal.progress == null) {
-        throw new Error("not good")
+      if (
+        isNaN(goal.progress) ||
+        goal.progress < 0 ||
+        goal.progress > 100 ||
+        goal.progress == null
+      ) {
+        throw new Error('not good');
       }
       const goalKeys = Object.keys(goal);
       for (let key in goalKeys) {
         const goalKey = goalKeys[key];
-        if (!(goalKey == "title" || goalKey == "progress")) {
-          throw new Error("WHY DO YOU ADD EXTRA STUFF WHY  ")
+        if (!(goalKey == 'title' || goalKey == 'progress')) {
+          throw new Error('WHY DO YOU ADD EXTRA STUFF WHY  ');
         }
       }
     }
     if (releases.length > 100) {
-      throw new Error("too long");
+      throw new Error('too long');
     }
     for (let i in releases) {
       const release = releases[i];
       if (isNaN(release.id) || release.id < 0 || release.id == null) {
-        throw new Error("not good")
+        throw new Error('not good');
       }
-      if (typeof release.title != "string" || typeof release.description != "string" || typeof release.id != "number") {
-        throw new Error("invalid type")
+      if (
+        typeof release.title != 'string' ||
+        typeof release.description != 'string' ||
+        typeof release.id != 'number'
+      ) {
+        throw new Error('invalid type');
       }
       if (release.title.length > 30) {
-        throw new Error("Release title too long");
+        throw new Error('Release title too long');
       }
       if (release.description.length > 150) {
-        throw new Error("Release description too long");
+        throw new Error('Release description too long');
       }
       const releaseKeys = Object.keys(release);
       for (let key in releaseKeys) {
         const releaseKey = releaseKeys[key];
-        if (!(releaseKey == "title" || releaseKey == "id" || releaseKey == "description")) {
-          throw new Error("WHY DO YOU ADD EXTRA STUFF WHY!!!!")
+        if (!(releaseKey == 'title' || releaseKey == 'id' || releaseKey == 'description')) {
+          throw new Error('WHY DO YOU ADD EXTRA STUFF WHY!!!!');
         }
       }
     }
@@ -118,7 +127,7 @@ export async function put(request) {
       }
     }
     if (!isManager) {
-      throw new Error("not manager lol")
+      throw new Error('not manager lol');
     }
 
     const supabase = createClient(process.env['SUPABASE_URL'], process.env['SUPABASE_ANON_KEY']);

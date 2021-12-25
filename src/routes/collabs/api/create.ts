@@ -2,13 +2,12 @@
  * @type {import('@sveltejs/kit').RequestHandler}
  */
 import { createClient } from '@supabase/supabase-js';
-import { getStatus } from "$lib/getStatus";
+import { getStatus } from '$lib/getStatus';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 dotenv.config();
 
 export async function post(request) {
-  
   try {
     let parsedBody: any;
     try {
@@ -45,8 +44,8 @@ export async function post(request) {
       };
     }
     const status = await getStatus(jwtv.username);
-    if (status == "New Scratcher") {
-      throw new Error("New Scratchers are not allowed in scratchinfo.")
+    if (status == 'New Scratcher') {
+      throw new Error('New Scratchers are not allowed in scratchinfo.');
     }
     const doesStudioExist = await fetch(
       `https://api.scratch.mit.edu/studios/${Number(parsedBody.studio).toString()}/managers`
@@ -63,7 +62,7 @@ export async function post(request) {
       }
     }
     if (!isManager) {
-      throw new Error("not manager lol")
+      throw new Error('not manager lol');
     }
     const supabase = createClient(process.env['SUPABASE_URL'], process.env['SUPABASE_ANON_KEY']);
     const readUser = await supabase.from('users').select().eq('username', jwtv.username);
@@ -73,7 +72,14 @@ export async function post(request) {
     const uid = readUser.data[0]['id'];
     const createCollab = await supabase
       .from('collabs')
-      .insert([{ created_by: uid, studio: Number(parsedBody.studio), goals: JSON.stringify([]), releases: JSON.stringify([]) }]);
+      .insert([
+        {
+          created_by: uid,
+          studio: Number(parsedBody.studio),
+          goals: JSON.stringify([]),
+          releases: JSON.stringify([])
+        }
+      ]);
     if (createCollab.error) {
       throw new Error('Oh noes! An error has occurred!');
     }

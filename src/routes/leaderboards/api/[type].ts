@@ -9,7 +9,7 @@ export async function get({ params }) {
       await fetch(`https://scratchdb.lefty.one/v3/user/rank/global/${type}`)
     ).json();
     return {
-      body: leaderboard,
+      body: leaderboard
     };
   } catch (err) {
     console.error(err);
@@ -17,8 +17,8 @@ export async function get({ params }) {
       status: 500,
       body: {
         iserror: true,
-        error_msg: err.toString(),
-      },
+        error_msg: err.toString()
+      }
     };
   }
 }

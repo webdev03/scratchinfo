@@ -1,16 +1,15 @@
 <script lang="ts">
-	import { onMount } from "svelte";
-	let submitFunction: Function = function () {};
-	onMount(() => {
-		submitFunction = function () {
+  import { onMount } from 'svelte';
+  let submitFunction: Function = function () {};
+  onMount(() => {
+    submitFunction = function () {
       window.localStorage.clear();
-			window.location.href = "/";
-		};
-	});
+      window.location.href = '/';
+    };
+  });
 </script>
 
 <h1>Log out</h1>
-<hr>
+<hr />
 <p>Are you sure that you want to log out?</p>
-<button type="button"  on:click={submitFunction()} class="btn btn-primary">Log out</button>
-
+<button type="button" on:click={submitFunction()} class="btn btn-primary">Log out</button>

@@ -2,7 +2,8 @@
   import { onMount } from 'svelte';
   export let goals: Array<any> = [];
   export let isEditing: boolean = false;
-  let createNewGoal, removeGoal: Function = () => {};
+  let createNewGoal,
+    removeGoal: Function = () => {};
   onMount(() => {
     createNewGoal = () => {
       if (goals.length > 9) {
@@ -14,10 +15,10 @@
       }
     };
     removeGoal = (i) => {
-      if(!confirm("Are you sure you want to delete this goal?")) return;
+      if (!confirm('Are you sure you want to delete this goal?')) return;
       goals.splice(i, 1);
       goals = goals; // this line makes no sense but it works
-    }
+    };
   });
 </script>
 
@@ -25,14 +26,16 @@
   {#each goals as goal, i}
     <div class="card">
       <div class="card-body">
-        #{i+1} <input type="text" class="form-control" bind:value={goal.title}> <br>
-        <input type="number" min=0 max=100 bind:value={goal.progress}>%/100%
+        #{i + 1} <input type="text" class="form-control" bind:value={goal.title} /> <br />
+        <input type="number" min="0" max="100" bind:value={goal.progress} />%/100%
         <div class="progress">
           <div class="progress-bar" role="progressbar" style={`width: ${goal.progress}%;`}>
             {goal.progress}%
           </div>
         </div>
-        <button class="btn btn-link" on:click={removeGoal(i)}><i class="bi bi-x-circle-fill" /></button>
+        <button class="btn btn-link" on:click={removeGoal(i)}
+          ><i class="bi bi-x-circle-fill" /></button
+        >
       </div>
     </div>
   {:else}
@@ -43,7 +46,7 @@
   {#each goals as goal, i}
     <div class="card">
       <div class="card-body">
-        #{i+1}: {goal.title}
+        #{i + 1}: {goal.title}
         <div class="progress">
           <div class="progress-bar" role="progressbar" style={`width: ${goal.progress}%;`}>
             {goal.progress}%

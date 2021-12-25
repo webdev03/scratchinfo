@@ -1,6 +1,6 @@
 <script>
-  import { fade } from "svelte/transition";
-  export let key = "";
+  import { fade } from 'svelte/transition';
+  export let key = '';
 </script>
 
 {#key key}

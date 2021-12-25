@@ -41,21 +41,21 @@ export async function post(request) {
       };
     }
     const status = await getStatus(jwtv.username);
-    if (status == "New Scratcher") {
-      throw new Error("New Scratchers are not allowed in scratchinfo.")
+    if (status == 'New Scratcher') {
+      throw new Error('New Scratchers are not allowed in scratchinfo.');
     }
-    if (parsedBody.type === "studio") {
+    if (parsedBody.type === 'studio') {
       const doesStudioExist = await fetch(
         `https://api.scratch.mit.edu/studios/${Number(parsedBody.name).toString()}/`
       );
       if (!doesStudioExist.ok) {
         throw new Error("Studio doesn't exist");
       }
-    } else if (parsedBody.type === "user") {
+    } else if (parsedBody.type === 'user') {
       // TODO: create user reporting system
-      throw new Error("TODO")
+      throw new Error('TODO');
     } else {
-      throw new Error("not a correct type")
+      throw new Error('not a correct type');
     }
 
     const supabase = createClient(process.env['SUPABASE_URL'], process.env['SUPABASE_ANON_KEY']);
@@ -66,7 +66,13 @@ export async function post(request) {
     const uid = readUser.data[0]['id'];
     const createReport = await supabase
       .from('reports')
-      .insert([{ created_by: uid, for: parsedBody.type, name: parsedBody.type === "studio" ? Number(parsedBody.name).toString() : false }]);
+      .insert([
+        {
+          created_by: uid,
+          for: parsedBody.type,
+          name: parsedBody.type === 'studio' ? Number(parsedBody.name).toString() : false
+        }
+      ]);
     if (createReport.error) {
       throw new Error('Oh noes! An error has occurred!');
     }

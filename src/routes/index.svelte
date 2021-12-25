@@ -1,19 +1,19 @@
 <script>
-  let user = "";
+  let user = '';
   function lengthValid(string) {
     if (string.length > 0) {
-      window.location.href = "/users/" + string;
+      window.location.href = '/users/' + string;
     }
   }
   function onKeyPress(e) {
     if (e.charCode === 13) lengthValid(user);
-  };
+  }
 </script>
 
 <h1>Welcome to ScratchInfo!</h1>
 <p>
-  This is a small project. You can use the search bar down below to search for a
-  Scratch user, and it will return some information.
+  This is a small project. You can use the search bar down below to search for a Scratch user, and
+  it will return some information.
 </p>
 <p>
   This website runs on <a href="https://svelte.dev">Svelte</a> and
@@ -33,6 +33,7 @@
 <a href="/privacy">Privacy Policy</a>
 <br />
 <a href="/rules">Rules</a>
+
 <style>
   input {
     border: 2px black;
