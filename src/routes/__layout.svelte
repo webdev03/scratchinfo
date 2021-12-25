@@ -27,14 +27,14 @@
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css"
   />
-  <title>ScratchInfo | Scratch statistics!</title>
+  <title>Scratchinfo | Scratch statistics!</title>
 </svelte:head>
 
 <div class="page">
   <div class="container pt-3">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">ScratchInfo</a>
+        <a class="navbar-brand" href="/">Scratchinfo</a>
         <button
           class="navbar-toggler"
           type="button"

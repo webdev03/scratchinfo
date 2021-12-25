@@ -22,7 +22,7 @@
 <hr />
 <p>
   When you are using Scratchinfo You, your Scratch account is verified by ScratchLight which is made
-  by ScratchInfo. Anyone can see your ScratchInfo You page.
+  by Scratchinfo. Anyone can see your Scratchinfo You page.
 </p>
 <p>
   Our PostgreSQL database is provided by <a href="https://supabase.io">Supabase</a>. All of the data

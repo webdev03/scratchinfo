@@ -1,4 +1,4 @@
-<h1>ScratchInfo Leaderboards</h1>
+<h1>Scratchinfo Leaderboards</h1>
 <p>These are inspired by ScratchStats and ScratchDB.</p>
 <div class="leaderbar rounded">
   <a href="/leaderboards/followers" class="btn btn-primary"

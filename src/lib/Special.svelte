@@ -1,6 +1,6 @@
 <script lang="ts">
   export let info;
-  let msg = 'This is a ScratchInfo Special. It gives a little badge to people who do cool things!';
+  let msg = 'This is a Scratchinfo Special. It gives a little badge to people who do cool things!';
   let contributors: Array<string> = ['kccuber'];
   let suggestors: Array<string> = [
     'Chiroyce',
@@ -13,10 +13,10 @@
 </script>
 
 {#if info.username === 'god286'}
-  <div class="tag owner" title={msg}>Owner of ScratchInfo</div>
+  <div class="tag owner" title={msg}>Owner of Scratchinfo</div>
 {/if}
 {#if info.username === 'JoshAtticus'}
-  <div class="tag epic" title={msg}>ScratchInfo Announcement Helper</div>
+  <div class="tag epic" title={msg}>Scratchinfo Announcement Helper</div>
 {/if}
 {#if info.username === 'Jeffalo'}
   <div class="tag ocular" title={msg}>Ocular</div>
@@ -28,10 +28,10 @@
   <div class="tag scratchteam" title={msg}>Scratch Team Member</div>
 {/if}
 {#if suggestors.includes(info.username)}
-  <div class="tag suggestor" title={msg}>ScratchInfo Suggestor</div>
+  <div class="tag suggestor" title={msg}>Scratchinfo Suggestor</div>
 {/if}
 {#if contributors.includes(info.username)}
-  <div class="tag contributor" title={msg}>ScratchInfo Contributor</div>
+  <div class="tag contributor" title={msg}>Scratchinfo Contributor</div>
 {/if}
 
 <style>
