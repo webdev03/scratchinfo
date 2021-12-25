@@ -25,7 +25,6 @@
     "@supabase/supabase-js": "^1.27.0",
     "@sveltejs/adapter-vercel": "^1.0.0-next.31",
     "dotenv": "^10.0.0",
-    "jsdom": "^19.0.0",
     "jsonwebtoken": "^8.5.1"
   }
 }
