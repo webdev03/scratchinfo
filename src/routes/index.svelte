@@ -31,6 +31,8 @@
   <button class="btn btn-primary" on:click|preventDefault={() => lengthValid(user)}>search</button>
 </div>
 <a href="/privacy">Privacy Policy</a>
+<br />
+<a href="/rules">Rules</a>
 <style>
   input {
     border: 2px black;

@@ -16,7 +16,6 @@
     console.log(urlParams);
     if (!(redir.startsWith('localhost:') || redir.startsWith('scratchinfo.vercel.app/'))) {
       beWarned = true;
-      return;
     }
     if (!(urlParams.has('username') || urlParams.has('redirect'))) {
       authIncorrect = true;
@@ -33,11 +32,10 @@
       problem = false;
       const authJSON = await createAuthReq.json();
       code = authJSON.code;
-      console.log(redir.startsWith('localhost:'));
+      redirectLink = 'https://' + redir.toString() + '?privateCode=' + authJSON.private.toString();
       if (!(redir.startsWith('localhost:') || redir.startsWith('scratchinfo.vercel.app/'))) {
         return;
       }
-      redirectLink = 'https://' + redir.toString() + '?privateCode=' + authJSON.private.toString();
     } else {
       problem = true;
     }
@@ -58,7 +56,7 @@
 {/if}
 {#if beWarned}
   <div class="alert alert-danger" role="alert">
-    Clicking on the I'm done button may be unsafe! Proceed with caution! We've stopped this page from being shown. If you think this is in error, please contact god286 on Scratch.
+    Clicking on the I'm done button may be unsafe and lead to impersonation! Proceed with caution!
   </div>
 {/if}
 <h3>
