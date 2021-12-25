@@ -21,6 +21,12 @@ export async function put(request) {
     } catch {
       goals = parsedBody.goals;
     }
+    let releases: any;
+    try {
+      releases = JSON.parse(parsedBody.releases);
+    } catch {
+      releases = parsedBody.releases;
+    }
     if (typeof parsedBody.token == 'undefined') {
       return {
         status: 500,
@@ -69,6 +75,31 @@ export async function put(request) {
         }
       }
     }
+    if (releases.length > 100) {
+      throw new Error("too long");
+    }
+    for (let i in releases) {
+      const release = releases[i];
+      if (isNaN(release.id) || release.id < 0 || release.id == null) {
+        throw new Error("not good")
+      }
+      if (typeof release.title != "string" || typeof release.description != "string" || typeof release.id != "number") {
+        throw new Error("invalid type")
+      }
+      if (release.title.length > 30) {
+        throw new Error("Release title too long");
+      }
+      if (release.description.length > 150) {
+        throw new Error("Release description too long");
+      }
+      const releaseKeys = Object.keys(release);
+      for (let key in releaseKeys) {
+        const releaseKey = releaseKeys[key];
+        if (!(releaseKey == "title" || releaseKey == "id" || releaseKey == "description")) {
+          throw new Error("WHY DO YOU ADD EXTRA STUFF WHY!!!!")
+        }
+      }
+    }
     // Check if studio exists
     const doesStudioExist = await fetch(
       `https://api.scratch.mit.edu/studios/${Number(parsedBody.studio).toString()}/managers`
@@ -97,7 +128,7 @@ export async function put(request) {
     }
     const updateCollab = await supabase
       .from('collabs')
-      .update({ goals: JSON.stringify(goals) })
+      .update({ goals: JSON.stringify(goals), releases: JSON.stringify(releases) })
       .eq('studio', parsedBody.studio);
     if (updateCollab.error) {
       throw new Error('Oh noes! An error has occurred!');

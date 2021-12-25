@@ -73,7 +73,7 @@ export async function post(request) {
     const uid = readUser.data[0]['id'];
     const createCollab = await supabase
       .from('collabs')
-      .insert([{ created_by: uid, studio: Number(parsedBody.studio), goals: JSON.stringify([]) }]);
+      .insert([{ created_by: uid, studio: Number(parsedBody.studio), goals: JSON.stringify([]), releases: JSON.stringify([]) }]);
     if (createCollab.error) {
       throw new Error('Oh noes! An error has occurred!');
     }

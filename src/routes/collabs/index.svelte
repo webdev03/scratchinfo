@@ -11,7 +11,6 @@
 </script>
 
 <h1>Scratchinfo Collabs</h1>
-<p>These are currently in BETA and are subject to change.</p>
 <p>Search for a studio collab:</p>
 <div class="input-group">
   <input
@@ -25,8 +24,11 @@
   <button class="btn btn-primary" on:click|preventDefault={() => lengthValid(collab)}>search</button
   >
 </div>
-<a href="/privacy">Privacy Policy</a>
-<a href="/collabs/create">Create a Collab</a>
+<br />
+<a class="btn btn-primary" href="/collabs/create">Create a Collab</a>
+<br />
+<a href="/privacy">Privacy Policy</a> <a href="/rules">Rules for using Scratchinfo</a>
+
 <style>
   input {
     border: 2px black;

@@ -11,16 +11,21 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import GoalViewer from '$lib/GoalViewer.svelte';
+  import ReleaseViewer from '$lib/ReleaseViewer.svelte';
   export let id;
   let collabData: any;
-  let setProblem, problem, success,
+  let setProblem,
+    problem,
+    success,
     signedIn = false;
   let loading = true;
   let permissions = { manager: false };
   let isEditing = false;
-  let goals = [];
+  let goals,
+    releases = [];
   let report,
-    startEditor, saveChanges: Function = async () => {
+    startEditor,
+    saveChanges: Function = async () => {
       return 1;
     };
   onMount(async () => {
@@ -51,6 +56,11 @@
       } catch {
         goals = collabData.collab.goals;
       }
+      try {
+        releases = JSON.parse(collabData.collab.releases);
+      } catch {
+        releases = collabData.collab.releases;
+      }
 
       loading = false;
       problem = false;
@@ -60,7 +70,9 @@
     }
     startEditor = async () => {
       if (isEditing) {
-        const confirmation = confirm("Have you saved your changes? Do you want to leave the editor?");
+        const confirmation = confirm(
+          'Have you saved your changes? Do you want to leave the editor?'
+        );
         if (!confirmation) return;
       }
       isEditing = !isEditing;
@@ -75,37 +87,37 @@
       });
       permissions = await permCheck.json();
     }
-    saveChanges = async() => {
+    saveChanges = async () => {
       setProblem = false;
-      const setData = await fetch("/collabs/api/set", {
-        method: "PUT",
+      const setData = await fetch('/collabs/api/set', {
+        method: 'PUT',
         body: JSON.stringify({
           goals: goals,
+          releases: releases,
           token: window.localStorage.getItem('authToken'),
           studio: id
         })
-      })
+      });
       if (!setData.ok) {
         setProblem = true;
       } else {
         setProblem = false;
         success = true;
       }
-    }
+    };
   });
 </script>
+
 {#if success}
-<div class="alert alert-success" role="alert">
-  Success!
-</div>
+  <div class="alert alert-success" role="alert">Success!</div>
 {:else if setProblem && !loading}
-<div class="alert alert-danger" role="alert">
-  An error has occurred.
-</div>
+  <div class="alert alert-danger" role="alert">An error has occurred.</div>
 {/if}
 {#if isEditing}
   <b>Editing mode on.</b>
-  <button class="btn btn-primary" on:click={saveChanges()}><i class="bi bi-save-fill" /> Save changes</button>{/if}
+  <button class="btn btn-primary" on:click={saveChanges()}
+    ><i class="bi bi-save-fill" /> Save changes</button
+  >{/if}
 <h1>Collab</h1>
 {#if signedIn && permissions.manager}
   <button on:click={startEditor()} class="btn btn-primary"
@@ -148,6 +160,9 @@
   <hr />
   <h3>Goals</h3>
   <GoalViewer bind:goals bind:isEditing />
+  <hr />
+  <h3>Releases</h3>
+  <ReleaseViewer bind:releases bind:isEditing />
 {/if}
 
 <!-- Report Modal -->
@@ -165,8 +180,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" />
       </div>
       <div class="modal-body">
-        This will send a message to Scratchinfo. If this doesn't relate to the Collab goals, then
-        you should report on Scratch instead of here.
+        This will send a message to Scratchinfo. If this doesn't relate to the Collab goals or
+        releases, then you should report on Scratch instead of here. Please also send a message to <b
+          >god286</b
+        > on Scratch so I can handle the report faster, but do not mention the name or ID of the studio.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
