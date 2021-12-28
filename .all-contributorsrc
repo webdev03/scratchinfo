@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "webdev03",
+      "name": "webdev03",
+      "avatar_url": "https://avatars.githubusercontent.com/u/75148774?v=4",
+      "profile": "https://github.com/webdev03",
+      "contributions": [
+        "projectManagement",
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "scratchinfo",
+  "projectOwner": "webdev03",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
