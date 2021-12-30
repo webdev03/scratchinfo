@@ -12,6 +12,8 @@
   import { onMount } from 'svelte';
   import GoalViewer from '$lib/GoalViewer.svelte';
   import ReleaseViewer from '$lib/ReleaseViewer.svelte';
+  import Success from '$lib/components/Success.svelte';
+  import Failure from '$lib/components/Failure.svelte';
   export let id;
   let collabData: any;
   let setProblem,
@@ -109,9 +111,9 @@
 </script>
 
 {#if success}
-  <div class="alert alert-success" role="alert">Success!</div>
+  <Success />
 {:else if setProblem && !loading}
-  <div class="alert alert-danger" role="alert">An error has occurred.</div>
+  <Failure />
 {/if}
 {#if isEditing}
   <b>Editing mode on.</b>

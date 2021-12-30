@@ -1,5 +1,7 @@
 <script>
   import { onMount } from 'svelte';
+  import Success from '$lib/components/Success.svelte';
+  import Failure from '$lib/components/Failure.svelte';
   let studioID = 0;
   let signedIn,
     problem,
@@ -29,15 +31,13 @@
 </script>
 
 {#if problem}
-  <div class="alert alert-danger" role="alert">
-    An error has occurred. This studio might exist already, or you need to sign in again. You also
-    need to manage the studio.
-  </div>
+  <Failure
+    description="An error has occurred. This studio might exist already, or you need to sign in again. You also
+need to manage the studio."
+  />
 {/if}
 {#if success}
-  <div class="alert alert-success" role="alert">
-    Success! Now go to <a href={`/collabs/${studioID}`}>your new studio page!</a>
-  </div>
+  <Success description="Now go to <a href={`/collabs/${studioID}`}>your new studio page!" />
 {/if}
 {#if signedIn}
   <p>
