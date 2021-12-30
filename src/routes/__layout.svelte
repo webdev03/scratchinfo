@@ -7,21 +7,13 @@
 </script>
 
 <script>
+  import '$lib/tailwind.css';
   import Transition from '$lib/Transition.svelte';
+  import Navbar from '$lib/nav/Navbar.svelte';
   export let key;
 </script>
 
 <svelte:head>
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF"
-    crossorigin="anonymous"
-  />
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
-    crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link
     rel="stylesheet"
@@ -29,10 +21,10 @@
   />
   <title>Scratchinfo | Scratch statistics!</title>
 </svelte:head>
-
-<div class="page">
-  <div class="container pt-3">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+<div class="bg-gray-900 pb-2 min-h-[100vh] min-w-[100vw] text-white">
+  <div class="pt-3">
+    <!-- 
+    <nav class="flex md:top-0 md:z-50 rounded-md align-bottom">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">Scratchinfo</a>
         <button
@@ -66,21 +58,12 @@
           </ul>
         </div>
       </div>
-    </nav>
-    <div class="pt-3">
+    </nav> -->
+    <Navbar />
+    <div class="pt-3 p-2">
       <Transition {key}>
         <slot />
       </Transition>
     </div>
   </div>
 </div>
-
-<style>
-  .page {
-    background-color: #030d1b;
-    min-height: 100vh;
-    color: white;
-    min-width: 100vw;
-    padding-bottom: 20px;
-  }
-</style>
