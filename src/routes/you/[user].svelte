@@ -37,16 +37,13 @@
 <hr />
 {#if loading == true}
   <p>Loading...</p>
-  <div class="spinner-border text-primary" role="status">
-    <span class="visually-hidden">Loading...</span>
-  </div>
 {:else if ok == true && loading == false}
   {#if responseResult.data[0].busy}
     <span class="badge bg-warning">This user is currently busy.</span>
   {/if}
 
   {#if !studioExists}
-    <h2>Featured Studio</h2>
+    <h2 class="text-xl font-bold mb-2">Featured Studio</h2>
     <div class="card" style="width: 18rem;">
       <img
         src={responseResult.studio.image}

@@ -114,9 +114,6 @@
 
 {#if loading}
   <p>Loading...</p>
-  <div class="spinner-border text-primary" role="status">
-    <span class="visually-hidden">Loading...</span>
-  </div>
   <br />
 {:else if problem}
   <div class="alert alert-danger" role="alert">
