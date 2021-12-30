@@ -10,7 +10,7 @@
   }
 </script>
 
-<h1>Welcome to Scratchinfo!</h1>
+<h1 class="text-3xl font-bold mb-2">Welcome to Scratchinfo!</h1>
 <p>
   This is a small project. You can use the search bar down below to search for a Scratch user, and
   it will return some information.

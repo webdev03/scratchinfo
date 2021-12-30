@@ -62,7 +62,7 @@
   });
 </script>
 
-<h1>Scratchinfo Dashboard</h1>
+<h1 class="text-3xl font-bold mb-2">Scratchinfo Dashboard</h1>
 <p>Dashboard name inspired by ocular by @Jeffalo</p>
 <a href="/privacy">Privacy Policy</a> <a href="/rules">Rules for using Scratchinfo</a> <br /> <br />
 <a class="btn btn-primary" href="/logout" role="button">Log out</a>

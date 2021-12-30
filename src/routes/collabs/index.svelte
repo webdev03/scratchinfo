@@ -10,7 +10,7 @@
   }
 </script>
 
-<h1>Scratchinfo Collabs</h1>
+<h1 class="text-3xl font-bold mb-2">Scratchinfo Collabs</h1>
 <p>Search for a studio collab:</p>
 <div class="input-group">
   <input

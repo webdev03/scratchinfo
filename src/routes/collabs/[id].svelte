@@ -118,7 +118,7 @@
   <button class="btn btn-primary" on:click={saveChanges()}
     ><i class="bi bi-save-fill" /> Save changes</button
   >{/if}
-<h1>Collab</h1>
+<h1 class="text-3xl font-bold mb-2">Collab</h1>
 {#if signedIn && permissions.manager}
   <button on:click={startEditor()} class="btn btn-primary"
     ><i class="bi bi-pencil-square" /> Edit</button

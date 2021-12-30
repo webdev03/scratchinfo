@@ -46,7 +46,7 @@
   });
 </script>
 
-<h1>Most Forum Posts Leaderboard</h1>
+<h1 class="text-3xl font-bold mb-2">Most Forum Posts Leaderboard</h1>
 <div class="form-check">
   <input
     class="form-check-input"

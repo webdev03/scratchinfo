@@ -19,7 +19,7 @@
   });
 </script>
 
-<h1>Most Loved Leaderboard</h1>
+<h1 class="text-3xl font-bold mb-2">Most Loved Leaderboard</h1>
 {#if problem == true}
   <div class="alert alert-danger" role="alert">
     Oh no! We can't get this leaderboard. Try again later.

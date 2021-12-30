@@ -33,7 +33,7 @@
   });
 </script>
 
-<h1>{username} | You Page</h1>
+<h1 class="text-3xl font-bold mb-2">{username} | You Page</h1>
 <hr />
 {#if loading == true}
   <p>Loading...</p>
@@ -64,7 +64,7 @@
   {/if}
   <br />
   {#if responseResult.data[0].workingOnProject}
-    <h1>Working on Project</h1>
+    <h1 class="text-3xl font-bold mb-2">Working on Project</h1>
     <div class="card" style="width: 100%; min-height: 100px;">
       <div class="card-body">
         <h5 class="card-title">A new project...</h5>

@@ -20,7 +20,7 @@
   });
 </script>
 
-<h1>Log in with ScratchLight Auth</h1>
+<h1 class="text-3xl font-bold mb-2">Log in with ScratchLight Auth</h1>
 <p>
   <b
     >Please follow the <a href="https://scratch.mit.edu/community_guidelines"

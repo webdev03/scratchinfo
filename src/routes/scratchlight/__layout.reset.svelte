@@ -19,7 +19,7 @@
 <div class="fp">
   <div class="container">
     <div class="pt-3">
-      <h1>ScratchLight Authentication</h1>
+      <h1 class="text-3xl font-bold mb-2">ScratchLight Authentication</h1>
       <slot />
     </div>
   </div>

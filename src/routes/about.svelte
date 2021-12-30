@@ -1,4 +1,4 @@
-<h1>About Scratchinfo</h1>
+<h1 class="text-3xl font-bold mb-2">About Scratchinfo</h1>
 <p>Scratchinfo is a project by @god286 on Scratch.</p>
 <p>
   This website runs on <a href="https://svelte.dev">Svelte</a>
