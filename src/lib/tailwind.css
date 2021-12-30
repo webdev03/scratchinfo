@@ -6,4 +6,7 @@
   .btn-primary {
     @apply min-w-[20px] bg-blue-300 rounded text-black p-2 inline-block m-1;
   }
+  p {
+    @apply mb-2; /* hAhAhaHAHAhAH */
+  }
 }
