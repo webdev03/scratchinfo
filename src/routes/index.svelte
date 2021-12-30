@@ -19,22 +19,21 @@
   This website runs on <a href="https://svelte.dev">Svelte</a> and
   <a href="https://kit.svelte.dev">SvelteKit</a> which are both epic projects.
 </p>
-<div class="input-group">
-  <input
-    placeholder="Search a User"
-    type="text"
-    id="user"
-    class=""
-    on:keypress={onKeyPress}
-    bind:value={user}
-  />
-  <button class="btn btn-primary" on:click|preventDefault={() => lengthValid(user)}>search</button>
-</div>
+<input
+  placeholder="Search a User"
+  type="text"
+  class="p-2 text-black rounded pl-3"
+  id="user"
+  on:keypress={onKeyPress}
+  bind:value={user}
+/>
+<button class="btn btn-primary" on:click|preventDefault={() => lengthValid(user)}>search</button>
+<br />
 <a href="/privacy">Privacy Policy</a>
 <br />
 <a href="/rules">Rules</a>
 
-<style>
+<!-- <style>
   input {
     border: 2px black;
     border-top-left-radius: 5px;
@@ -42,4 +41,4 @@
     padding-left: 10px;
     width: 30em;
   }
-</style>
+</style> -->
