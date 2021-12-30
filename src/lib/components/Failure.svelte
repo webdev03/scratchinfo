@@ -6,6 +6,6 @@
 <div class="flex justify-center pt-2">
   <div class="bg-red-500 text-white w-96 rounded p-2">
     <h1 class="font-bold">{title}</h1>
-    <span>{description}</span>
+    <span>{@html description}</span>
   </div>
 </div>
