@@ -37,7 +37,7 @@
 <p><b>Note that you must have Scratcher status in order to use Scratchinfo.</b></p>
 <label for="usernameInput">Enter in your username here:</label>
 <br />
-<input id="usernameInput" name="usernameInput" type="text" bind:value={username} />
+<input id="usernameInput" class="text-gray-900" name="usernameInput" type="text" bind:value={username} />
 <br />
 <br />
 <button type="button" on:click={submitFunction()} class="btn-primary"
