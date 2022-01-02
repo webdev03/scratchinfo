@@ -1,16 +1,6 @@
-<script context="module">
-  export const load = async ({ page }) => ({
-    props: {
-      key: page.path
-    }
-  });
-</script>
-
 <script>
   import '$lib/tailwind.css';
-  import Transition from '$lib/Transition.svelte';
   import Navbar from '$lib/components/nav/Navbar.svelte';
-  export let key;
 </script>
 
 <svelte:head>
@@ -61,9 +51,7 @@
     </nav> -->
     <Navbar />
     <div class="pt-3 p-2">
-      <Transition {key}>
-        <slot />
-      </Transition>
+      <slot />
     </div>
   </div>
 </div>
