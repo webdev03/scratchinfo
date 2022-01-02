@@ -12,4 +12,4 @@
 <h1 class="text-3xl font-bold mb-2">Log out</h1>
 <hr />
 <p>Are you sure that you want to log out?</p>
-<button type="button" on:click={submitFunction()} class="btn btn-primary">Log out</button>
+<button type="button" on:click={submitFunction()} class="btn-primary">Log out</button>

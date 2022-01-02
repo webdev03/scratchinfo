@@ -33,7 +33,7 @@
             {goal.progress}%
           </div>
         </div>
-        <button class="btn btn-link" on:click={removeGoal(i)}
+        <button class="btn-link" on:click={removeGoal(i)}
           ><i class="bi bi-x-circle-fill" /></button
         >
       </div>
@@ -41,7 +41,7 @@
   {:else}
     <p>No goals.</p>
   {/each}
-  <button class="btn btn-link" on:click={createNewGoal()}><i class="bi bi-plus-circle" /></button>
+  <button class="btn-link" on:click={createNewGoal()}><i class="bi bi-plus-circle" /></button>
 {:else}
   {#each goals as goal, i}
     <div class="card">

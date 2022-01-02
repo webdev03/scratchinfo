@@ -31,7 +31,7 @@
         <input type="text" class="form-control" bind:value={release.title} /> <br />
         <textarea type="text" class="form-control" bind:value={release.description} /> <br />
         <div>https://scratch.mit.edu/projects/<input type="number" bind:value={release.id} /></div>
-        <button class="btn btn-link" on:click={removeRelease(i)}
+        <button class="btn-link" on:click={removeRelease(i)}
           ><i class="bi bi-x-circle-fill" /></button
         >
       </div>
@@ -39,7 +39,7 @@
   {:else}
     <p>No releases.</p>
   {/each}
-  <button class="btn btn-link" on:click={createNewRelease()}><i class="bi bi-plus-circle" /></button
+  <button class="btn-link" on:click={createNewRelease()}><i class="bi bi-plus-circle" /></button
   >
 {:else}
   {#each releases as release}

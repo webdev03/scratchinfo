@@ -117,12 +117,12 @@
 {/if}
 {#if isEditing}
   <b>Editing mode on.</b>
-  <button class="btn btn-primary" on:click={saveChanges()}
+  <button class="btn-primary" on:click={saveChanges()}
     ><i class="bi bi-save-fill" /> Save changes</button
   >{/if}
 <h1 class="text-3xl font-bold mb-2">Collab</h1>
 {#if signedIn && permissions.manager}
-  <button on:click={startEditor()} class="btn btn-primary"
+  <button on:click={startEditor()} class="btn-primary"
     ><i class="bi bi-pencil-square" /> Edit</button
   >{/if}
 <hr />
@@ -138,7 +138,7 @@
   {#if signedIn}
     <button
       type="button"
-      class="btn btn-danger"
+      class="btn-danger"
       data-bs-toggle="modal"
       data-bs-target="#reportModal"><i class="bi bi-flag-fill" /> Report</button
     >
@@ -155,7 +155,7 @@
   />
   <br /> <br />
   <a
-    class="btn btn-primary"
+    class="btn-primary"
     href={`//scratch.mit.edu/studios/${collabData.studioData.id}`}
     role="button">Go to studio</a
   >
@@ -188,8 +188,8 @@
         > on Scratch so I can handle the report faster, but do not mention the name or ID of the studio.
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" on:click={report()}
+        <button type="button" class="btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn-danger" data-bs-dismiss="modal" on:click={report()}
           >Yes, I want to report!</button
         >
       </div>

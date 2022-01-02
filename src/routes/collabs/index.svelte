@@ -21,11 +21,11 @@
     on:keypress={onKeyPress}
     bind:value={collab}
   />
-  <button class="btn btn-primary" on:click|preventDefault={() => lengthValid(collab)}>search</button
+  <button class="btn-primary" on:click|preventDefault={() => lengthValid(collab)}>search</button
   >
 </div>
 <br />
-<a class="btn btn-primary" href="/collabs/create">Create a Collab</a>
+<a class="btn-primary" href="/collabs/create">Create a Collab</a>
 <br />
 <a href="/privacy">Privacy Policy</a> <a href="/rules">Rules for using Scratchinfo</a>
 

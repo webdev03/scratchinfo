@@ -51,7 +51,7 @@ need to manage the studio."
   <label for="studio_id">Studio ID:</label>
   <input type="number" class="form-control" bind:value={studioID} />
   <br />
-  <button type="button" on:click={saveChanges} class="btn btn-primary">Create collab</button>
+  <button type="button" on:click={saveChanges} class="btn-primary">Create collab</button>
 {:else}
   <p>Please <a href="/login">sign in</a> to create a collab.</p>
 {/if}

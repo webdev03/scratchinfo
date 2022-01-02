@@ -27,7 +27,7 @@
   on:keypress={onKeyPress}
   bind:value={user}
 />
-<button class="btn btn-primary" on:click|preventDefault={() => lengthValid(user)}>search</button>
+<button class="btn-primary" on:click|preventDefault={() => lengthValid(user)}>search</button>
 <br />
 <a href="/privacy">Privacy Policy</a>
 <br />

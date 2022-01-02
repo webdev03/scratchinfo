@@ -65,7 +65,7 @@
 <h1 class="text-3xl font-bold mb-2">Scratchinfo Dashboard</h1>
 <p>Dashboard name inspired by ocular by @Jeffalo</p>
 <a href="/privacy">Privacy Policy</a> <a href="/rules">Rules for using Scratchinfo</a> <br /> <br />
-<a class="btn btn-primary" href="/logout" role="button">Log out</a>
+<a class="btn-primary" href="/logout" role="button">Log out</a>
 <hr />
 <h2 class="text-xl font-bold mb-2">Your You Page</h2>
 {#if loading}
@@ -85,7 +85,7 @@
     <input type="number" class="text-black rounded-sm p-0.5" bind:value={percentDoneWithProject} />
   {/if}
   <br />
-  <button type="button" on:click={saveChanges} class="btn btn-primary">Save changes</button>
+  <button type="button" on:click={saveChanges} class="btn-primary">Save changes</button>
 {/if}
 
 <style>

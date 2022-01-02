@@ -55,7 +55,7 @@
         <h5 class="card-title">{responseResult.studio.title}</h5>
         <hr class="border-blue-400 m-2" />
         <p class="card-text">{responseResult.studio.description}</p>
-        <a href={responseResult.studio_url} class="btn btn-primary">Go to studio</a>
+        <a href={responseResult.studio_url} class="btn-primary">Go to studio</a>
       </div>
     </div>
   {/if}

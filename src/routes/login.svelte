@@ -40,7 +40,7 @@
 <input id="usernameInput" name="usernameInput" type="text" bind:value={username} />
 <br />
 <br />
-<button type="button" on:click={submitFunction()} class="btn btn-primary"
+<button type="button" on:click={submitFunction()} class="btn-primary"
   >Log in with ScratchLight</button
 >
 <br /> <br />
