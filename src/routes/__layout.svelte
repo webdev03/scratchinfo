@@ -1,16 +1,3 @@
-<script context="module">
-  export const load = async ({ page }) => ({
-    props: {
-      key: page.path
-    }
-  });
-</script>
-
-<script>
-  import Transition from '$lib/Transition.svelte';
-  export let key;
-</script>
-
 <svelte:head>
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
@@ -68,9 +55,7 @@
       </div>
     </nav>
     <div class="pt-3">
-      <Transition {key}>
-        <slot />
-      </Transition>
+      <slot />
     </div>
   </div>
 </div>
