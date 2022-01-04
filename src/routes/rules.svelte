@@ -1,7 +1,7 @@
 <h1>Scratchinfo Rules</h1>
 
 <!-- Change this date when you modify the rules -->
-<i>Last modified: 25 November 2021</i>
+<i>Last modified: 4 January 2021</i>
 
 <p>When you use Scratchinfo you must follow these rules.</p>
 <p>
@@ -14,8 +14,7 @@
   > when using Scratchinfo.
 </p>
 <p>
-  Do not post any content that is inappropriate or is not good for children. Only things that are
-  allowed on the scratch.mit.edu website are allowed on Scratchinfo.
+  You must ensure that all content posted on the Scratchinfo site follows the Scratch Community Guidelines.
 </p>
 <p>
   We can change these rules at any time. If you would like to be notified when there is a change to
