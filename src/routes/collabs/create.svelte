@@ -47,7 +47,7 @@
       > when using Scratchinfo.</b
     >
   </p>
-  <a href="/rules">Rules for using Scratchinfo</a> <br>
+  <a href="/rules">Rules for using Scratchinfo</a> <br />
   <label for="studio_id">Studio ID:</label>
   <input type="number" class="form-control" bind:value={studioID} />
   <br />

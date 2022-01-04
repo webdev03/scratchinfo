@@ -14,7 +14,8 @@
   > when using Scratchinfo.
 </p>
 <p>
-  You must ensure that all content posted on the Scratchinfo site follows the Scratch Community Guidelines.
+  You must ensure that all content posted on the Scratchinfo site follows the Scratch Community
+  Guidelines.
 </p>
 <p>
   We can change these rules at any time. If you would like to be notified when there is a change to
