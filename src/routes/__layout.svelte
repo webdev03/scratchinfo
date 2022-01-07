@@ -50,7 +50,7 @@
       </div>
     </nav> -->
     <Navbar />
-    <div class="pt-3 p-2">
+    <div class="pt-3 p-4">
       <slot />
     </div>
   </div>
