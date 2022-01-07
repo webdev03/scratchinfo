@@ -2,7 +2,7 @@
   // Hi there! Read the README.md of this repository to learn more about
   // the ScratchLight Authentication service.
   import { onMount } from 'svelte';
-  import Failure from "$lib/components/Failure.svelte";
+  import Failure from '$lib/components/Failure.svelte';
   import multi from '$lib/bta';
   let code = 'Loading...';
   let beWarned = false;
@@ -47,18 +47,22 @@
 </script>
 
 {#if authIncorrect}
-  <Failure title="Oops!" centred={false} description="The website administrator hasn't set up ScratchLight correctly, so ScratchLight won't work. If
-  you're the website owner, please read the README of the scratchinfo repository on GitHub.">
-    The website administrator hasn't set up ScratchLight correctly, so ScratchLight won't work. If
-    you're the website owner, please read the README of the scratchinfo repository on GitHub.
-  </Failure>
+  <Failure
+    title="Oops!"
+    centred={false}
+    description="The website administrator hasn't set up ScratchLight correctly, so ScratchLight won't work. If
+  you're the website owner, please read the README of the scratchinfo repository on GitHub."
+  />
 {/if}
 {#if problem}
-  <Failure title="Oh no!" description="An error has occurred." centred={false}></Failure>
+  <Failure title="Oh no!" description="An error has occurred." centred={false} />
 {/if}
 {#if beWarned}
-  <Failure centred={false} title="Warning!" description="Clicking on the I'm done button may be unsafe and lead to impersonation! Proceed with caution!">
-  </Failure>
+  <Failure
+    centred={false}
+    title="Warning!"
+    description="Clicking on the I'm done button may be unsafe and lead to impersonation! Proceed with caution!"
+  />
 {/if}
 <h3>
   Please comment this code on the ScratchLight Authentication project, then press on the "I'm Done"
