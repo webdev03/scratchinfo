@@ -12,29 +12,19 @@
 
 <h1 class="text-3xl font-bold mb-2">Scratchinfo Collabs</h1>
 <p>Search for a studio collab:</p>
-<div class="input-group">
+<div class="flex">
   <input
     placeholder="Search a collab"
     type="text"
     id="collab"
-    class=""
+    class="h-12 rounded-l pl-2 text-gray-900"
     on:keypress={onKeyPress}
     bind:value={collab}
   />
-  <button class="btn-primary" on:click|preventDefault={() => lengthValid(collab)}>search</button
+  <button class="btn-primary m-0 rounded-l-none h-12" on:click|preventDefault={() => lengthValid(collab)}>search</button
   >
 </div>
 <br />
 <a class="btn-primary" href="/collabs/create">Create a Collab</a>
 <br />
 <a href="/privacy">Privacy Policy</a> <a href="/rules">Rules for using Scratchinfo</a>
-
-<style>
-  input {
-    border: 2px black;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    padding-left: 10px;
-    width: 30em;
-  }
-</style>
