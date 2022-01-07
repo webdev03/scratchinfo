@@ -1,11 +1,11 @@
-<script>
+<script lang="ts">
   let collab = '';
   function lengthValid(string) {
     if (string.length > 0 && !isNaN(string)) {
       window.location.href = '/collabs/' + string;
     }
   }
-  function onKeyPress(e) {
+  function onKeyPress(e:KeyboardEvent) {
     if (e.charCode === 13) lengthValid(collab);
   }
 </script>
