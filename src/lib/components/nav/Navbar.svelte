@@ -1,4 +1,4 @@
-<nav class="m-2 flex bg-gray-200 rounded-md align-bottom flex-1 flex-wrap">
+<nav class="m-2 flex bg-sky-200 rounded-md align-bottom flex-1 flex-wrap">
   <div
     class="text-gray-800 mx-auto relative justify-between flex items-center w-full rounded min-h-50 px-4 py-2"
   >
