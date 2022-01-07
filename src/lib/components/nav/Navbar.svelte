@@ -6,10 +6,10 @@
     <h1 class="text-2xl font-semibold"><a href="/">Scratchinfo</a></h1>
     <!-- Link items -->
     <ul class="flex space-x-2">
-      <li><a class="float-right flex justify-center hover:font-bold hover:underline transition-all" href="/dashboard">Dashboard</a></li>
-      <li><a class="float-right flex justify-center hover:font-bold hover:underline transition-all" href="/about">About</a></li>
-      <li><a class="float-right flex justify-center hover:font-bold hover:underline transition-all" href="/leaderboards">Leaderboards</a></li>
-      <li><a class="float-right flex justify-center hover:font-bold hover:underline transition-all" href="/collabs">Collabs</a></li>
+      <li><a class="float-right flex justify-center hover:font-semibold hover:underline transition-all" href="/dashboard">Dashboard</a></li>
+      <li><a class="float-right flex justify-center hover:font-semibold hover:underline transition-all" href="/about">About</a></li>
+      <li><a class="float-right flex justify-center hover:font-semibold hover:underline transition-all" href="/leaderboards">Leaderboards</a></li>
+      <li><a class="float-right flex justify-center hover:font-semibold hover:underline transition-all" href="/collabs">Collabs</a></li>
     </ul>
   </div>
 </nav>
