@@ -2,6 +2,7 @@
   // Hi there! Read the README.md of this repository to learn more about
   // the ScratchLight Authentication service.
   import { onMount } from 'svelte';
+  import Failure from "$lib/components/Failure.svelte";
   import multi from '$lib/bta';
   let code = 'Loading...';
   let beWarned = false;
@@ -46,26 +47,26 @@
 </script>
 
 {#if authIncorrect}
-  <div class="alert alert-danger" role="alert">
+  <Failure title="Oops!" centred={false} description="The website administrator hasn't set up ScratchLight correctly, so ScratchLight won't work. If
+  you're the website owner, please read the README of the scratchinfo repository on GitHub.">
     The website administrator hasn't set up ScratchLight correctly, so ScratchLight won't work. If
     you're the website owner, please read the README of the scratchinfo repository on GitHub.
-  </div>
+  </Failure>
 {/if}
 {#if problem}
-  <div class="alert alert-danger" role="alert">An error has occurred.</div>
+  <Failure title="Oh no!" description="An error has occurred." centred={false}></Failure>
 {/if}
 {#if beWarned}
-  <div class="alert alert-danger" role="alert">
-    Clicking on the I'm done button may be unsafe and lead to impersonation! Proceed with caution!
-  </div>
+  <Failure centred={false} title="Warning!" description="Clicking on the I'm done button may be unsafe and lead to impersonation! Proceed with caution!">
+  </Failure>
 {/if}
 <h3>
   Please comment this code on the ScratchLight Authentication project, then press on the "I'm Done"
   button.
 </h3>
 <p><b>Only include the code. No spaces or any characters other than the code will work.</b></p>
-<div id="code" class="card">
-  <div class="card-body">{code}</div>
+<div id="code" class="w-full items-center flex">
+  {code}
 </div>
 <button class="btn-primary" on:click={copyFunction()}>Copy code</button>
 <br /> <br />
@@ -73,13 +74,3 @@
   >Go to Project</a
 >
 <a class="btn-primary" href={redirectLink}>I'm Done</a>
-
-<style>
-  .card {
-    color: black;
-  }
-  .card {
-    width: 100%;
-    align-items: center;
-  }
-</style>
