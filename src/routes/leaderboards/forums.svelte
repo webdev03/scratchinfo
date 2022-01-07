@@ -84,7 +84,7 @@
 {#if loading == false && total}
   {#each postList['total'] as user, position}
     <a href="/users/{user['username']}"
-      ><div class="user rounded">#{position + 1}: {user['username']}</div></a
+      ><div class="bg-sky-100 min-h-[20px] mb-2 p-2 w-full rounded text-gray-900">#{position + 1}: {user['username']}</div></a
     >
   {/each}
 {/if}
@@ -93,20 +93,12 @@
 {#if loading == false && !total && typeof postList[forum] != 'undefined'}
   {#each postList[forum] as user, position}
     <a href="/users/{user['username']}"
-      ><div class="user rounded">#{position + 1}: {user['username']}</div></a
+      ><div class="bg-sky-100 min-h-[20px] mb-2 p-2 w-full rounded text-gray-900">#{position + 1}: {user['username']}</div></a
     >
   {/each}
 {/if}
 
 <style>
-  .user {
-    width: 100%;
-    background-color: lightblue;
-    min-height: 20px;
-    margin-bottom: 20px;
-    padding: 10px;
-    color: black;
-  }
   a {
     text-decoration: none;
   }
