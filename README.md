@@ -2,9 +2,7 @@
 
 <!-- prettier-ignore-start -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <!-- prettier-ignore-end -->
 
@@ -38,6 +36,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/webdev03"><img src="https://avatars.githubusercontent.com/u/75148774?v=4?s=100" width="100px;" alt=""/><br /><sub><b>webdev03</b></sub></a><br /><a href="#projectManagement-webdev03" title="Project Management">📆</a> <a href="https://github.com/webdev03/scratchinfo/commits?author=webdev03" title="Code">💻</a></td>
     <td align="center"><a href="https://scratch.mit.edu/users/kccuber"><img src="https://avatars.githubusercontent.com/u/92891642?v=4?s=100" width="100px;" alt=""/><br /><sub><b>kccuber</b></sub></a><br /><a href="https://github.com/webdev03/scratchinfo/issues?q=author%3Akccuber-scratch" title="Bug reports">🐛</a> <a href="#design-kccuber-scratch" title="Design">🎨</a> <a href="https://github.com/webdev03/scratchinfo/commits?author=kccuber-scratch" title="Code">💻</a></td>
+    <td align="center"><a href="https://scratch.mit.edu/users/Chiroyce"><img src="https://avatars.githubusercontent.com/u/97374054?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Chiroyce</b></sub></a><br /><a href="https://github.com/webdev03/scratchinfo/issues?q=author%3AChiroyce1" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
