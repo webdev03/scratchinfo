@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import Failure from "$lib/components/Failure.svelte";
   let loggedOut = false;
   let loading = true;
   let problem = false;
@@ -21,7 +22,7 @@
         method: 'POST',
         body: JSON.stringify({
           token: window.localStorage.getItem('authToken').toString(),
-          studio: Number(studioID),
+          studio: Number(studioID || "0"),
           busy: !!isBusy,
           isWorkingOnProject: workingOnProject,
           percentProjectDone: percentDoneWithProject
@@ -68,6 +69,9 @@
 <a class="btn-primary mt-0 mb-1" href="/logout" role="button">Log out</a>
 <hr />
 <h2 class="text-xl font-bold mb-2">Your You Page</h2>
+{#if problem}
+<Failure title="Oh no!" description="No!! An error occurred!" />
+{/if}
 {#if loading}
   <p>Loading...</p>
 {:else}

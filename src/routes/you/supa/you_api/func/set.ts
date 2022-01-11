@@ -30,7 +30,7 @@ export async function post(request) {
     if (status == 'New Scratcher') {
       throw new Error('New Scratchers are not allowed in scratchinfo.');
     }
-    if (isNaN(parsedBody.studio) || Number(parsedBody.studio) < 1) {
+    if (isNaN(parsedBody.studio) || Number(parsedBody.studio) < 0) {
       return {
         status: 500,
         body: {
