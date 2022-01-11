@@ -21,7 +21,7 @@
         method: 'POST',
         body: JSON.stringify({
           token: window.localStorage.getItem('authToken').toString(),
-          studio: Number(studioID),
+          studio: Number(studioID || "0"),
           busy: !!isBusy,
           isWorkingOnProject: workingOnProject,
           percentProjectDone: percentDoneWithProject
@@ -68,6 +68,11 @@
 <a class="btn btn-primary" href="/logout" role="button">Log out</a>
 <hr />
 <h2>Your You Page</h2>
+{#if problem}
+<div class="alert alert-danger" role="alert">
+  No!! An error occurred!
+</div>
+{/if}
 {#if loading}
   <p>Loading...</p>
   <div class="spinner-border text-primary" role="status">
