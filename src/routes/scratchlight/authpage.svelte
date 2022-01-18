@@ -69,7 +69,7 @@
   button.
 </h3>
 <p><b>Only include the code. No spaces or any characters other than the code will work.</b></p>
-<div id="code" class="w-full items-center flex p-2 bg-gray-50 text-gray-900 rounded mt-2 mb-2">
+<div id="code" class="w-full items-center p-2 bg-gray-50 text-gray-900 rounded mt-2 mb-2">
   {code}
 </div>
 <button class="btn-primary" on:click={copyFunction()}>Copy code</button>
