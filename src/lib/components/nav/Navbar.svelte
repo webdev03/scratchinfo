@@ -39,7 +39,7 @@
     </ul>
     <button
       on:click={toggleBar}
-      class="visible md:hidden p-1 w-8 rounded flex text-center justify-center items-center bg-sky-300 text-lg"
+      class="visible md:hidden p-2 w-8 rounded flex text-center justify-center items-center bg-sky-300 text-lg"
     >
       <!-- https://css-tricks.com/snippets/svg/svg-hamburger-menu/ -->
       <svg viewBox="0 0 100 70" width="40" height="15">
