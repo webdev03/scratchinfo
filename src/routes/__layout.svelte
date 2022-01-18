@@ -12,7 +12,7 @@
   <title>Scratchinfo | Scratch statistics!</title>
 </svelte:head>
 <div class="bg-gray-900 pb-2 min-h-[100vh] min-w-[100vw] text-white">
-  <div class="pt-3">
+  <div class="pt-2">
     <Navbar />
     <div class="pt-3 p-4">
       <slot />
