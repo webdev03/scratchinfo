@@ -14,25 +14,25 @@
     <ul id="link-items-desktop" class="flex-wrap hidden md:flex ml-2 flex-col sm:flex-row">
       <li>
         <a
-          class="float-right flex justify-center hover:font-semibold hover:underline sm:m-2 m-0"
+          class="float-right flex justify-center hover:font-semibold hover:underline sm:m-2 transition-all m-0"
           href="/dashboard">Dashboard</a
         >
       </li>
       <li>
         <a
-          class="float-right flex justify-center hover:font-semibold hover:underline sm:m-2 m-0"
+          class="float-right flex justify-center hover:font-semibold hover:underline sm:m-2 transition-all m-0"
           href="/about">About</a
         >
       </li>
       <li>
         <a
-          class="float-right flex justify-center hover:font-semibold hover:underline sm:m-2 m-0"
+          class="float-right flex justify-center hover:font-semibold hover:underline sm:m-2 transition-all m-0"
           href="/leaderboards">Leaderboards</a
         >
       </li>
       <li>
         <a
-          class="float-right flex justify-center hover:font-semibold hover:underline sm:m-2 m-0"
+          class="float-right flex justify-center hover:font-semibold hover:underline sm:m-2 transition-all m-0"
           href="/collabs">Collabs</a
         >
       </li>
