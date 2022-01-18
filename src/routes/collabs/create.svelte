@@ -47,7 +47,7 @@ need to manage the studio."
       > when using Scratchinfo.</b
     >
   </p>
-  <a href="/rules">Rules for using Scratchinfo</a>
+  <a href="/rules" class="hover:underline hover:font-semibold transition-all">Rules for using Scratchinfo</a>
   <label for="studio_id">Studio ID:</label>
   <input type="number" class="form-control" bind:value={studioID} />
   <br />

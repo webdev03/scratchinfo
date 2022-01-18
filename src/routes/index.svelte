@@ -29,9 +29,9 @@
 />
 <button class="btn-primary" on:click|preventDefault={() => lengthValid(user)}>search</button>
 <br />
-<a href="/privacy">Privacy Policy</a>
+<a href="/privacy" class="hover:underline hover:font-semibold transition-all">Privacy Policy</a>
 <br />
-<a href="/rules">Rules</a>
+<a href="/rules" class="hover:underline hover:font-semibold transition-all">Rules</a>
 
 <!-- <style>
   input {

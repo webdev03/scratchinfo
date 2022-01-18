@@ -27,4 +27,4 @@
 <br />
 <a class="btn-primary" href="/collabs/create">Create a Collab</a>
 <br />
-<a href="/privacy">Privacy Policy</a> <a href="/rules">Rules for using Scratchinfo</a>
+<a href="/privacy" class="hover:underline hover:font-semibold transition-all">Privacy Policy</a> <a href="/rules" class="hover:underline hover:font-semibold transition-all">Rules for using Scratchinfo</a>
