@@ -34,6 +34,17 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "JoshAtticus",
+      "name": "Josh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/72828296?v=4",
+      "profile": "http://joshatticus.tk",
+      "contributions": [
+        "design",
+        "ideas",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
