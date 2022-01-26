@@ -14,6 +14,7 @@
   import ReleaseViewer from '$lib/ReleaseViewer.svelte';
   import Success from '$lib/components/Success.svelte';
   import Failure from '$lib/components/Failure.svelte';
+  import Modal from "$lib/components/Modal.svelte";
   export let id;
   let collabData: any;
   let setProblem,
@@ -168,6 +169,10 @@
 {/if}
 
 <!-- Report Modal -->
+<Modal title="You sure you want to report?" okHook={report} description="This will send a message to Scratchinfo. If this doesn't relate to the Collab goals or
+releases, then you should report on Scratch instead of here. Please also send a message to <b
+  >god286</b
+> on Scratch so I can handle the report faster, but do not mention the name or ID of the studio." />
 <div
   class="modal fade"
   id="reportModal"
