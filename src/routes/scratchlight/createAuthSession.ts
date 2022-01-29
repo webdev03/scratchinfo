@@ -6,14 +6,9 @@ import crypto from 'crypto';
 import dotenv from 'dotenv';
 dotenv.config();
 
-export async function post(request) {
+export async function post({ request }) {
   try {
-    let parsedBody: any;
-    try {
-      parsedBody = JSON.parse(request.body);
-    } catch {
-      parsedBody = request.body;
-    }
+    const parsedBody = await request.json();
     if (typeof parsedBody.username == 'undefined') {
       return {
         status: 500,

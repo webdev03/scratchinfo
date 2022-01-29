@@ -7,8 +7,8 @@ import dotenv from 'dotenv';
 import { getStatus } from '$lib/getStatus';
 dotenv.config();
 
-export async function post(request) {
-  const parsedBody = JSON.parse(request.body);
+export async function post({ request }) {
+  const parsedBody = await request.json();
   try {
     let jwtv = undefined;
     try {
