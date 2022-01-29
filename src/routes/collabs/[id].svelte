@@ -125,7 +125,7 @@
   <button on:click={startEditor()} class="btn-primary"
     ><i class="bi bi-pencil-square" /> Edit</button
   >{/if}
-<hr />
+<hr class="mt-1 mb-1" />
 {#if loading}
   <p>Loading...</p>
 {:else if problem}
@@ -133,12 +133,12 @@
   <p>If you want to create a collab, go <a href="/collabs/create">here</a>.</p>
   <p>An error may have occurred on the server, or you typed the studio ID wrong.</p>
 {:else}
-  <h3>{collabData.studioData.title}</h3>
+  <h3 class="text-2xl font-bold">{collabData.studioData.title}</h3>
   <p>Scratchinfo Collab created by {collabData.creator}</p>
   {#if signedIn}
     <button
       type="button"
-      class="btn-danger" on:click={report}><i class="bi bi-flag-fill" /> Report</button
+      class="btn-primary bg-red-400" on:click={report}><i class="bi bi-flag-fill" /> Report</button
     >
   {:else}
     <p>Sorry, signed out users cannot report.</p>
@@ -157,10 +157,10 @@
     href={`//scratch.mit.edu/studios/${collabData.studioData.id}`}
     role="button">Go to studio</a
   >
-  <hr />
+  <hr class="mt-1 mb-1" />
   <h3>Goals</h3>
   <GoalViewer bind:goals bind:isEditing />
-  <hr />
+  <hr class="mt-1 mb-1" />
   <h3>Releases</h3>
   <ReleaseViewer bind:releases bind:isEditing />
 {/if}
