@@ -65,7 +65,7 @@
 
 <h1 class="text-3xl font-bold mb-2">Scratchinfo Dashboard</h1>
 <p>Dashboard name inspired by ocular by @Jeffalo</p>
-<a href="/privacy" class="hover:underline">Privacy Policy</a> <a href="/rules" class="hover:underline">Rules for using Scratchinfo</a> <br /> <br />
+<a href="/privacy" class="hover:underline">Privacy Policy</a> <br /> <a href="/rules" class="hover:underline">Rules for using Scratchinfo</a> <br /> <br />
 <a class="btn-primary mt-0 mb-1" href="/logout" role="button">Log out</a>
 <hr />
 <h2 class="text-xl font-bold mb-2">Your You Page</h2>
