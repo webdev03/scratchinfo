@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import Progress from '$lib/components/Progress.svelte';
   export let goals: Array<any> = [];
   export let isEditing: boolean = false;
   let createNewGoal,
@@ -24,16 +25,12 @@
 
 {#if isEditing}
   {#each goals as goal, i}
-    <div class="card">
+    <div class="p-2 bg-gray-50 text-gray-900 m-2 rounded">
       <div class="card-body">
         #{i + 1} <input type="text" class="form-control" bind:value={goal.title} /> <br />
         <input type="number" min="0" max="100" bind:value={goal.progress} />%/100%
-        <div class="progress">
-          <div class="progress-bar" role="progressbar" style={`width: ${goal.progress}%;`}>
-            {goal.progress}%
-          </div>
-        </div>
-        <button class="btn btn-link" on:click={removeGoal(i)}
+        <Progress percentage={goal.progress} />
+        <button class="btn-link" on:click={removeGoal(i)}
           ><i class="bi bi-x-circle-fill" /></button
         >
       </div>
@@ -41,17 +38,13 @@
   {:else}
     <p>No goals.</p>
   {/each}
-  <button class="btn btn-link" on:click={createNewGoal()}><i class="bi bi-plus-circle" /></button>
+  <button class="btn-link" on:click={createNewGoal()}><i class="bi bi-plus-circle" /></button>
 {:else}
   {#each goals as goal, i}
-    <div class="card">
+    <div class="p-2 bg-gray-50 text-gray-900 m-2 rounded">
       <div class="card-body">
         #{i + 1}: {goal.title}
-        <div class="progress">
-          <div class="progress-bar" role="progressbar" style={`width: ${goal.progress}%;`}>
-            {goal.progress}%
-          </div>
-        </div>
+        <Progress percentage={goal.progress} />
       </div>
     </div>
   {:else}
@@ -59,9 +52,3 @@
   {/each}
 {/if}
 
-<style>
-  .card {
-    color: black;
-    margin-bottom: 5px;
-  }
-</style>

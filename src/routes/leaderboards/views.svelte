@@ -19,7 +19,7 @@
   });
 </script>
 
-<h1>Most Viewed Leaderboard</h1>
+<h1 class="text-3xl font-bold mb-2">Most Viewed Leaderboard</h1>
 {#if problem == true}
   <div class="alert alert-danger" role="alert">
     Oh no! We can't get this leaderboard. Try again later.
@@ -28,9 +28,9 @@
 {#if loading == false}
   {#each mostViewed as user, position}
     <a href="/users/{user['username']}"
-      ><div class="user rounded">
+      ><div class="bg-sky-100 min-h-[20px] mb-2 p-2 w-full rounded text-gray-900">
         #{position + 1}: {user['username']}
-        <div style="float: right !important; display: inline;">
+        <div class="float-right inline">
           {user['statistics'].views} views received
         </div>
       </div></a
@@ -41,14 +41,6 @@
 {/if}
 
 <style>
-  .user {
-    width: 100%;
-    background-color: lightblue;
-    min-height: 20px;
-    margin-bottom: 20px;
-    padding: 10px;
-    color: black;
-  }
   a {
     text-decoration: none;
   }

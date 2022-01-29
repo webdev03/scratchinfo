@@ -26,5 +26,5 @@
   });
 </script>
 
-<h1>Verifying with ScratchLight</h1>
+<h1 class="text-3xl font-bold mb-2">Verifying with ScratchLight</h1>
 {status}

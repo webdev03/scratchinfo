@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import Failure from "$lib/components/Failure.svelte";
   let loggedOut = false;
   let loading = true;
   let problem = false;
@@ -62,38 +63,33 @@
   });
 </script>
 
-<h1>Scratchinfo Dashboard</h1>
+<h1 class="text-3xl font-bold mb-2">Scratchinfo Dashboard</h1>
 <p>Dashboard name inspired by ocular by @Jeffalo</p>
-<a href="/privacy">Privacy Policy</a> <a href="/rules">Rules for using Scratchinfo</a> <br /> <br />
-<a class="btn btn-primary" href="/logout" role="button">Log out</a>
+<a href="/privacy" class="hover:underline">Privacy Policy</a> <br /> <a href="/rules" class="hover:underline">Rules for using Scratchinfo</a> <br /> <br />
+<a class="btn-primary mt-0 mb-1" href="/logout" role="button">Log out</a>
 <hr />
-<h2>Your You Page</h2>
+<h2 class="text-xl font-bold mb-2">Your You Page</h2>
 {#if problem}
-<div class="alert alert-danger" role="alert">
-  No!! An error occurred!
-</div>
+<Failure title="Oh no!" description="No!! An error occurred!" />
 {/if}
 {#if loading}
   <p>Loading...</p>
-  <div class="spinner-border text-primary" role="status">
-    <span class="visually-hidden">Loading...</span>
-  </div>
 {:else}
-  <label for="studio_id" class="form-check-label">Busy?</label>
-  <input type="checkbox" class="form-check-input" bind:checked={isBusy} />
+  <label for="studio_id">Busy?</label>
+  <input type="checkbox" bind:checked={isBusy} />
   <br />
   <label for="studio_id">Studio ID:</label>
-  <input type="number" class="form-control" bind:value={studioID} />
+  <input type="number" class="text-black rounded-sm p-0.5" bind:value={studioID} />
   <br />
-  <label for="studio_id" class="form-check-label">Working on a project?</label>
-  <input type="checkbox" class="form-check-input" bind:checked={workingOnProject} />
+  <label for="studio_id">Working on a project?</label>
+  <input type="checkbox" bind:checked={workingOnProject} />
   <br />
   {#if workingOnProject}
     <label for="studio_id">Percentage done with project:</label>
-    <input type="number" class="form-control" bind:value={percentDoneWithProject} />
+    <input type="number" class="text-black rounded-sm p-0.5" bind:value={percentDoneWithProject} />
   {/if}
   <br />
-  <button type="button" on:click={saveChanges} class="btn btn-primary">Save changes</button>
+  <button type="button" on:click={saveChanges} class="btn-primary">Save changes</button>
 {/if}
 
 <style>
@@ -106,5 +102,5 @@
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
   }
-  /* The other styles on this page is Bootstrap 5 */
+  /* The other styles on this page is TailwindCSS */
 </style>

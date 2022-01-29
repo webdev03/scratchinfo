@@ -1,5 +1,7 @@
 <script>
   import { onMount } from 'svelte';
+  import Success from '$lib/components/Success.svelte';
+  import Failure from '$lib/components/Failure.svelte';
   let studioID = 0;
   let signedIn,
     problem,
@@ -29,15 +31,13 @@
 </script>
 
 {#if problem}
-  <div class="alert alert-danger" role="alert">
-    An error has occurred. This studio might exist already, or you need to sign in again. You also
-    need to manage the studio.
-  </div>
+  <Failure
+    description="An error has occurred. This studio might exist already, or you need to sign in again. You also
+need to manage the studio."
+  />
 {/if}
 {#if success}
-  <div class="alert alert-success" role="alert">
-    Success! Now go to <a href={`/collabs/${studioID}`}>your new studio page!</a>
-  </div>
+  <Success description="Now go to <a href={`/collabs/${studioID}`}>your new studio page!" />
 {/if}
 {#if signedIn}
   <p>
@@ -47,11 +47,11 @@
       > when using Scratchinfo.</b
     >
   </p>
-  <a href="/rules">Rules for using Scratchinfo</a> <br />
+  <a href="/rules" class="hover:underline hover:font-semibold transition-all">Rules for using Scratchinfo</a>
   <label for="studio_id">Studio ID:</label>
   <input type="number" class="form-control" bind:value={studioID} />
   <br />
-  <button type="button" on:click={saveChanges} class="btn btn-primary">Create collab</button>
+  <button type="button" on:click={saveChanges} class="btn-primary">Create collab</button>
 {:else}
   <p>Please <a href="/login">sign in</a> to create a collab.</p>
 {/if}

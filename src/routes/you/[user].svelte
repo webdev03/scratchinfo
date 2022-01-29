@@ -33,41 +33,38 @@
   });
 </script>
 
-<h1>{username} | You Page</h1>
+<h1 class="text-3xl font-bold mb-2">{username} | You Page</h1>
 <hr />
 {#if loading == true}
   <p>Loading...</p>
-  <div class="spinner-border text-primary" role="status">
-    <span class="visually-hidden">Loading...</span>
-  </div>
 {:else if ok == true && loading == false}
   {#if responseResult.data[0].busy}
     <span class="badge bg-warning">This user is currently busy.</span>
   {/if}
 
   {#if !studioExists}
-    <h2>Featured Studio</h2>
-    <div class="card" style="width: 18rem;">
+    <h2 class="text-xl font-bold mb-2">Featured Studio</h2>
+    <div class="bg-gray-100 p-2 rounded !text-gray-900 w-72">
       <img
-        src={responseResult.studio.image}
-        height="170"
-        width="100"
-        class="card-img-top"
+        src={responseResult.studio.image.replace("170x100", "340x200")}
+        style="w-[170px] h-[100px]"
+        class="rounded-sm"
         alt="Studio thumbnail"
       />
       <div class="card-body">
         <h5 class="card-title">{responseResult.studio.title}</h5>
+        <hr class="border-blue-400 m-2" />
         <p class="card-text">{responseResult.studio.description}</p>
-        <a href={responseResult.studio_url} class="btn btn-primary">Go to studio</a>
+        <a href={responseResult.studio_url} class="btn-primary">Go to studio</a>
       </div>
     </div>
   {/if}
   <br />
   {#if responseResult.data[0].workingOnProject}
-    <h1>Working on Project</h1>
-    <div class="card" style="width: 100%; min-height: 100px;">
+    <h1 class="text-3xl font-bold mb-2">Working on Project</h1>
+    <div class="card text-white" style="width: 100%; min-height: 100px;">
       <div class="card-body">
-        <h5 class="card-title">A new project...</h5>
+        <h5 class="text-white">A new project...</h5>
         <div class="progress">
           <div
             class="progress-bar"

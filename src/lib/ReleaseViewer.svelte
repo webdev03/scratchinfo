@@ -26,12 +26,12 @@
 
 {#if isEditing}
   {#each releases as release, i}
-    <div class="card">
+    <div class="p-2 bg-gray-50 text-gray-900 m-2 rounded">
       <div class="card-body">
-        <input type="text" class="form-control" bind:value={release.title} /> <br />
-        <textarea type="text" class="form-control" bind:value={release.description} /> <br />
-        <div>https://scratch.mit.edu/projects/<input type="number" bind:value={release.id} /></div>
-        <button class="btn btn-link" on:click={removeRelease(i)}
+        <input type="text" class="m-1 w-full p-0.5 rounded" bind:value={release.title} /> <br />
+        <textarea type="text" class="m-1 w-full p-0.5 rounded" bind:value={release.description} /> <br />
+        <div>https://scratch.mit.edu/projects/<input type="number" class="m-1 p-0.5 rounded" bind:value={release.id} /></div>
+        <button class="btn-link" on:click={removeRelease(i)}
           ><i class="bi bi-x-circle-fill" /></button
         >
       </div>
@@ -39,17 +39,17 @@
   {:else}
     <p>No releases.</p>
   {/each}
-  <button class="btn btn-link" on:click={createNewRelease()}><i class="bi bi-plus-circle" /></button
+  <button class="btn-link" on:click={createNewRelease()}><i class="bi bi-plus-circle" /></button
   >
 {:else}
   {#each releases as release}
-    <div class="card">
+    <div class="p-2 bg-gray-50 text-gray-900 m-2 rounded">
       <div class="card-body">
         {release.title}
-        <hr />
+        <hr class="mt-2 mb-2" />
         <p>{release.description}</p>
         Release available at
-        <a href={`https://scratch.mit.edu/projects/${release.id}`}
+        <a href={`https://scratch.mit.edu/projects/${release.id}`} class="text-blue-500 visited:text-purple-400 hover:underline"
           >{`https://scratch.mit.edu/projects/${release.id}`}</a
         >
       </div>
@@ -58,10 +58,3 @@
     <p>No releases.</p>
   {/each}
 {/if}
-
-<style>
-  .card {
-    color: black;
-    margin-bottom: 5px;
-  }
-</style>

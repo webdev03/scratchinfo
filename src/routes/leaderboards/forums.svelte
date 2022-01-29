@@ -46,7 +46,7 @@
   });
 </script>
 
-<h1>Most Forum Posts Leaderboard</h1>
+<h1 class="text-3xl font-bold mb-2">Most Forum Posts Leaderboard</h1>
 <div class="form-check">
   <input
     class="form-check-input"
@@ -60,7 +60,7 @@
 
 <!-- Select forum -->
 {#if total == false}
-  <select name="forum" bind:value={forum} on:change={() => modified()}>
+  <select class="text-black p-1 rounded" name="forum" bind:value={forum} on:change={() => modified()}>
     {#each forumlist as forum}
       <option value={forum}>{forum}</option>
     {/each}
@@ -84,7 +84,7 @@
 {#if loading == false && total}
   {#each postList['total'] as user, position}
     <a href="/users/{user['username']}"
-      ><div class="user rounded">#{position + 1}: {user['username']}</div></a
+      ><div class="bg-sky-100 min-h-[20px] mb-2 p-2 w-full rounded text-gray-900">#{position + 1}: {user['username']}</div></a
     >
   {/each}
 {/if}
@@ -93,20 +93,12 @@
 {#if loading == false && !total && typeof postList[forum] != 'undefined'}
   {#each postList[forum] as user, position}
     <a href="/users/{user['username']}"
-      ><div class="user rounded">#{position + 1}: {user['username']}</div></a
+      ><div class="bg-sky-100 min-h-[20px] mb-2 p-2 w-full rounded text-gray-900">#{position + 1}: {user['username']}</div></a
     >
   {/each}
 {/if}
 
 <style>
-  .user {
-    width: 100%;
-    background-color: lightblue;
-    min-height: 20px;
-    margin-bottom: 20px;
-    padding: 10px;
-    color: black;
-  }
   a {
     text-decoration: none;
   }
