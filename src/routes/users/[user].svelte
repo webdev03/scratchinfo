@@ -183,7 +183,8 @@
   <p>Total Forum Rank: {info.scratchdb.forumTotalRank}</p>
   <br />
   <label for="forum-post">Choose the forum you would like to see more information about.</label>
-  <select bind:value={forumPostSelect} name="forum-post" id="forum-post">
+  <br />
+  <select bind:value={forumPostSelect} class="text-black p-1 rounded" name="forum-post" id="forum-post">
     {#each forumlist as forum}
       <option value={forum}>{forum}</option>
     {/each}

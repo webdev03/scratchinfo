@@ -60,7 +60,7 @@
 
 <!-- Select forum -->
 {#if total == false}
-  <select name="forum" bind:value={forum} on:change={() => modified()}>
+  <select class="text-black p-1 rounded" name="forum" bind:value={forum} on:change={() => modified()}>
     {#each forumlist as forum}
       <option value={forum}>{forum}</option>
     {/each}
