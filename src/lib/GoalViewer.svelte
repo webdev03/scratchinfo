@@ -30,9 +30,7 @@
         #{i + 1} <input type="text" class="form-control" bind:value={goal.title} /> <br />
         <input type="number" min="0" max="100" bind:value={goal.progress} />%/100%
         <Progress percentage={goal.progress} />
-        <button class="btn-link" on:click={removeGoal(i)}
-          ><i class="bi bi-x-circle-fill" /></button
-        >
+        <button class="btn-link" on:click={removeGoal(i)}><i class="bi bi-x-circle-fill" /></button>
       </div>
     </div>
   {:else}
@@ -51,4 +49,3 @@
     <p>No goals.</p>
   {/each}
 {/if}
-

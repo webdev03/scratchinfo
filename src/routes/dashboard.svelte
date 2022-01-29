@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import Failure from "$lib/components/Failure.svelte";
+  import Failure from '$lib/components/Failure.svelte';
   let loggedOut = false;
   let loading = true;
   let problem = false;
@@ -22,7 +22,7 @@
         method: 'POST',
         body: JSON.stringify({
           token: window.localStorage.getItem('authToken').toString(),
-          studio: Number(studioID || "0"),
+          studio: Number(studioID || '0'),
           busy: !!isBusy,
           isWorkingOnProject: workingOnProject,
           percentProjectDone: percentDoneWithProject
@@ -65,12 +65,13 @@
 
 <h1 class="text-3xl font-bold mb-2">Scratchinfo Dashboard</h1>
 <p>Dashboard name inspired by ocular by @Jeffalo</p>
-<a href="/privacy" class="hover:underline">Privacy Policy</a> <br /> <a href="/rules" class="hover:underline">Rules for using Scratchinfo</a> <br /> <br />
+<a href="/privacy" class="hover:underline">Privacy Policy</a> <br />
+<a href="/rules" class="hover:underline">Rules for using Scratchinfo</a> <br /> <br />
 <a class="btn-primary mt-0 mb-1" href="/logout" role="button">Log out</a>
 <hr />
 <h2 class="text-xl font-bold mb-2">Your You Page</h2>
 {#if problem}
-<Failure title="Oh no!" description="No!! An error occurred!" />
+  <Failure title="Oh no!" description="No!! An error occurred!" />
 {/if}
 {#if loading}
   <p>Loading...</p>

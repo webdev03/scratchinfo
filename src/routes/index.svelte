@@ -31,7 +31,9 @@
 <br />
 <a href="/privacy" class="hover:underline hover:font-semibold transition-all">Privacy Policy</a>
 <br />
-<a href="/rules" class="hover:underline hover:font-semibold transition-all">Rules for using Scratchinfo</a>
+<a href="/rules" class="hover:underline hover:font-semibold transition-all"
+  >Rules for using Scratchinfo</a
+>
 
 <!-- <style>
   input {

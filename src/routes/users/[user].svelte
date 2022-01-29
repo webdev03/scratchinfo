@@ -164,10 +164,8 @@
     role="button"
     href={`https://magnifier.potatophant.net/users/${info.username}`}>Visit on Magnifier</a
   >
-  <a
-    class="btn-primary"
-    role="button"
-    href={`https://scratory.vercel.app/user/${info.username}`}>Visit on Scratory</a
+  <a class="btn-primary" role="button" href={`https://scratory.vercel.app/user/${info.username}`}
+    >Visit on Scratory</a
   >
 
   <hr />
@@ -184,14 +182,17 @@
   <br />
   <label for="forum-post">Choose the forum you would like to see more information about.</label>
   <br />
-  <select bind:value={forumPostSelect} class="text-black p-1 rounded" name="forum-post" id="forum-post">
+  <select
+    bind:value={forumPostSelect}
+    class="text-black p-1 rounded"
+    name="forum-post"
+    id="forum-post"
+  >
     {#each forumlist as forum}
       <option value={forum}>{forum}</option>
     {/each}
   </select>
-  <button type="button" on:click={readForumView(forumPostSelect)} class="btn-primary"
-    >Read</button
-  >
+  <button type="button" on:click={readForumView(forumPostSelect)} class="btn-primary">Read</button>
   {#if forumViewReady === true}
     <p>{forumViewTopic} Posts: {forumViewPosts}</p>
     <p>{forumViewTopic} Rank: {forumViewRank}</p>

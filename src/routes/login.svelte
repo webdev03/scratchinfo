@@ -28,7 +28,9 @@
     > when using Scratchinfo.</b
   >
 </p>
-<a href="/rules" class="hover:underline hover:font-semibold transition-all">Rules for using Scratchinfo</a>
+<a href="/rules" class="hover:underline hover:font-semibold transition-all"
+  >Rules for using Scratchinfo</a
+>
 <p>
   You need to have Scratcher status in order to use Scratchinfo features that require
   authentication.
@@ -37,7 +39,13 @@
 <p><b>Note that you must have Scratcher status in order to use Scratchinfo.</b></p>
 <label for="usernameInput">Enter in your username here:</label>
 <br />
-<input id="usernameInput" class="text-gray-900 rounded p-1 w-48" name="usernameInput" type="text" bind:value={username} />
+<input
+  id="usernameInput"
+  class="text-gray-900 rounded p-1 w-48"
+  name="usernameInput"
+  type="text"
+  bind:value={username}
+/>
 <br />
 <button type="button" on:click={submitFunction()} class="btn-primary"
   >Log in with ScratchLight</button

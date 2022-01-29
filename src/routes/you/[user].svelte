@@ -46,7 +46,7 @@
     <h2 class="text-xl font-bold mb-2">Featured Studio</h2>
     <div class="bg-gray-100 p-2 rounded !text-gray-900 w-72">
       <img
-        src={responseResult.studio.image.replace("170x100", "340x200")}
+        src={responseResult.studio.image.replace('170x100', '340x200')}
         style="w-[170px] h-[100px]"
         class="rounded-sm"
         alt="Studio thumbnail"

@@ -32,7 +32,7 @@
     // define report
     signedIn = !!window.localStorage.getItem('authToken');
     report = async () => {
-      if (!confirm("Are you sure you want to report?")) return;
+      if (!confirm('Are you sure you want to report?')) return;
       const reportFetch = await fetch(`/collabs/api/report`, {
         method: 'POST',
         body: JSON.stringify({
@@ -42,11 +42,13 @@
         })
       });
       if (!reportFetch.ok) {
-        console.error(reportFetch.statusText)
+        console.error(reportFetch.statusText);
         alert('An error has occurred.');
         return;
       } else {
-        alert('Thank you for reporting. Your report has been processed. Please contact god286 on Scratch saying that you have reported on Scratchinfo.');
+        alert(
+          'Thank you for reporting. Your report has been processed. Please contact god286 on Scratch saying that you have reported on Scratchinfo.'
+        );
       }
     };
 
@@ -136,9 +138,8 @@
   <h3 class="text-2xl font-bold">{collabData.studioData.title}</h3>
   <p>Scratchinfo Collab created by {collabData.creator}</p>
   {#if signedIn}
-    <button
-      type="button"
-      class="btn-primary bg-red-400" on:click={report}><i class="bi bi-flag-fill" /> Report</button
+    <button type="button" class="btn-primary bg-red-400" on:click={report}
+      ><i class="bi bi-flag-fill" /> Report</button
     >
   {:else}
     <p>Sorry, signed out users cannot report.</p>
@@ -164,5 +165,3 @@
   <h3>Releases</h3>
   <ReleaseViewer bind:releases bind:isEditing />
 {/if}
-
-

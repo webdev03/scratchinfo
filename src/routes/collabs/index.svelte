@@ -5,7 +5,7 @@
       window.location.href = '/collabs/' + string;
     }
   }
-  function onKeyPress(e:KeyboardEvent) {
+  function onKeyPress(e: KeyboardEvent) {
     if (e.charCode === 13) lengthValid(collab);
   }
 </script>
@@ -21,10 +21,16 @@
     on:keypress={onKeyPress}
     bind:value={collab}
   />
-  <button class="btn-primary m-0 rounded-l-none h-12" on:click|preventDefault={() => lengthValid(collab)}>search</button
+  <button
+    class="btn-primary m-0 rounded-l-none h-12"
+    on:click|preventDefault={() => lengthValid(collab)}>search</button
   >
 </div>
 <br />
 <a class="btn-primary" href="/collabs/create">Create a Collab</a>
 <br />
-<a href="/privacy" class="hover:underline hover:font-semibold transition-all">Privacy Policy</a> <br /> <a href="/rules" class="hover:underline hover:font-semibold transition-all">Rules for using Scratchinfo</a>
+<a href="/privacy" class="hover:underline hover:font-semibold transition-all">Privacy Policy</a>
+<br />
+<a href="/rules" class="hover:underline hover:font-semibold transition-all"
+  >Rules for using Scratchinfo</a
+>
