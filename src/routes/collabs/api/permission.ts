@@ -5,10 +5,10 @@
 // Permissions should be verified on each change to the collab
 // This is a POST request because
 import jwt from 'jsonwebtoken';
-export async function post({ request }) {
+export async function post(request) {
   let parsedBody: any;
   try {
-    parsedBody = await request.json();
+    parsedBody = JSON.parse(request.body);
   } catch {
     parsedBody = request.body;
   }

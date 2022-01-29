@@ -7,11 +7,11 @@ import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 dotenv.config();
 
-export async function post({ request }) {
+export async function post(request) {
   try {
     let parsedBody: any;
     try {
-      parsedBody = await request.json();
+      parsedBody = JSON.parse(request.body);
     } catch {
       parsedBody = request.body;
     }

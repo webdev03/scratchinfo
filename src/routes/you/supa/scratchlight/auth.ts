@@ -6,10 +6,10 @@ import { verifier } from '$lib/verify';
 import { getStatus } from '$lib/getStatus';
 import dotenv from 'dotenv';
 dotenv.config();
-export async function post({ request }) {
+export async function post(request) {
   let parsedBody = undefined;
   try {
-    parsedBody = await request.json();
+    parsedBody = JSON.parse(request.body);
   } catch {
     parsedBody = request.body;
   }

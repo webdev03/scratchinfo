@@ -7,12 +7,12 @@ import { getStatus } from '$lib/getStatus';
 import jwt from 'jsonwebtoken';
 dotenv.config();
 
-export async function post({ request }) {
+export async function post(request) {
   // ? Should this reporting system even exist at all?
   try {
     let parsedBody: any;
     try {
-      parsedBody = await request.json();
+      parsedBody = JSON.parse(request.body);
     } catch {
       parsedBody = request.body;
     }

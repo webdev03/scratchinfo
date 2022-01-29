@@ -5,14 +5,14 @@ import { verifier } from '$lib/verify';
 import dotenv from 'dotenv';
 dotenv.config();
 
-export async function post({ request }) {
+export async function post(request) {
   try {
     let tr = request;
     tr.insertedEnv = process.env;
     return await verifier(tr);
     /* let parsedBody: any;
     try {
-      parsedBody = await request.json();
+      parsedBody = JSON.parse(request.body);
     } catch {
       parsedBody = request.body;
     }

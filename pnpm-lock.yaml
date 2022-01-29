@@ -3,7 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@supabase/supabase-js': ^1.27.0
   '@sveltejs/adapter-vercel': ^1.0.0-next.34
-  '@sveltejs/kit': next
+  '@sveltejs/kit': 1.0.0-next.214
   autoprefixer: ^10.4.1
   dotenv: ^14.1.0
   jsonwebtoken: ^8.5.1
@@ -24,7 +24,7 @@ dependencies:
 
 devDependencies:
   '@sveltejs/adapter-vercel': 1.0.0-next.34
-  '@sveltejs/kit': 1.0.0-next.250_svelte@3.44.1
+  '@sveltejs/kit': 1.0.0-next.214_svelte@3.44.1
   autoprefixer: 10.4.1_postcss@8.4.5
   postcss: 8.4.5
   prettier: 2.4.1
@@ -128,8 +128,8 @@ packages:
       esbuild: 0.13.15
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.250_svelte@3.44.1:
-    resolution: {integrity: sha512-8Ctaqgb+pdws06gfKDy+DfEIq3epbhQnRrdavVrG2rv+lr/qAqz788OX4RlriBliNBFPkpIPYy4ldLJ7yoAmyg==}
+  /@sveltejs/kit/1.0.0-next.214_svelte@3.44.1:
+    resolution: {integrity: sha512-rzEM/1zomAGOs8L8kZAf8Aj3GKi8+kF5VJbFbvQVGfH2ug+MiyvLDQE2LthZRTGZ4weqJ3Nt+ba0swClsL3T0A==}
     engines: {node: '>=14.13'}
     hasBin: true
     peerDependencies:

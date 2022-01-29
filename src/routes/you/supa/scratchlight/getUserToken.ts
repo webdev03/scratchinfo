@@ -2,10 +2,10 @@ import jwt from 'jsonwebtoken';
 // this part is because process.env sometimes breaks
 import dotenv from 'dotenv';
 dotenv.config();
-export async function post({ request }) {
+export async function post(request) {
   let parsedBody = undefined;
   try {
-    parsedBody = await request.json();
+    parsedBody = JSON.parse(request.body);
   } catch {
     parsedBody = request.body;
   }

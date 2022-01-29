@@ -7,7 +7,7 @@ export async function verifier(request) {
   try {
     let parsedBody: any;
     try {
-      parsedBody = await request.json();
+      parsedBody = JSON.parse(request.body);
     } catch {
       parsedBody = request.body;
     }
