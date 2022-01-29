@@ -14,7 +14,6 @@
   import ReleaseViewer from '$lib/ReleaseViewer.svelte';
   import Success from '$lib/components/Success.svelte';
   import Failure from '$lib/components/Failure.svelte';
-  import Modal from "$lib/components/Modal.svelte";
   export let id;
   let collabData: any;
   let setProblem,
@@ -28,14 +27,13 @@
     releases = [];
   let report,
     startEditor,
-    saveChanges: Function = async () => {
-      return 1;
-    };
+    saveChanges = async () => {};
   onMount(async () => {
     // define report
     signedIn = !!window.localStorage.getItem('authToken');
     report = async () => {
-      const report = await fetch(`/collabs/api/report`, {
+      if (!confirm("Are you sure you want to report?")) return;
+      const reportFetch = await fetch(`/collabs/api/report`, {
         method: 'POST',
         body: JSON.stringify({
           type: 'studio',
@@ -43,11 +41,12 @@
           token: window.localStorage.getItem('authToken')
         })
       });
-      if (!report.ok) {
+      if (!reportFetch.ok) {
+        console.error(reportFetch.statusText)
         alert('An error has occurred.');
         return;
       } else {
-        alert('Thank you for reporting. Your report has been processed.');
+        alert('Thank you for reporting. Your report has been processed. Please contact god286 on Scratch saying that you have reported on Scratchinfo.');
       }
     };
 
@@ -118,7 +117,7 @@
 {/if}
 {#if isEditing}
   <b>Editing mode on.</b>
-  <button class="btn-primary" on:click={saveChanges()}
+  <button class="btn-primary" on:click={saveChanges}
     ><i class="bi bi-save-fill" /> Save changes</button
   >{/if}
 <h1 class="text-3xl font-bold mb-2">Collab</h1>
@@ -139,9 +138,7 @@
   {#if signedIn}
     <button
       type="button"
-      class="btn-danger"
-      data-bs-toggle="modal"
-      data-bs-target="#reportModal"><i class="bi bi-flag-fill" /> Report</button
+      class="btn-danger" on:click={report}><i class="bi bi-flag-fill" /> Report</button
     >
   {:else}
     <p>Sorry, signed out users cannot report.</p>
@@ -168,42 +165,4 @@
   <ReleaseViewer bind:releases bind:isEditing />
 {/if}
 
-<!-- Report Modal -->
-<Modal title="You sure you want to report?" okHook={report} description="This will send a message to Scratchinfo. If this doesn't relate to the Collab goals or
-releases, then you should report on Scratch instead of here. Please also send a message to <b
-  >god286</b
-> on Scratch so I can handle the report faster, but do not mention the name or ID of the studio." />
-<div
-  class="modal fade"
-  id="reportModal"
-  tabindex="-1"
-  aria-labelledby="reportModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="reportModalLabel">You sure you want to report?</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" />
-      </div>
-      <div class="modal-body">
-        This will send a message to Scratchinfo. If this doesn't relate to the Collab goals or
-        releases, then you should report on Scratch instead of here. Please also send a message to <b
-          >god286</b
-        > on Scratch so I can handle the report faster, but do not mention the name or ID of the studio.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn-danger" data-bs-dismiss="modal" on:click={report()}
-          >Yes, I want to report!</button
-        >
-      </div>
-    </div>
-  </div>
-</div>
 
-<style>
-  .modal {
-    color: black;
-  }
-</style>
