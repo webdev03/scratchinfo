@@ -58,10 +58,3 @@
     <p>No releases.</p>
   {/each}
 {/if}
-
-<style>
-  .card {
-    color: black;
-    margin-bottom: 5px;
-  }
-</style>
