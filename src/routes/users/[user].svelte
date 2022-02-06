@@ -30,7 +30,6 @@
       forumViewTopic = forumPostSelect;
       forumViewReady = true;
     };
-    function forumChart() {}
     function fetchDataGroup() {
       fetch(`/api/${username}`)
         .then((res) => {
