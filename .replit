@@ -1,2 +1,2 @@
 language = "nodejs"
-run = "pnpm run dev"
+run = "bash replit.sh"

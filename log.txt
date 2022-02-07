@@ -1,0 +1,34 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'install', '$lib' ]
+2 info using npm@6.14.15
+3 info using node@v12.22.6
+4 verbose npm-session 65e2d24b230fed5e
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 timing stage:rollbackFailedOptional Completed in 1ms
+8 timing stage:runTopLevelLifecycles Completed in 106ms
+9 verbose stack Error: Invalid tag name "$lib": Tags may not have any characters that encodeURIComponent encodes.
+9 verbose stack     at invalidTagName (/usr/local/lib/node_modules/npm/node_modules/npm-package-arg/npa.js:91:15)
+9 verbose stack     at fromRegistry (/usr/local/lib/node_modules/npm/node_modules/npm-package-arg/npa.js:296:13)
+9 verbose stack     at resolve (/usr/local/lib/node_modules/npm/node_modules/npm-package-arg/npa.js:81:12)
+9 verbose stack     at npa (/usr/local/lib/node_modules/npm/node_modules/npm-package-arg/npa.js:52:10)
+9 verbose stack     at /usr/local/lib/node_modules/npm/lib/install/deps.js:231:14
+9 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:52:35
+9 verbose stack     at Array.forEach (<anonymous>)
+9 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:52:11
+9 verbose stack     at Array.forEach (<anonymous>)
+9 verbose stack     at asyncMap (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:51:8)
+9 verbose stack     at exports.getAllMetadata (/usr/local/lib/node_modules/npm/lib/install/deps.js:228:3)
+9 verbose stack     at Installer.loadArgMetadata (/usr/local/lib/node_modules/npm/lib/install.js:366:3)
+9 verbose stack     at /usr/local/lib/node_modules/npm/lib/install.js:704:16
+9 verbose stack     at /usr/local/lib/node_modules/npm/lib/install/read-shrinkwrap.js:33:16
+9 verbose stack     at tryCatcher (/usr/local/lib/node_modules/npm/node_modules/bluebird/js/release/util.js:16:23)
+9 verbose stack     at Promise._settlePromiseFromHandler (/usr/local/lib/node_modules/npm/node_modules/bluebird/js/release/promise.js:517:31)
+10 verbose cwd /home/runner/scratchinfo
+11 verbose Linux 5.11.0-1029-gcp
+12 verbose argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "$lib"
+13 verbose node v12.22.6
+14 verbose npm  v6.14.15
+15 error code EINVALIDTAGNAME
+16 error Invalid tag name "$lib": Tags may not have any characters that encodeURIComponent encodes.
+17 verbose exit [ 1, true ]
