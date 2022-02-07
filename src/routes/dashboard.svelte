@@ -80,7 +80,7 @@
   <input type="checkbox" bind:checked={isBusy} />
   <br />
   <label for="studio_id">Studio ID:</label>
-  <input type="number" class="text-black rounded-sm p-0.5" bind:value={studioID} />
+  <input type="number" class="text-black rounded-sm p-0.5" style="color: black" bind:value={studioID} />
   <br />
   <label for="studio_id">Working on a project?</label>
   <input type="checkbox" bind:checked={workingOnProject} />
