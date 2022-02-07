@@ -6,6 +6,8 @@ export async function getStatus(user: string) {
       'User-Agent': 'Mozilla/5.0'
     }
   });
+  console.log("parse is:")
+  console.log(parse)
 
   const parsedBody = parse(await r.text());
 
