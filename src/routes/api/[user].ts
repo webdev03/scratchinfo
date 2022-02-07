@@ -7,6 +7,9 @@ export async function get({ params }) {
     const api_official_user = await (
       await fetch(`https://api.scratch.mit.edu/users/${user}/`)
     ).json();
+    const isScratcher_user = await (
+      await fetch(`https://isscratcher.9pfs.repl.co/api/${user}/`)
+    ).json();
     let scratchdb,
       scratchdb_forum_user = { counts: undefined };
     scratchdb = await (await fetch(`https://scratchdb.lefty.one/v3/user/info/${user}`)).json();
@@ -47,6 +50,7 @@ export async function get({ params }) {
     return {
       body: {
         username: api_official_user.username,
+        isScratcher: isScratcher_user.isScratcher,
         /* 				user_agent: agent, */
         scratchteam: api_official_user.scratchteam,
         history: {
