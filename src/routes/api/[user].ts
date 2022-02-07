@@ -8,7 +8,22 @@ export async function get({ params }) {
       await fetch(`https://api.scratch.mit.edu/users/${user}/`)
     ).json();
     let scratchdb,
-      scratchdb_forum_user = { counts: undefined };
+      scratchdb_forum_user = {
+        counts: {
+          "total":{"count":0,"rank":1},
+          "Advanced Topics":{"count":0,"rank":1},
+        },
+        "history":[
+          {"date":"1234-12-23T12:34:56.000Z","value":1},
+        ],
+        "firstSeen":{
+          "date":"1234-12-23T12:34:56.000Z","id":1
+        },
+        "lastSeen":{
+          "date":"1234-12-23T12:34:56.000Z","id":1
+        },
+        "signature":"Well, that one fell off the database. ScratchDB didn't know what to say.",
+      };
     scratchdb = await (await fetch(`https://scratchdb.lefty.one/v3/user/info/${user}`)).json();
     scratchdb_forum_user = await (
       await fetch(`https://scratchdb.lefty.one/v3/forum/user/info/${user}`)
