@@ -25,9 +25,19 @@ export async function get({ params }) {
         "signature":"Well, that one fell off the database. ScratchDB didn't know what to say.",
       };
     scratchdb = await (await fetch(`https://scratchdb.lefty.one/v3/user/info/${user}`)).json();
-    scratchdb_forum_user = await (
-      await fetch(`https://scratchdb.lefty.one/v3/forum/user/info/${user}`)
-    ).json();
+    if(user==="null") {
+      // Suspect scratchDB used == instead of ===
+    }
+    else {
+      try {
+      scratchdb_forum_user = await (
+        await fetch(`https://scratchdb.lefty.one/v3/forum/user/info/${user}`)
+      ).json();
+      }
+      catch(e) {
+        scratchdb_forum_user.signature="Well, ScratchDB didn't know. So we don't know."
+      }
+    }
     let ocular = { status: undefined, color: undefined };
     try {
       ocular = await (await fetch(`https://my-ocular.jeffalo.net/api/user/${user}/`)).json();
