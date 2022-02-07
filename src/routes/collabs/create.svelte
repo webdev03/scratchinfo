@@ -51,7 +51,7 @@ need to manage the studio."
     >Rules for using Scratchinfo</a
   >
   <label for="studio_id">Studio ID:</label>
-  <input type="number" class="form-control" bind:value={studioID} />
+  <input type="number" class="form-control text-black rounded-sm p-0.5" bind:value={studioID} />
   <br />
   <button type="button" on:click={saveChanges} class="btn-primary">Create collab</button>
 {:else}

@@ -28,6 +28,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^1.27.0",
     "dotenv": "^14.1.0",
-    "jsonwebtoken": "^8.5.1"
+    "jsonwebtoken": "^8.5.1",
+    "node-html-parser": "^5.2.0"
   }
 }

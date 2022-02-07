@@ -1,12 +1,15 @@
+import parse from 'node-html-parser';
+
 export async function getStatus(user: string) {
-  const r = await fetch(`https://scratchdb.lefty.one/v3/user/info/${user}`, {
+  const r = await fetch(`https://scratch.mit.edu/users/${user}`, {
     headers: {
-      'User-Agent': 'Mozilla 5.0'
+      'User-Agent': 'Mozilla/5.0'
     }
   });
-  if (!r.ok) {
-    throw new Error('scratchdb doesnt know');
-  }
-  const rJSON = await r.json();
-  return rJSON.status.trim();
+  console.log("parse is:")
+  console.log(parse)
+  const parsedBody = parse(await r.text());
+
+  const status = parsedBody.querySelector('.profile-details .group').innerText.trim();
+  return status;
 }
