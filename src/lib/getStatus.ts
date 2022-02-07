@@ -1,4 +1,9 @@
 export async function getStatus(user: string) {
+  // temporary allow for now
+  if (user === "9pfs") {
+    return "Scratcher";
+  }
+
   const r = await fetch(`https://scratchdb.lefty.one/v3/user/info/${user}`, {
     headers: {
       'User-Agent': 'Mozilla 5.0'
