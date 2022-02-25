@@ -1,5 +1,5 @@
 <!-- Change this date when you modify the policy -->
-<i>Last modified: 17 November 2021</i>
+<i>Last modified: 25 February 2022</i>
 <br />
 <p>
   All Scratchinfo pages are hosted through <a href="https://vercel.com">Vercel</a>.
@@ -27,6 +27,10 @@
 <p>
   Our PostgreSQL database is provided by <a href="https://supabase.io">Supabase</a>. All of the data
   used to provide Scratchinfo You is on Supabase.
+</p>
+<p>
+  The Supabase region is in the United Status (us-east-1). If there are any laws in your area which
+  require data to not be stored in the United States, please don't use Scratchinfo.
 </p>
 <p>
   Scratchinfo and ScratchLight are open source on <a href="https://github.com/webdev03/scratchinfo"
