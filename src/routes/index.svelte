@@ -15,10 +15,6 @@
   This is a small project. You can use the search bar down below to search for a Scratch user, and
   it will return some information.
 </p>
-<p>
-  This website runs on <a href="https://svelte.dev">Svelte</a> and
-  <a href="https://kit.svelte.dev">SvelteKit</a> which are both epic projects.
-</p>
 <input
   placeholder="Search a User"
   type="text"
