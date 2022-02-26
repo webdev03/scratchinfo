@@ -3,7 +3,7 @@
   // the ScratchLight Authentication service.
   import { onMount } from 'svelte';
   import Failure from '$lib/components/Failure.svelte';
-  import multi from '$lib/bta';
+  import { b2a } from '$lib/bta';
   let code = 'Loading...';
   let beWarned = false;
   let problem,
@@ -13,7 +13,7 @@
   let redirectLink = '/';
   onMount(async () => {
     const urlParams = new URLSearchParams(window.location.search);
-    const redir = multi(true, urlParams.get('redirect'));
+    const redir = b2a(urlParams.get('redirect'));
     console.log(urlParams);
     if (!(redir.startsWith('localhost:') || redir.startsWith('scratchinfo.vercel.app/'))) {
       beWarned = true;

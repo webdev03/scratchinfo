@@ -1,6 +1,12 @@
 // Thanks to https://gist.github.com/oeon/0ada0457194ebf70ec2428900ba76255 for the code!
 // Part of the code has been modified for TypeScript.
-const b2a = (a): string => {
+
+/**
+ * Base64 to ASCII
+ * @param a The Base64 to input
+ * @returns {string} The ASCII
+ */
+const b2a = (a: string): string => {
   var c,
     d,
     e,
@@ -29,6 +35,12 @@ const b2a = (a): string => {
   while (k < a.length);
   return (m = n.join('')), (o = a.length % 3), (o ? m.slice(0, o - 3) : m) + '==='.slice(o || 3);
 };
+
+/**
+ * ASCII to Base64
+ * @param a The ASCII to input
+ * @returns {string} The Base64
+ */
 function a2b(a): string {
   var b,
     c,
@@ -53,4 +65,4 @@ function multi(decode, value): string {
     return b2a(value);
   }
 }
-export default multi;
+export { b2a, a2b };

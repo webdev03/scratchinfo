@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import multi from '$lib/bta';
+  import { a2b } from '$lib/bta';
   let submitFunction: Function = function () {};
   let isLoggedIn = false;
   let username = '';
@@ -14,7 +14,7 @@
         return;
       }
       console.log('Sending user to ScratchLight for authentication...');
-      const urlEncode = multi(false, `${window.location.host}/you/supa/scratchlight/verify`);
+      const urlEncode = a2b(`${window.location.host}/you/supa/scratchlight/verify`);
       window.location.href = `/scratchlight/authpage?redirect=${urlEncode}&username=${username}`;
     };
   });
