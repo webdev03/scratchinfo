@@ -26,7 +26,7 @@
 
 {#if isEditing}
   {#each releases as release, i}
-    <div class="p-2 bg-gray-50 text-gray-900 m-2 rounded">
+    <div class="p-2 bg-gray-100 shadow-md text-gray-900 m-2 rounded">
       <div class="card-body">
         <input type="text" class="m-1 w-full p-0.5 rounded" bind:value={release.title} /> <br />
         <textarea type="text" class="m-1 w-full p-0.5 rounded" bind:value={release.description} />
@@ -49,7 +49,7 @@
   <button class="btn-link" on:click={createNewRelease()}><i class="bi bi-plus-circle" /></button>
 {:else}
   {#each releases as release}
-    <div class="p-2 bg-gray-50 text-gray-900 m-2 rounded">
+    <div class="p-2 bg-gray-100 shadow-md text-gray-900 m-2 rounded">
       <div class="card-body">
         {release.title}
         <hr class="mt-2 mb-2" />

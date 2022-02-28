@@ -25,7 +25,7 @@
 
 {#if isEditing}
   {#each goals as goal, i}
-    <div class="p-2 bg-gray-50 text-gray-900 m-2 rounded">
+    <div class="p-2 bg-gray-100 shadow-md text-gray-900 m-2 rounded">
       <div class="card-body">
         #{i + 1} <input type="text" class="form-control" bind:value={goal.title} /> <br />
         <input type="number" min="0" max="100" bind:value={goal.progress} />%/100%
@@ -39,7 +39,7 @@
   <button class="btn-link" on:click={createNewGoal()}><i class="bi bi-plus-circle" /></button>
 {:else}
   {#each goals as goal, i}
-    <div class="p-2 bg-gray-50 text-gray-900 m-2 rounded">
+    <div class="p-2 bg-gray-100 shadow-md text-gray-900 m-2 rounded">
       <div class="card-body">
         #{i + 1}: {goal.title}
         <Progress percentage={goal.progress} />
