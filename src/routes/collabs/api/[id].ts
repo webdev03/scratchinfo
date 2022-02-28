@@ -17,6 +17,9 @@ export async function get(request) {
     if (readCollab.error || readCollab.data.length < 1) {
       throw new Error('No collab found.');
     }
+    let collabData = readCollab.data[0];
+    collabData.goals = JSON.parse(collabData.goals);
+    collabData.releases = JSON.parse(collabData.releases);
     const readUser = await supabase.from('users').select().eq('id', readCollab.data[0].created_by);
     const studioFetch = await fetch(`https://api.scratch.mit.edu/studios/${id}/`);
     if (!studioFetch.ok) {
