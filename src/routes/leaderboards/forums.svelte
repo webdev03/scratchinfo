@@ -89,7 +89,7 @@
 {#if loading == false && total}
   {#each postList['total'] as user, position}
     <a href="/users/{user['username']}"
-      ><div class="bg-sky-100 min-h-[20px] mb-2 p-2 w-full rounded text-gray-900">
+      ><div class="bg-sky-300 min-h-[20px] mb-2 p-2 w-full rounded text-gray-900">
         #{position + 1}: {user['username']}
       </div></a
     >
@@ -100,7 +100,7 @@
 {#if loading == false && !total && typeof postList[forum] != 'undefined'}
   {#each postList[forum] as user, position}
     <a href="/users/{user['username']}"
-      ><div class="bg-sky-100 min-h-[20px] mb-2 p-2 w-full rounded text-gray-900">
+      ><div class="bg-sky-300 min-h-[20px] mb-2 p-2 w-full rounded text-gray-900">
         #{position + 1}: {user['username']}
       </div></a
     >

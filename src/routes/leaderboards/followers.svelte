@@ -28,7 +28,7 @@
 {#if loading == false}
   {#each mostFollowed as user, position}
     <a href="/users/{user['username']}"
-      ><div class="bg-sky-100 min-h-[20px] mb-2 p-2 w-full rounded text-gray-900">
+      ><div class="bg-sky-300 min-h-[20px] mb-2 p-2 w-full rounded text-gray-900">
         #{position + 1}: {user['username']}
         <div class="float-right inline">
           {user['statistics'].followers} followers
