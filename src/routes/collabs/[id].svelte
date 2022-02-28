@@ -10,12 +10,13 @@
 
 <script lang="ts">
   import { onMount } from 'svelte';
+  import type { CollabResponse } from '$lib/types/Collab';
   import GoalViewer from '$lib/GoalViewer.svelte';
   import ReleaseViewer from '$lib/ReleaseViewer.svelte';
   import Success from '$lib/components/Success.svelte';
   import Failure from '$lib/components/Failure.svelte';
   export let id;
-  let collabData: any;
+  let collabData: CollabResponse;
   let setProblem,
     problem,
     success,
@@ -55,16 +56,8 @@
     const collabFetch = await fetch(`/collabs/api/${id.toString()}`);
     if (collabFetch.ok) {
       collabData = await collabFetch.json();
-      try {
-        goals = JSON.parse(collabData.collab.goals);
-      } catch {
-        goals = collabData.collab.goals;
-      }
-      try {
-        releases = JSON.parse(collabData.collab.releases);
-      } catch {
-        releases = collabData.collab.releases;
-      }
+      goals = collabData.collab.goals;
+      releases = collabData.collab.releases;
 
       loading = false;
       problem = false;
