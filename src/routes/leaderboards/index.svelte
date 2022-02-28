@@ -1,7 +1,7 @@
 <h1 class="text-3xl font-bold mb-2">Scratchinfo Leaderboards</h1>
 <p>These are inspired by ScratchStats and ScratchDB.</p>
 <div
-  class="flex w-full min-h-[50px] flex-1 flex-wrap bg-gray-100 justify-center align-middle flex-col p-1 gap-2 md:flex-row items-center pb-2 rounded"
+  class="flex w-full min-h-[50px] flex-1 flex-wrap dark:bg-gray-100 bg-gray-800 justify-center align-middle flex-col p-1 gap-2 md:flex-row items-center pb-2 rounded"
 >
   <a
     href="/leaderboards/followers"

@@ -44,7 +44,7 @@
 
   {#if !studioExists}
     <h2 class="text-xl font-bold mb-2">Featured Studio</h2>
-    <div class="bg-gray-100 p-2 rounded !text-gray-900 w-72">
+    <div class="dark:bg-gray-100 bg-gray-800 p-2 rounded dark:text-gray-900 text-gray-50 w-72">
       <img
         src={responseResult.studio.image.replace('170x100', '340x200')}
         style="w-[170px] h-[100px]"
@@ -62,9 +62,9 @@
   <br />
   {#if responseResult.data[0].workingOnProject}
     <h1 class="text-3xl font-bold mb-2">Working on Project</h1>
-    <div class="card text-white" style="width: 100%; min-height: 100px;">
+    <div class="card" style="width: 100%; min-height: 100px;">
       <div class="card-body">
-        <h5 class="text-white">A new project...</h5>
+        <h5 class="">A new project...</h5>
         <div class="progress">
           <div
             class="progress-bar"
