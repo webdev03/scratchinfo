@@ -10,7 +10,7 @@
 <p>
   <b
     >Do you want to have your own Special on Scratchinfo? If so, contact @god286 on Scratch or go to <a
-      href="https://scratch.mit.edu/discuss/topic/549251/">our forum post</a
+      href="https://scratch.mit.edu/discuss/topic/549251/" class="underline">our forum post</a
     >.</b
   >
 </p>

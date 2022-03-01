@@ -57,7 +57,7 @@
         Release available at
         <a
           href={`https://scratch.mit.edu/projects/${release.id}`}
-          class="text-blue-500 visited:text-purple-400 hover:underline"
+          class="text-blue-500 visited:text-purple-400 underline"
           >{`https://scratch.mit.edu/projects/${release.id}`}</a
         >
       </div>
