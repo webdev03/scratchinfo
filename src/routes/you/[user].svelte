@@ -44,7 +44,7 @@
 
   {#if !studioExists}
     <h2 class="text-3xl font-bold mb-2">Featured Studio</h2>
-    <div class="dark:bg-gray-100 bg-gray-800 p-2 rounded dark:text-gray-900 text-gray-50 w-72">
+    <div class="p-2 bg-gray-100 shadow-md text-gray-900 rounded w-72">
       <img
         src={responseResult.studio.image.replace('170x100', '340x200')}
         style="w-[170px] h-[100px]"
@@ -62,7 +62,7 @@
   <br />
   {#if responseResult.data[0].workingOnProject}
     <h1 class="text-3xl font-bold mb-2">Working on Project</h1>
-    <div class="dark:bg-gray-100 bg-gray-800 p-2 rounded dark:text-gray-900 text-gray-50 w-full">
+    <div class="p-2 bg-gray-100 shadow-md text-gray-900 rounded w-full">
       <div class="h-1 bg-gray-200">
         <div class="bg-blue-600 h-1" style:width={responseResult.data[0].percentageDoneWithProject + "%"}>
 
