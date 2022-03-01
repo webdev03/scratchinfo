@@ -6,7 +6,7 @@
  * @param a The Base64 to input
  * @returns {string} The ASCII
  */
-const b2a = (a: string): string => {
+const encode = (a: string): string => {
   var c,
     d,
     e,
@@ -41,7 +41,7 @@ const b2a = (a: string): string => {
  * @param a The ASCII to input
  * @returns {string} The Base64
  */
-function a2b(a): string {
+function decode(a: string): string {
   var b,
     c,
     d,
@@ -58,11 +58,4 @@ function a2b(a): string {
       ((d = 255 & (f >>> (g -= 8))) || j - 2 > c) && (h += i(d));
   return h;
 }
-function multi(decode, value): string {
-  if (decode) {
-    return a2b(value);
-  } else {
-    return b2a(value);
-  }
-}
-export { b2a, a2b };
+export { encode, decode };
