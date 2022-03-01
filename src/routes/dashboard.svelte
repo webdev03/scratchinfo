@@ -67,7 +67,7 @@
 <p>Dashboard name inspired by ocular by @Jeffalo</p>
 <a href="/privacy" class="underline">Privacy Policy</a> <br />
 <a href="/rules" class="underline">Rules for using Scratchinfo</a> <br /> <br />
-<a class="btn-primary mt-0 mb-1 underline hover:font-semibold" href="/logout" role="button">Log out</a>
+<a class="btn-primary mt-0 mb-1" href="/logout" role="button">Log out</a>
 <hr />
 <h2 class="text-xl font-bold mb-2">Your You Page</h2>
 {#if problem}
