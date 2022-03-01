@@ -43,7 +43,7 @@
   {/if}
 
   {#if !studioExists}
-    <h2 class="text-xl font-bold mb-2">Featured Studio</h2>
+    <h2 class="text-3xl font-bold mb-2">Featured Studio</h2>
     <div class="dark:bg-gray-100 bg-gray-800 p-2 rounded dark:text-gray-900 text-gray-50 w-72">
       <img
         src={responseResult.studio.image.replace('170x100', '340x200')}
@@ -52,9 +52,9 @@
         alt="Studio thumbnail"
       />
       <div class="card-body">
-        <h5 class="card-title">{responseResult.studio.title}</h5>
+        <h5 class="max-h-[100px] overflow-auto leading-normal">{responseResult.studio.title}</h5>
         <hr class="border-blue-400 m-2" />
-        <p class="card-text">{responseResult.studio.description}</p>
+        <p class="max-h-[100px] overflow-auto">{responseResult.studio.description}</p>
         <a href={responseResult.studio_url} class="btn-primary">Go to studio</a>
       </div>
     </div>
@@ -62,17 +62,13 @@
   <br />
   {#if responseResult.data[0].workingOnProject}
     <h1 class="text-3xl font-bold mb-2">Working on Project</h1>
-    <div class="card" style="width: 100%; min-height: 100px;">
-      <div class="card-body">
-        <h5 class="">A new project...</h5>
-        <div class="progress">
-          <div
-            class="progress-bar"
-            role="progressbar"
-            style="width: {responseResult.data[0].percentageDoneWithProject}%"
-          />
+    <div class="dark:bg-gray-100 bg-gray-800 p-2 rounded dark:text-gray-900 text-gray-50 w-full">
+      <div class="h-1 bg-gray-200">
+        <div class="bg-blue-600 h-1" style:width={responseResult.data[0].percentageDoneWithProject + "%"}>
+
         </div>
       </div>
+      
     </div>
   {/if}
 {:else}
@@ -91,17 +87,3 @@
   </svg>
   <p>An error has occurred. This user may not exist.</p>
 {/if}
-
-<style>
-  .card-title,
-  .card-text {
-    max-height: 100px;
-    overflow: auto;
-  }
-  .card-title {
-    line-height: normal;
-  }
-  .card {
-    color: black;
-  }
-</style>
