@@ -53,10 +53,10 @@
     if (userDataFetch.ok) {
       const userData = await userDataFetch.json();
 
-      studioID = userData.data[0].studio;
-      isBusy = userData.data[0].busy;
-      workingOnProject = userData.data[0].workingOnProject;
-      percentDoneWithProject = userData.data[0].percentageDoneWithProject;
+      studioID = userData.data.studio;
+      isBusy = userData.data.busy;
+      workingOnProject = userData.data.workingOnProject;
+      percentDoneWithProject = userData.data.percentageDoneWithProject;
     } else {
       console.log('Oh no! An error has occured.');
     }

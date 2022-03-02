@@ -18,7 +18,7 @@ export async function get({ params }) {
     ).json();
     return {
       body: {
-        data,
+        data: data[0],
         studio: studioAPI,
         studio_url: `https://scratch.mit.edu/studios/${data[0].studio}`,
         isError: false

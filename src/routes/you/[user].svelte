@@ -38,7 +38,7 @@
 {#if loading == true}
   <p>Loading...</p>
 {:else if ok == true && loading == false}
-  {#if responseResult.data[0].busy}
+  {#if responseResult.data.busy}
     <span class="badge bg-warning">This user is currently busy.</span>
   {/if}
 
@@ -60,11 +60,11 @@
     </div>
   {/if}
   <br />
-  {#if responseResult.data[0].workingOnProject}
+  {#if responseResult.data.workingOnProject}
     <h1 class="text-3xl font-bold mb-2">Working on Project</h1>
     <div class="p-2 bg-gray-100 shadow-md text-gray-900 rounded w-full">
       <div class="h-1 bg-gray-200">
-        <div class="bg-blue-600 h-1" style:width={responseResult.data[0].percentageDoneWithProject + "%"}>
+        <div class="bg-blue-600 h-1" style:width={responseResult.data.percentageDoneWithProject + "%"}>
 
         </div>
       </div>
