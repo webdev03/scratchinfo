@@ -9,9 +9,11 @@
 </script>
 
 <script lang="ts">
+  import type { YouResponse } from '$lib/types/You';
+
   import { onMount } from 'svelte';
   export let username;
-  let responseResult: any = {};
+  let responseResult: YouResponse;
   let studioExists = true;
   let loading,
     ok = true;
@@ -22,10 +24,9 @@
       // the user exists so we can continue with displaying results
       responseResult = await youfetch.json();
       loading = false;
-      studioExists = responseResult.studio.code == 'NotFound';
+      studioExists = responseResult.studio?.code == 'NotFound';
     } else {
       // either the server has a code error, function timeout, or the user doesn't exist
-      responseResult.resultOk = false;
       loading = false;
       ok = false;
       throw new Error('User not found');
@@ -64,11 +65,11 @@
     <h1 class="text-3xl font-bold mb-2">Working on Project</h1>
     <div class="p-2 bg-gray-100 shadow-md text-gray-900 rounded w-full">
       <div class="h-1 bg-gray-200">
-        <div class="bg-blue-600 h-1" style:width={responseResult.data.percentageDoneWithProject + "%"}>
-
-        </div>
+        <div
+          class="bg-blue-600 h-1"
+          style:width={responseResult.data.percentageDoneWithProject + '%'}
+        />
       </div>
-      
     </div>
   {/if}
 {:else}

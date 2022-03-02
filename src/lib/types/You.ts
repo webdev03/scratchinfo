@@ -9,6 +9,7 @@ interface YouResponse {
     percentageDoneWithProject: boolean;
   };
   studio: {
+    code?: string;
     id: number;
     title: string;
     host: number;
