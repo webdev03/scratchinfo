@@ -139,13 +139,12 @@
   {/if}
   <br />
   <img
-    class="rounded"
+    class="rounded mt-2 mb-2"
     src={`//cdn2.scratch.mit.edu/get_image/gallery/${collabData.studioData.id}_212x125.png`}
     width="212"
     height="125"
     alt="Thumbnail for studio"
   />
-  <br /> <br />
   <a
     class="btn-primary"
     href={`//scratch.mit.edu/studios/${collabData.studioData.id}`}
