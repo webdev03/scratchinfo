@@ -28,7 +28,7 @@
     > when using Scratchinfo.</b
   >
 </p>
-<a href="/rules" class="underline hover:font-semibold transition-all"
+<a href="/rules" class="font-semibold hover:underline"
   >Rules for using Scratchinfo</a
 >
 <p>
@@ -51,4 +51,4 @@
   >Log in with ScratchLight</button
 >
 <br /> <br />
-<a href="/privacy" class="underline hover:font-semibold transition-all">Privacy Policy</a>
+<a href="/privacy" class="font-semibold hover:underline">Privacy Policy</a>

@@ -47,7 +47,7 @@ need to manage the studio."
       > when using Scratchinfo.</b
     >
   </p>
-  <a href="/rules" class="underline hover:font-semibold transition-all"
+  <a href="/rules" class="font-semibold hover:underline"
     >Rules for using Scratchinfo</a
   >
   <label for="studio_id">Studio ID:</label>
