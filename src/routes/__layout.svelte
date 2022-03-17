@@ -14,13 +14,13 @@
 <div
   class="dark:bg-gray-900 bg-gray-100 pb-2 relative min-h-[100vh] min-w-[100vw] dark:text-white text-gray-900"
 >
-  <div class="pt-2">
+  <div class="pt-2 mb-4">
     <Navbar />
     <div class="pt-3 p-4">
       <slot />
     </div>
   </div>
-  <div class="absolute bottom-0 w-full p-2 flex justify-between bg-sky-400">
+  <div class="absolute bottom-0 w-full p-2 mt-2 flex justify-between bg-sky-400">
     <a href="/privacy" class="font-semibold hover:underline">Privacy Policy</a>
     <a href="/rules" class="font-semibold hover:underline">Rules for using Scratchinfo</a>
   </div>
