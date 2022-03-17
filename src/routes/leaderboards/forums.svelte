@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import forumlist from '$lib/forumlist';
-  let postList: Array<object> = [{ username: 'griffpatch' }];
+  import { onMount } from "svelte";
+  import forumlist from "$lib/forumlist";
+  let postList: Array<object> = [{ username: "griffpatch" }];
   let problem: boolean = false;
   let loading: boolean = true;
   let total: boolean = true;
-  let forum: string = 'Advanced Topics';
+  let forum: string = "Advanced Topics";
   let modified,
     totalmodify: Function = function () {};
   onMount(() => {
@@ -27,11 +27,11 @@
         });
     };
     totalmodify = function () {
-      if (total == false && typeof postList[forum] == 'undefined') {
+      if (total == false && typeof postList[forum] == "undefined") {
         modified();
       }
     };
-    fetch('https://scratchdb.lefty.one/v3/forum/category/rank/total/')
+    fetch("https://scratchdb.lefty.one/v3/forum/category/rank/total/")
       .then((res) => {
         if (!res.ok) {
           problem = true;
@@ -40,7 +40,7 @@
         }
       })
       .then((data) => {
-        postList['total'] = data;
+        postList["total"] = data;
         loading = false;
       });
   });
@@ -87,21 +87,21 @@
 
 <!-- Total display -->
 {#if loading == false && total}
-  {#each postList['total'] as user, position}
+  {#each postList["total"] as user, position}
     <a href="/users/{user['username']}"
       ><div class="bg-sky-300 min-h-[20px] mb-2 p-2 w-full rounded text-gray-900">
-        #{position + 1}: {user['username']}
+        #{position + 1}: {user["username"]}
       </div></a
     >
   {/each}
 {/if}
 
 <!-- Specific forum display -->
-{#if loading == false && !total && typeof postList[forum] != 'undefined'}
+{#if loading == false && !total && typeof postList[forum] != "undefined"}
   {#each postList[forum] as user, position}
     <a href="/users/{user['username']}"
       ><div class="bg-sky-300 min-h-[20px] mb-2 p-2 w-full rounded text-gray-900">
-        #{position + 1}: {user['username']}
+        #{position + 1}: {user["username"]}
       </div></a
     >
   {/each}

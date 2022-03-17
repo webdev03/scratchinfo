@@ -9,10 +9,10 @@
 </script>
 
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import Special from '$lib/Special.svelte';
-  import OcularStatus from '$lib/OcularStatus.svelte';
-  import forumlist from '$lib/forumlist';
+  import { onMount } from "svelte";
+  import Special from "$lib/Special.svelte";
+  import OcularStatus from "$lib/OcularStatus.svelte";
+  import forumlist from "$lib/forumlist";
   export let username;
   let info: any = { ocular: {}, scratchdb: {} };
   let pfp: any;
@@ -21,7 +21,7 @@
   let loading = true;
   let forumViewReady: boolean = false;
   let forumViewPosts, forumViewRank, forumViewTopic;
-  let forumPostSelect = 'Advanced Topics';
+  let forumPostSelect = "Advanced Topics";
   onMount(() => {
     readForumView = (forum) => {
       forumViewReady = false;
@@ -34,41 +34,41 @@
       fetch(`/api/${username}`)
         .then((res) => {
           if (!res.ok) {
-            console.warn('Problem has arisen.');
+            console.warn("Problem has arisen.");
           }
           return res.json();
         })
         .then((data) => {
           loading = false;
           if (data.iserror === false) {
-            info.ocular.status = data['ocular'].status;
-            info.ocular.colour = data['ocular'].color;
+            info.ocular.status = data["ocular"].status;
+            info.ocular.colour = data["ocular"].color;
 
             info.username = data.username;
             info.scratchTeam = data.scratchteam;
             info.joinDate = data.history.joined;
-            pfp = data.images['90x90'];
+            pfp = data.images["90x90"];
             try {
-              info.scratchdb.followers = data['scratchdb'].statistics.followers;
-              info.scratchdb.following = data['scratchdb'].statistics.following;
-              info.scratchdb.views = data['scratchdb'].statistics.views;
-              info.scratchdb.loves = data['scratchdb'].statistics.loves;
-              info.scratchdb.favorites = data['scratchdb'].statistics.favorites;
+              info.scratchdb.followers = data["scratchdb"].statistics.followers;
+              info.scratchdb.following = data["scratchdb"].statistics.following;
+              info.scratchdb.views = data["scratchdb"].statistics.views;
+              info.scratchdb.loves = data["scratchdb"].statistics.loves;
+              info.scratchdb.favorites = data["scratchdb"].statistics.favorites;
             } catch {
-              info.scratchdb.followers = 'Cannot get statistics for this user. Please try again.';
-              info.scratchdb.following = 'Cannot get statistics for this user. Please try again.';
-              info.scratchdb.views = 'Cannot get statistics for this user. Please try again.';
-              info.scratchdb.loves = 'Cannot get statistics for this user. Please try again.';
-              info.scratchdb.favorites = 'Cannot get statistics for this user. Please try again.';
+              info.scratchdb.followers = "Cannot get statistics for this user. Please try again.";
+              info.scratchdb.following = "Cannot get statistics for this user. Please try again.";
+              info.scratchdb.views = "Cannot get statistics for this user. Please try again.";
+              info.scratchdb.loves = "Cannot get statistics for this user. Please try again.";
+              info.scratchdb.favorites = "Cannot get statistics for this user. Please try again.";
             }
 
             info.scratchdb.forumTotalRank =
-              data.counts.total.rank || 'ScratchDB has no data for this user. Please try later.';
+              data.counts.total.rank || "ScratchDB has no data for this user. Please try later.";
             info.scratchdb.forumTotalCount =
-              data.counts.total.count || 'ScratchDB has no data for this user. Please try later.';
+              data.counts.total.count || "ScratchDB has no data for this user. Please try later.";
             info.scratchdb.rawDataForum =
-              data.counts || 'ScratchDB has no data for this user. Please try later.';
-            var ctx = document.getElementById('myChart');
+              data.counts || "ScratchDB has no data for this user. Please try later.";
+            var ctx = document.getElementById("myChart");
             readForumChart = () => {
               let object = { colours: [] };
               for (let index = 0; index < forumlist.length; index++) {
@@ -77,18 +77,18 @@
                 } catch {
                   object[index] = 0;
                 }
-                object.colours[index] = '#' + Math.floor(Math.random() * 16777215).toString(16);
+                object.colours[index] = "#" + Math.floor(Math.random() * 16777215).toString(16);
               }
               return object;
             };
             // @ts-ignore
             var myChart = new Chart(ctx, {
-              type: 'pie',
+              type: "pie",
               data: {
                 labels: forumlist,
                 datasets: [
                   {
-                    label: 'Forum Posts',
+                    label: "Forum Posts",
                     data: readForumChart(),
                     borderColor: readForumChart().colours,
                     borderWidth: 1
@@ -103,7 +103,7 @@
             loading = false;
             problem = true;
             console.error(data);
-            info.errormessage = data['error_msg'];
+            info.errormessage = data["error_msg"];
           }
         });
     }

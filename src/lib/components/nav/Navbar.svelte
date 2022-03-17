@@ -1,6 +1,6 @@
 <script>
   const toggleBar = () => {
-    document.getElementById('link-items-mobile').classList.toggle('hidden');
+    document.getElementById("link-items-mobile").classList.toggle("hidden");
   };
 </script>
 

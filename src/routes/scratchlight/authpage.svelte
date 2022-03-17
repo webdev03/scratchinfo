@@ -1,31 +1,31 @@
 <script lang="ts">
   // Hi there! Read the README.md of this repository to learn more about
   // the ScratchLight Authentication service.
-  import { onMount } from 'svelte';
-  import Failure from '$lib/components/Failure.svelte';
-  import { decode } from '$lib/bta';
-  let code = 'Loading...';
+  import { onMount } from "svelte";
+  import Failure from "$lib/components/Failure.svelte";
+  import { decode } from "$lib/bta";
+  let code = "Loading...";
   let beWarned = false;
   let problem,
     authIncorrect = false;
   let loading = true;
   let copyFunction: Function = function () {};
-  let redirectLink = '/';
+  let redirectLink = "/";
   onMount(async () => {
     const urlParams = new URLSearchParams(window.location.search);
-    const redir = decode(urlParams.get('redirect'));
+    const redir = decode(urlParams.get("redirect"));
     console.log(urlParams);
-    if (!(redir.startsWith('localhost:') || redir.startsWith('scratchinfo.vercel.app/'))) {
+    if (!(redir.startsWith("localhost:") || redir.startsWith("scratchinfo.vercel.app/"))) {
       beWarned = true;
     }
-    if (!(urlParams.has('username') || urlParams.has('redirect'))) {
+    if (!(urlParams.has("username") || urlParams.has("redirect"))) {
       authIncorrect = true;
       throw new Error("The webmaster hasn't set up ScratchLight correctly.");
     }
-    const createAuthReq = await fetch('/scratchlight/createAuthSession', {
-      method: 'POST',
+    const createAuthReq = await fetch("/scratchlight/createAuthSession", {
+      method: "POST",
       body: JSON.stringify({
-        username: urlParams.get('username')
+        username: urlParams.get("username")
       })
     });
     loading = false;
@@ -33,8 +33,8 @@
       problem = false;
       const authJSON = await createAuthReq.json();
       code = authJSON.code;
-      redirectLink = 'https://' + redir.toString() + '?privateCode=' + authJSON.private.toString();
-      if (!(redir.startsWith('localhost:') || redir.startsWith('scratchinfo.vercel.app/'))) {
+      redirectLink = "https://" + redir.toString() + "?privateCode=" + authJSON.private.toString();
+      if (!(redir.startsWith("localhost:") || redir.startsWith("scratchinfo.vercel.app/"))) {
         return;
       }
     } else {

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount } from "svelte";
   export let releases: Array<any> = [];
   export let isEditing: boolean = false;
   let createNewRelease,
@@ -8,16 +8,16 @@
     createNewRelease = () => {
       if (releases.length > 100) {
         alert(
-          'You have hit the release limit. Please contact god286 on Scratch for more information.'
+          "You have hit the release limit. Please contact god286 on Scratch for more information."
         );
         return;
       } else {
-        releases.unshift({ title: 'A new release!', description: 'Release description', id: 0 });
+        releases.unshift({ title: "A new release!", description: "Release description", id: 0 });
         releases = releases; // this line makes no sense but it works
       }
     };
     removeRelease = (i) => {
-      if (!confirm('Are you really, really, really sure you want to delete this release?')) return;
+      if (!confirm("Are you really, really, really sure you want to delete this release?")) return;
       releases.splice(i, 1);
       releases = releases; // this line makes no sense but it works
     };

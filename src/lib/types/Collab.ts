@@ -7,7 +7,7 @@ interface CollabResponse {
     created_by: number;
     goals: {
       title: string;
-      progress: number
+      progress: number;
     }[];
     releases: {
       title: string;
@@ -25,7 +25,7 @@ interface CollabResponse {
     public: boolean;
     open_to_all: boolean;
     comments_allowed: boolean;
-    image: string,
+    image: string;
     history: {
       created: string;
       modified: string;
@@ -35,8 +35,8 @@ interface CollabResponse {
       followers: number;
       managers: number;
       projects: number;
-    }
-  }
+    };
+  };
 }
 
-export type { CollabResponse }
+export type { CollabResponse };

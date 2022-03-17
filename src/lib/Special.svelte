@@ -1,28 +1,28 @@
 <script lang="ts">
   export let info;
-  let msg = 'This is a Scratchinfo Special. It gives a little badge to people who do cool things!';
-  let contributors: Array<string> = ['kccuber'];
+  let msg = "This is a Scratchinfo Special. It gives a little badge to people who do cool things!";
+  let contributors: Array<string> = ["kccuber"];
   let suggestors: Array<string> = [
-    'Chiroyce',
-    'PoIygon',
-    'hamster46',
-    'kccuber',
-    'han614698',
-    'slgsan-encrypted'
+    "Chiroyce",
+    "PoIygon",
+    "hamster46",
+    "kccuber",
+    "han614698",
+    "slgsan-encrypted"
   ];
 </script>
 
-{#if info.username === 'god286'}
+{#if info.username === "god286"}
   <div class="tag owner" title={msg}>Owner of Scratchinfo</div>
 {/if}
-{#if info.username === 'JoshAtticus'}
+{#if info.username === "JoshAtticus"}
   <div class="tag epic" title={msg}>Scratchinfo Announcement Helper</div>
 {/if}
-{#if info.username === 'Jeffalo'}
+{#if info.username === "Jeffalo"}
   <div class="tag ocular" title={msg}>Ocular</div>
 {/if}
-{#if info.username === 'SansStudios'}
-  <div class="tag heartpink" title={msg + ' Requested by SansStudios'}>&lt;3</div>
+{#if info.username === "SansStudios"}
+  <div class="tag heartpink" title={msg + " Requested by SansStudios"}>&lt;3</div>
 {/if}
 {#if info.scratchTeam === true}
   <div class="tag scratchteam" title={msg}>Scratch Team Member</div>

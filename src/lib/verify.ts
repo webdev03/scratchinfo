@@ -1,8 +1,8 @@
 /**
  * @type {import('@sveltejs/kit').RequestHandler}
  */
-import { createClient } from '@supabase/supabase-js';
-import crypto from 'crypto';
+import { createClient } from "@supabase/supabase-js";
+import crypto from "crypto";
 export async function verifier(request) {
   try {
     let parsedBody: any;
@@ -13,35 +13,35 @@ export async function verifier(request) {
     }
     const envVars = request.insertedEnv;
     const privateCode = parsedBody.privateCode;
-    if (typeof privateCode == 'undefined') {
-      throw new Error('no private code');
+    if (typeof privateCode == "undefined") {
+      throw new Error("no private code");
     }
-    const supabase = createClient(envVars['SCRATCHLIGHT_URL'], envVars['SCRATCHLIGHT_KEY']);
-    const getData = await supabase.from('codes').select().eq('privateCode', privateCode);
+    const supabase = createClient(envVars["SCRATCHLIGHT_URL"], envVars["SCRATCHLIGHT_KEY"]);
+    const getData = await supabase.from("codes").select().eq("privateCode", privateCode);
     if (getData.error || getData.data.length == 0) {
-      throw new Error('Cannot find session.');
+      throw new Error("Cannot find session.");
     }
     const comments = await (
       await fetch(
         `https://api.scratch.mit.edu/users/ScratchLightAuth/projects/603838920/comments/?limit=15&offset=0&somethingCompletelyRandom=${crypto
           .randomBytes(24)
-          .toString('hex')}`
+          .toString("hex")}`
       )
     ).json();
     for (let index = 0; index < comments.length; index++) {
       const comment = comments[index];
       if (
-        comment.content == getData.data[0]['code'] &&
-        comment.author.username.toLowerCase() == getData.data[0]['user'].toLowerCase()
+        comment.content == getData.data[0]["code"] &&
+        comment.author.username.toLowerCase() == getData.data[0]["user"].toLowerCase()
       ) {
         const deleteAuthSession = await supabase
-          .from('codes')
+          .from("codes")
           .delete()
-          .eq('privateCode', privateCode);
+          .eq("privateCode", privateCode);
         return {
           body: {
             isError: false,
-            username: getData.data[0]['user']
+            username: getData.data[0]["user"]
           }
         };
       }

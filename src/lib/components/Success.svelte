@@ -1,6 +1,6 @@
 <script>
-  export let title = 'Success!';
-  export let description = 'Your request has been fulfilled successfully..';
+  export let title = "Success!";
+  export let description = "Your request has been fulfilled successfully..";
 </script>
 
 <div class="flex justify-center pt-2">

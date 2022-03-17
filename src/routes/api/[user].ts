@@ -17,10 +17,10 @@ export async function get({ params }) {
     try {
       ocular = await (await fetch(`https://my-ocular.jeffalo.net/api/user/${user}/`)).json();
     } catch (error) {
-      ocular.status = '(Scratchinfo Message) Ocular seems to be down.';
+      ocular.status = "(Scratchinfo Message) Ocular seems to be down.";
     }
     if (ocular.status == undefined || ocular.color == undefined) {
-      ocular.status = 'No ocular status found.';
+      ocular.status = "No ocular status found.";
     }
     /* const user_projects = await (
       await fetch(`https://api.scratch.mit.edu/users/${user}/projects/?limit=1`)

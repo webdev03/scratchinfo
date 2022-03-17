@@ -1,8 +1,8 @@
 <script>
-  let user = '';
+  let user = "";
   function lengthValid(string) {
     if (string.length > 0) {
-      window.location.href = '/users/' + string;
+      window.location.href = "/users/" + string;
     }
   }
   function onKeyPress(e) {

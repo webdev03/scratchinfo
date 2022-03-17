@@ -1,8 +1,8 @@
 <script lang="ts">
-  let collab = '';
+  let collab = "";
   function lengthValid(string) {
     if (string.length > 0 && !isNaN(string)) {
-      window.location.href = '/collabs/' + string;
+      window.location.href = "/collabs/" + string;
     }
   }
   function onKeyPress(e: KeyboardEvent) {

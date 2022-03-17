@@ -1,21 +1,21 @@
 <script>
-  import { onMount } from 'svelte';
-  import Success from '$lib/components/Success.svelte';
-  import Failure from '$lib/components/Failure.svelte';
+  import { onMount } from "svelte";
+  import Success from "$lib/components/Success.svelte";
+  import Failure from "$lib/components/Failure.svelte";
   let studioID = 0;
   let signedIn,
     problem,
     success = false;
   let saveChanges = async () => {};
   onMount(async () => {
-    signedIn = !!window.localStorage.getItem('authToken');
+    signedIn = !!window.localStorage.getItem("authToken");
     saveChanges = async () => {
       success = false;
       problem = false;
-      const saveFetch = await fetch('/collabs/api/create', {
-        method: 'POST',
+      const saveFetch = await fetch("/collabs/api/create", {
+        method: "POST",
         body: JSON.stringify({
-          token: window.localStorage.getItem('authToken'),
+          token: window.localStorage.getItem("authToken"),
           studio: studioID
         })
       });

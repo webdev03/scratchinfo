@@ -1,5 +1,5 @@
 module.exports = {
-  content: ['./src/**/*.{js,ts,svelte}'],
+  content: ["./src/**/*.{js,ts,svelte}"],
   darkMode: "media",
   theme: {
     extend: {}

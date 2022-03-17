@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount } from "svelte";
   let submitFunction: Function = function () {};
   onMount(() => {
     submitFunction = function () {
       window.localStorage.clear();
-      window.location.href = '/';
+      window.location.href = "/";
     };
   });
 </script>

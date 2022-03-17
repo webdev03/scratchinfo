@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import Progress from '$lib/components/Progress.svelte';
+  import { onMount } from "svelte";
+  import Progress from "$lib/components/Progress.svelte";
   export let goals: Array<any> = [];
   export let isEditing: boolean = false;
   let createNewGoal,
@@ -8,15 +8,15 @@
   onMount(() => {
     createNewGoal = () => {
       if (goals.length > 9) {
-        alert('You have hit the goal limit.');
+        alert("You have hit the goal limit.");
         return;
       } else {
-        goals.push({ title: 'My goal', progress: 50 });
+        goals.push({ title: "My goal", progress: 50 });
         goals = goals; // this line makes no sense but it works
       }
     };
     removeGoal = (i) => {
-      if (!confirm('Are you sure you want to delete this goal?')) return;
+      if (!confirm("Are you sure you want to delete this goal?")) return;
       goals.splice(i, 1);
       goals = goals; // this line makes no sense but it works
     };

@@ -1,8 +1,8 @@
 /**
  * @type {import('@sveltejs/kit').RequestHandler}
  */
-import { verifier } from '$lib/verify';
-import dotenv from 'dotenv';
+import { verifier } from "$lib/verify";
+import dotenv from "dotenv";
 dotenv.config();
 
 export async function post(request) {
@@ -62,7 +62,7 @@ export async function post(request) {
       status: 500,
       body: {
         isError: true,
-        msg: 'An error has occurred.'
+        msg: "An error has occurred."
       }
     };
   }

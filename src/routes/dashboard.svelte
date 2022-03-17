@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import Failure from '$lib/components/Failure.svelte';
+  import { onMount } from "svelte";
+  import Failure from "$lib/components/Failure.svelte";
   let loggedOut = false;
   let loading = true;
   let problem = false;
@@ -13,16 +13,16 @@
     loading = true;
     problem = false;
     isBusy = false;
-    loggedOut = !!!window.localStorage.getItem('authToken');
+    loggedOut = !!!window.localStorage.getItem("authToken");
     if (loggedOut) {
-      window.location.href = '/login';
+      window.location.href = "/login";
     }
     saveChanges = async function () {
-      const scf = await fetch('/you/supa/you_api/func/set', {
-        method: 'POST',
+      const scf = await fetch("/you/supa/you_api/func/set", {
+        method: "POST",
         body: JSON.stringify({
-          token: window.localStorage.getItem('authToken').toString(),
-          studio: Number(studioID || '0'),
+          token: window.localStorage.getItem("authToken").toString(),
+          studio: Number(studioID || "0"),
           busy: !!isBusy,
           isWorkingOnProject: workingOnProject,
           percentProjectDone: percentDoneWithProject
@@ -37,15 +37,15 @@
       }
     };
     // CUD = current user data
-    const CUDFetch = await fetch('/you/supa/scratchlight/getUserToken', {
-      method: 'POST',
+    const CUDFetch = await fetch("/you/supa/scratchlight/getUserToken", {
+      method: "POST",
       body: JSON.stringify({
-        token: window.localStorage.getItem('authToken').toString()
+        token: window.localStorage.getItem("authToken").toString()
       })
     });
     if (!CUDFetch.ok) {
       window.localStorage.clear();
-      window.location.href = '/login';
+      window.location.href = "/login";
     }
     const cfJSON = await CUDFetch.json();
     const userDataFetch = await fetch(`/you/supa/you_api/${cfJSON.username}`);
@@ -58,7 +58,7 @@
       workingOnProject = userData.data.workingOnProject;
       percentDoneWithProject = userData.data.percentageDoneWithProject;
     } else {
-      console.log('Oh no! An error has occured.');
+      console.log("Oh no! An error has occured.");
     }
   });
 </script>
@@ -93,7 +93,7 @@
 
 <style>
   /* Thanks StackOverflow for these styles */
-  input[type='number'] {
+  input[type="number"] {
     -moz-appearance: textfield;
   }
 

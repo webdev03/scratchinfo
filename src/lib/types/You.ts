@@ -28,8 +28,8 @@ interface YouResponse {
       followers: number;
       managers: number;
       projects: number;
-    }
-  }
+    };
+  };
   studio_url: string;
   isError: boolean;
 }

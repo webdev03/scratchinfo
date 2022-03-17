@@ -1,6 +1,6 @@
 <script>
-  export let title = 'Oh no!';
-  export let description = 'It looks like an error has occurred.';
+  export let title = "Oh no!";
+  export let description = "It looks like an error has occurred.";
   export let centred = true;
 </script>
 

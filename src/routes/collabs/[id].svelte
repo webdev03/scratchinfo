@@ -9,12 +9,12 @@
 </script>
 
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import type { CollabResponse } from '$lib/types/Collab';
-  import GoalViewer from '$lib/GoalViewer.svelte';
-  import ReleaseViewer from '$lib/ReleaseViewer.svelte';
-  import Success from '$lib/components/Success.svelte';
-  import Failure from '$lib/components/Failure.svelte';
+  import { onMount } from "svelte";
+  import type { CollabResponse } from "$lib/types/Collab";
+  import GoalViewer from "$lib/GoalViewer.svelte";
+  import ReleaseViewer from "$lib/ReleaseViewer.svelte";
+  import Success from "$lib/components/Success.svelte";
+  import Failure from "$lib/components/Failure.svelte";
   export let id;
   let collabData: CollabResponse;
   let setProblem,
@@ -31,24 +31,24 @@
     saveChanges = async () => {};
   onMount(async () => {
     // define report
-    signedIn = !!window.localStorage.getItem('authToken');
+    signedIn = !!window.localStorage.getItem("authToken");
     report = async () => {
-      if (!confirm('Are you sure you want to report?')) return;
+      if (!confirm("Are you sure you want to report?")) return;
       const reportFetch = await fetch(`/collabs/api/report`, {
-        method: 'POST',
+        method: "POST",
         body: JSON.stringify({
-          type: 'studio',
+          type: "studio",
           name: id,
-          token: window.localStorage.getItem('authToken')
+          token: window.localStorage.getItem("authToken")
         })
       });
       if (!reportFetch.ok) {
         console.error(reportFetch.statusText);
-        alert('An error has occurred.');
+        alert("An error has occurred.");
         return;
       } else {
         alert(
-          'Thank you for reporting. Your report has been processed. Please contact god286 on Scratch saying that you have reported on Scratchinfo.'
+          "Thank you for reporting. Your report has been processed. Please contact god286 on Scratch saying that you have reported on Scratchinfo."
         );
       }
     };
@@ -68,17 +68,17 @@
     startEditor = async () => {
       if (isEditing) {
         const confirmation = confirm(
-          'Have you saved your changes? Do you want to leave the editor?'
+          "Have you saved your changes? Do you want to leave the editor?"
         );
         if (!confirmation) return;
       }
       isEditing = !isEditing;
     };
     if (signedIn) {
-      const permCheck = await fetch('/collabs/api/permission', {
-        method: 'POST', // yes I know it is post, but I don't know what other method
+      const permCheck = await fetch("/collabs/api/permission", {
+        method: "POST", // yes I know it is post, but I don't know what other method
         body: JSON.stringify({
-          token: window.localStorage.getItem('authToken'),
+          token: window.localStorage.getItem("authToken"),
           studio: id
         })
       });
@@ -86,12 +86,12 @@
     }
     saveChanges = async () => {
       setProblem = false;
-      const setData = await fetch('/collabs/api/set', {
-        method: 'PUT',
+      const setData = await fetch("/collabs/api/set", {
+        method: "PUT",
         body: JSON.stringify({
           goals: goals,
           releases: releases,
-          token: window.localStorage.getItem('authToken'),
+          token: window.localStorage.getItem("authToken"),
           studio: id
         })
       });

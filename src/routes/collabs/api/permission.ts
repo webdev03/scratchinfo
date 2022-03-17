@@ -4,7 +4,7 @@
 // Permission manager for collabs
 // Permissions should be verified on each change to the collab
 // This is a POST request because
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 export async function post(request) {
   let parsedBody: any;
   try {
@@ -15,15 +15,15 @@ export async function post(request) {
   let jwtv = undefined;
   try {
     // jwt.verify returns a decoded object so we can use this to check the JWT
-    jwtv = jwt.verify(parsedBody.token, process.env['SUPABASE_JWT_SECRET'], {
-      maxAge: '2h'
+    jwtv = jwt.verify(parsedBody.token, process.env["SUPABASE_JWT_SECRET"], {
+      maxAge: "2h"
     });
   } catch {
     return {
       status: 500,
       body: {
         iserror: true,
-        msg: 'Token not valid.'
+        msg: "Token not valid."
       }
     };
   }

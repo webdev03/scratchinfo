@@ -1,6 +1,6 @@
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 // this part is because process.env sometimes breaks
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 dotenv.config();
 export async function post(request) {
   let parsedBody = undefined;
@@ -11,11 +11,11 @@ export async function post(request) {
   }
   try {
     try {
-      const isJWTGood = jwt.verify(parsedBody.token, process.env['SUPABASE_JWT_SECRET'], {
-        maxAge: '2h'
+      const isJWTGood = jwt.verify(parsedBody.token, process.env["SUPABASE_JWT_SECRET"], {
+        maxAge: "2h"
       });
       if (!isJWTGood) {
-        throw new Error('no.');
+        throw new Error("no.");
       }
       const jwtContent = jwt.decode(parsedBody.token);
       return {
@@ -26,7 +26,7 @@ export async function post(request) {
         status: 500,
         body: {
           iserror: true,
-          msg: 'Token not valid.'
+          msg: "Token not valid."
         }
       };
     }
