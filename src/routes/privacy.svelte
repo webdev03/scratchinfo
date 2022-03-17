@@ -1,5 +1,5 @@
 <!-- Change this date when you modify the policy -->
-<i>Last modified: 25 February 2022</i>
+<i>Last modified: 17 March 2022</i>
 <br />
 <p>
   All Scratchinfo pages are hosted through <a href="https://vercel.com">Vercel</a>.
@@ -9,8 +9,8 @@
   may be accessible to our data sources. This information is necessary to provide you with
   Scratchinfo.
 </p>
-<p>Some of our data sources are</p>
-<ul>
+<p>Some of our data sources are:</p>
+<ul class="list-disc ml-6">
   <li>ScratchDB by @DatOneLefty on Scratch</li>
   <li>my-ocular by @Jeffalo on Scratch</li>
   <li>The official Scratch API by the Scratch Team</li>
