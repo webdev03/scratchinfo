@@ -1,4 +1,5 @@
 <script>
+  import { navigating } from "$app/stores";
   import "$lib/tailwind.css";
   import Navbar from "$lib/components/nav/Navbar.svelte";
 </script>
@@ -25,3 +26,5 @@
     <a href="/rules" class="font-semibold hover:underline">Rules for using Scratchinfo</a>
   </div>
 </div>
+
+<div class="absolute w-12 h-12 bottom-20 right-10 bg-sky-300 rounded-[100%]" class:animate-ping={$navigating?.from} class:hidden={!$navigating?.from}></div>
