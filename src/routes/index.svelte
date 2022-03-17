@@ -24,13 +24,6 @@
   bind:value={user}
 />
 <button class="btn-primary" on:click|preventDefault={() => lengthValid(user)}>search</button>
-<br />
-<a href="/privacy" class="font-semibold hover:underline">Privacy Policy</a>
-<br />
-<a href="/rules" class="font-semibold hover:underline"
-  >Rules for using Scratchinfo</a
->
-
 <!-- <style>
   input {
     border: 2px black;

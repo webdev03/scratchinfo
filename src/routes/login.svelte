@@ -28,9 +28,6 @@
     > when using Scratchinfo.</b
   >
 </p>
-<a href="/rules" class="font-semibold hover:underline"
-  >Rules for using Scratchinfo</a
->
 <p>
   You need to have Scratcher status in order to use Scratchinfo features that require
   authentication.
@@ -50,5 +47,3 @@
 <button type="button" on:click={submitFunction()} class="btn-primary"
   >Log in with ScratchLight</button
 >
-<br /> <br />
-<a href="/privacy" class="font-semibold hover:underline">Privacy Policy</a>
