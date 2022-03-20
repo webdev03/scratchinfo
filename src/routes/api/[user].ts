@@ -46,6 +46,7 @@ export async function get({ params }) {
       } */
     return {
       body: {
+        id: api_official_user.id,
         username: api_official_user.username,
         /* 				user_agent: agent, */
         scratchteam: api_official_user.scratchteam,

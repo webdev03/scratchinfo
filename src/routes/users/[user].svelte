@@ -13,6 +13,7 @@
   import Special from "$lib/Special.svelte";
   import OcularStatus from "$lib/OcularStatus.svelte";
   import forumlist from "$lib/forumlist";
+import { dataset_dev } from "svelte/internal";
   export let username;
   let info: any = { ocular: {}, scratchdb: {} };
   let pfp: any;
@@ -45,6 +46,7 @@
             info.ocular.colour = data["ocular"].color;
 
             info.username = data.username;
+            info.id = data.id;
             info.scratchTeam = data.scratchteam;
             info.joinDate = data.history.joined;
             pfp = data.images["90x90"];
@@ -136,7 +138,7 @@
 {:else}
   <img width="90px" height="90px" src={pfp} alt={`${info.username} Profile Picture`} />
   <br />
-  {info.username}{#if info.scratchTeam}*{/if} | <OcularStatus {info} />
+  <span title={`#${info.id}`}>{info.username}{#if info.scratchTeam}*{/if}</span> | <OcularStatus {info} />
   <Special {info} />
   <br />
   <p>Joined on {new Date(info.joinDate).toLocaleString()}</p>
