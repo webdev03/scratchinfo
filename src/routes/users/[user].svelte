@@ -13,7 +13,7 @@
   import Special from "$lib/Special.svelte";
   import OcularStatus from "$lib/OcularStatus.svelte";
   import forumlist from "$lib/forumlist";
-import { dataset_dev } from "svelte/internal";
+
   export let username;
   let info: any = { ocular: {}, scratchdb: {} };
   let pfp: any;
