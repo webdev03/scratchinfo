@@ -14,18 +14,19 @@
   import OcularStatus from "$lib/OcularStatus.svelte";
   import forumlist from "$lib/forumlist";
 
-  export let username;
+  export let username: string;
   let info: any = { ocular: {}, scratchdb: {} };
-  let pfp: any;
-  let readForumView, readForumChart: Function;
+  let pfp: string;
+  let readForumView: Function, readForumChart: Function;
   let problem = false;
   let loading = true;
   let forumViewReady: boolean = false;
-  let forumViewPosts, forumViewRank, forumViewTopic;
+  let forumViewPosts: number, forumViewRank: number, forumViewTopic: string;
   let forumPostSelect = "Advanced Topics";
   onMount(() => {
-    readForumView = (forum) => {
+    readForumView = (forum: string) => {
       forumViewReady = false;
+      console.log(info.scratchdb)
       forumViewPosts = info.scratchdb.rawDataForum[forum].count;
       forumViewRank = info.scratchdb.rawDataForum[forum].rank;
       forumViewTopic = forumPostSelect;
