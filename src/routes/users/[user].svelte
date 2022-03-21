@@ -85,7 +85,7 @@
               return object;
             };
             // @ts-ignore
-            var myChart = new Chart(ctx, {
+            new Chart(ctx, {
               type: "pie",
               data: {
                 labels: forumlist,
