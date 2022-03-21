@@ -38,7 +38,7 @@ export async function post(request) {
       return {
         status: 500,
         body: {
-          iserror: true,
+          isError: true,
           msg: "Token not valid."
         }
       };

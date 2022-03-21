@@ -20,7 +20,7 @@ export async function post(request) {
       return {
         status: 500,
         body: {
-          iserror: true,
+          isError: true,
           msg: "Token not valid."
         }
       };
@@ -34,7 +34,7 @@ export async function post(request) {
       return {
         status: 500,
         body: {
-          iserror: true,
+          isError: true,
           msg: "Studio is not a number."
         }
       };
@@ -74,7 +74,7 @@ export async function post(request) {
     return {
       body: {
         username: user,
-        iserror: false
+        isError: false
       }
     };
   } catch (err) {
@@ -82,7 +82,7 @@ export async function post(request) {
     return {
       status: 500,
       body: {
-        iserror: true,
+        isError: true,
         msg: "Error unknown."
       }
     };

@@ -16,7 +16,7 @@ export async function get({ params }) {
     return {
       status: 500,
       body: {
-        iserror: true,
+        isError: true,
         error_msg: err.toString()
       }
     };

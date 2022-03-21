@@ -42,7 +42,7 @@
         })
         .then((data) => {
           loading = false;
-          if (data.iserror === false) {
+          if (data.isError === false) {
             info.ocular.status = data["ocular"].status;
             info.ocular.colour = data["ocular"].color;
 

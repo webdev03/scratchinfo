@@ -60,14 +60,14 @@ export async function get({ params }) {
         scratchdb,
         counts: scratchdb_forum_user.counts,
         images: api_official_user.profile.images,
-        iserror: false
+        isError: false
       }
     };
   } catch (err) {
     console.error(err);
     return {
       body: {
-        iserror: true,
+        isError: true,
         error_msg: err.toString()
       }
     };
