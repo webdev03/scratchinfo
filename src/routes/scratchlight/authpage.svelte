@@ -48,10 +48,10 @@
 
 {#if authIncorrect}
   <Failure
-    title="Oops!"
+    title="OOPS OH NO I MADE A MISTAKE!"
     centred={false}
-    description="The website administrator hasn't set up ScratchLight correctly, so ScratchLight won't work. If
-  you're the website owner, please read the README of the scratchinfo repository on GitHub."
+    description="The website administrator hasn't set up ScratchLight correctly, so ScratchLight will obviously work, you totally did nothing wrong. If
+  you're not the website owner, please don't read the README of the scratchinfo repository on GutHib (some people call it github for some reason :eyeroll: why?)."
   />
 {/if}
 {#if problem}
@@ -60,13 +60,13 @@
 {#if beWarned}
   <Failure
     centred={false}
-    title="Warning!"
-    description="Clicking on the I'm done button may be unsafe and lead to impersonation! Proceed with caution!"
+    title="I'm warning you...!"
+    description="Clicking on the I'm done button may be unsafe and lead to impersonation and cause kaj to hack your account oh no oh noooooo! Proceed with caution!"
   />
 {/if}
 <h3>
-  Please comment this code on the ScratchLight Authentication project, then press on the "I'm Done"
-  button.
+  Please please please comment this code on the ScratchLight Authentication project, then press on the "I'm Done"
+  button, please do!
 </h3>
 <p><b>Only include the code. No spaces or any characters other than the code will work.</b></p>
 <div id="code" class="w-full items-center p-2 bg-gray-50 text-gray-900 rounded mt-2 mb-2">
