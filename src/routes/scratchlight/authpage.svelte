@@ -65,8 +65,8 @@
   />
 {/if}
 <h3>
-  Please please please comment this code on the ScratchLight Authentication project, then press on the "I'm Done"
-  button, please do!
+  Please please comment this code on the ScratchLight Authentication project, then press on the "I'm Done"
+  button, if you don't, my army of evil kumquats will come and force you to!
 </h3>
 <p><b>Only include the code. No spaces or any characters other than the code will work.</b></p>
 <div id="code" class="w-full items-center p-2 bg-gray-50 text-gray-900 rounded mt-2 mb-2">
