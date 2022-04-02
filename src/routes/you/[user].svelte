@@ -40,7 +40,7 @@
   <p>Loading...</p>
 {:else if ok == true && loading == false}
   {#if responseResult.data.busy}
-    <span class="badge bg-warning">This user is currently busy, so, if you talk to them, then the Scartchinfo evil kumquats will arrive.</span>
+    <span class="badge bg-warning">This user is currently busy.</span>
   {/if}
 
   {#if !studioExists}
