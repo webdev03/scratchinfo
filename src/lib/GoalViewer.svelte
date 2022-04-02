@@ -8,7 +8,7 @@
   onMount(() => {
     createNewGoal = () => {
       if (goals.length > 9) {
-        alert("STOP!!!! YOU ARE ADDING WAY TOO MANY GOALS!! YOU KNOW HOW ANGRY I AM WHEN SOMEONE ADDS SO MANY GOALS? >:(");
+        alert("You have hit the goal limit.");
         return;
       } else {
         goals.push({ title: "My goal", progress: 50 });

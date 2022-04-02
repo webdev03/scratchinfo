@@ -9,7 +9,7 @@
     class="text-gray-800 mx-auto relative justify-between flex items-center w-full rounded min-h-50 px-4 py-2"
   >
     <!-- Header -->
-    <h1 class="text-2xl font-semibold"><a href="/">Scartchinfo</a></h1>
+    <h1 class="text-2xl font-semibold"><a href="/">Scratchinfo</a></h1>
     <!-- Link item desktop -->
     <ul id="link-items-desktop" class="flex-wrap hidden md:flex ml-2 flex-col sm:flex-row">
       <li>
