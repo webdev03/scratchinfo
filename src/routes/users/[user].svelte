@@ -169,7 +169,9 @@
   <a class="btn-primary" role="button" href={`https://scratory.vercel.app/user/${info.username}`}
     >Visit on Scratory</a
   >
-
+  <a class="btn-primary" role="button" href={`https://jdev.eu.org/MyScratchPage?user= + `${info.username}}`
+    >Visit on MyScratchPage</a
+  >
   <hr />
 
   <p>Followers: {info.scratchdb.followers}</p>
