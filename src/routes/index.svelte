@@ -24,6 +24,10 @@
   bind:value={user}
 />
 <button class="btn-primary" on:click|preventDefault={() => lengthValid(user)}>search</button>
+<br />
+<br />
+<br />
+<p>Scratchinfo is not related to the Scratch Foundation, the Scratch Website, or MIT.</p>
 <!-- <style>
   input {
     border: 2px black;
