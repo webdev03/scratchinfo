@@ -26,7 +26,6 @@
   onMount(() => {
     readForumView = (forum: string) => {
       forumViewReady = false;
-      console.log(info.scratchdb)
       forumViewPosts = info.scratchdb.rawDataForum[forum].count;
       forumViewRank = info.scratchdb.rawDataForum[forum].rank;
       forumViewTopic = forumPostSelect;
@@ -139,7 +138,10 @@
 {:else}
   <img width="90px" height="90px" src={pfp} alt={`${info.username} Profile Picture`} />
   <br />
-  <span title={`#${info.id}`}>{info.username}{#if info.scratchTeam}*{/if}</span> | <OcularStatus {info} />
+  <span title={`#${info.id}`}
+    >{info.username}{#if info.scratchTeam}*{/if}</span
+  >
+  | <OcularStatus {info} />
   <Special {info} />
   <br />
   <p>Joined on {new Date(info.joinDate).toLocaleString()}</p>
