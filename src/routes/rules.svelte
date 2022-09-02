@@ -1,7 +1,7 @@
 <h1 class="text-3xl font-bold mb-2">Scratchinfo Rules</h1>
 
 <!-- Change this date when you modify the rules -->
-<i>Last modified: 25 February 2021</i>
+<i>Last modified: 3 September 2022</i>
 
 <p>When you use Scratchinfo you must follow these rules.</p>
 <p>
