@@ -184,6 +184,8 @@
   {/if}
 {/if}
 <canvas id="myChart" width="600" height="600" />
+  <br />
+  <br />
 
 <style>
   .btn-primary {
