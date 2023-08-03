@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@sveltejs/adapter-vercel": "^1.0.0-next.34",
-    "@sveltejs/kit": "1.0.0-next.214",
+    "@sveltejs/kit": "1.15.2",
     "autoprefixer": "^10.4.1",
     "postcss": "^8.4.5",
     "prettier": "^2.4.1",
